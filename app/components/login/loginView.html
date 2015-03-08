@@ -1,0 +1,37 @@
+<div class="ui inverted menu top fixed " style="margin-top:-16px ">
+    <div class="container" style="margin-bottom: 0px ">
+        <a class="item title" style="margin-top: 15px;padding: 24px;background: #1b1c1d"  ng-click="Inicio()">
+            <img src="assets/img/logo.svg">
+        </a>
+    </div>
+</div>
+
+<div class="pusher ">
+    <div class="wrapper" >
+        <div class="ui page grid">
+            <div class="column" id = "log_Container">
+                <div class="ui transition information visible">
+                    <div class="ui form segment"  id = "log_Segmento">
+                        <img class="profile-img" src="assets/img/avatar.png">
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="text" placeholder="Empleado" name="username"  ng-model="credentials.username">
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="password" placeholder="Contraseña" name="password" ng-model="credentials.password" >
+                                <i class="lock icon"></i>
+                            </div>
+                        </div>
+                        <div class=" ui fluid submit accion button" ng-click="submit()" >Login</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+

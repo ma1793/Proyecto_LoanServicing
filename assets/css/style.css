@@ -1,0 +1,547 @@
+
+
+/*******************************
+       Colores Globales
+*******************************/
+:root {
+    --mainHigh-color: #3c948b;
+    --mainLow-color: #509F97;
+
+
+    --secondHigh-color: #F88828;
+    --secondLow-color: #F2B141;
+
+    --CancelHigh-color:#D95C5C;
+
+    --menu-color: #1b1c1d;
+    --invert-menu-color: #E4E3E2;
+
+    --sidebar-color:rgba(27,28,29,0.9);
+}
+
+
+
+/*******************************
+            Body
+*******************************/
+
+html,
+body {
+    font-size: 15px;
+    height: 100%;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    text-rendering: optimizeLegibility;
+    min-width: 320px;
+    margin: 0px;
+    padding: 0px;
+    zoom:90%;
+
+}
+.wrapper {
+    background-image:url('../img/bg.jpg');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    -ms-content-zooming: none;
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
+    zoom:110%!important;
+
+
+}
+
+
+
+/*******************************
+            Grid
+*******************************/
+.ui.page.grid{
+    padding-top: 80px;
+}
+
+.ui.vertically.grid{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.container {
+    position: relative;
+    width: auto;
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left: 8%;
+    padding-right: 9%;
+}
+
+
+/*******************************
+            Login
+*******************************/
+
+#log_Container {
+    padding-top: 70px;
+    margin: 0 auto 10px;
+
+}
+#log_Segmento{
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-bottom: 35px;
+    padding-left: 40px;
+    width: 320px;
+    min-width: 120px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+}
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-left: auto;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*******************************
+            Tareas
+*******************************/
+
+.ui.basic.tareas.segment{
+    padding-top:5%;
+    position: relative;
+    width: auto;
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left:  16%;
+    padding-right: 16%;
+}
+
+
+
+/*******************************
+            Header
+*******************************/
+
+.ui.header{
+    font-style: normal;
+    font-weight: normal;
+}
+
+/*Header de los formularios*/
+.ui.header.Titulo {
+    background-color:#437357;
+    color: rgba(255,255,255,0.9);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: -15px;
+    margin-left: -15px;
+    margin-right: -15px;
+
+}
+
+h3{
+    font-weight: normal;
+}
+
+.ui.header.SubTitulo{
+    font-weight: bold;
+    font-size: 16px;
+}
+.ui.header.SubTitulo.Acordeon{
+    font-weight: bold;
+    font-size: 17px;
+}
+
+
+/***Salir Formulario*******/
+.ui.top.right.attached.label{
+    background-color: #D95C5C;
+    color:white;
+}
+.ui.top.right.attached.label:hover{
+    opacity: 0.90;
+}
+
+.ui.top.right.attached.label:hover .icon{
+    transform: scale(1.2);
+
+}
+
+
+
+
+/*******************************
+            Menu y Sidebar
+*******************************/
+
+.ui.inverted.menu{
+    background: #1b1c1d;
+}
+/***********Item*********/
+
+/*iconos svg*/
+.ui.inverted.menu .item{
+    fill: #E4E3E2;
+}
+.menu_Icon.Prestamos{
+    height: 28px;
+    width:  28px;
+}
+
+.menu_Icon.Alquileres{
+    height: 26px;
+    width:  26px;
+}
+
+.ui.inverted.menu .item > a:not(.ui){
+    color: #E4E3E2;
+}
+
+.ui.inverted.menu .item:hover > a:not(.ui) {
+    color: #F2B141!important;
+    fill: #F2B141 !important;
+}
+
+.ui.inverted.icon.menu .item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #F2B141;
+    fill: #F2B141;
+}
+
+.ui.inverted.menu .active.item {
+    box-shadow: none !important;
+    background: rgba(255, 255, 255, 0.15);
+    color: #F88828!important;
+    fill: #F88828!important;
+}
+
+
+/*******************************
+            Sidebar
+*******************************/
+
+.ui.labeled.icon.menu > .item.titulo{
+    cursor:default;
+    color:#F2B141
+}
+
+.ui.labeled.icon.menu > .item.titulo:hover{
+    background: #1b1c1d
+}
+
+
+.ui.vertical.menu{
+    background:rgba(27,28,29,0.9) !important;
+}
+
+.main_Icon{
+    height: 72px;
+    width:  72px;
+    fill: #F2B141;
+}
+
+/*******************************
+           Modals
+*******************************/
+
+.modals{
+    zoom:110%!important;
+}
+
+/********* Header **************/
+
+.ui.modal > .header {
+    border-bottom:0px solid rgba(255, 255, 255, 0);
+    box-shadow: none !important;
+    background: rgba(255,255,255,0);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+.ui.modal > .right.floated.header{
+    padding-bottom: 0px;
+}
+
+.ui.modal > .contenedor{
+    width: 450px;
+    border-top: 70px solid #437357;
+    border-right: 50px solid transparent;
+}
+
+.ui.modal > .contenedor.large{
+    width: 605px;
+}
+.ui.modal > .left.floated.header {
+    color:white;
+}
+.ui.modal > .right.floated.header {
+    font-size: 16px;
+}
+
+/******* back button **********/
+
+.ui.header .icon.back{
+    margin-top: -3px;
+    color: white;
+}
+.ui.header .icon.back:hover{
+    color:rgba(255,255,255,0.9);
+    transform: scale(1.5);
+}
+/******** Radio Button ********/
+.grouped.fields{
+    padding-left: 20px;
+}
+
+/******* actions buttton *******/
+.ui.modal .acciones {
+    padding: 1rem 2rem;
+    text-align: right;
+    border-top:1px solid rgba(255, 255, 255, 0.8);
+    background:  linear-gradient(transparent,rgba(27,28,29,0.45))
+}
+.ui.modal .acciones > .button {
+    margin-left: 0.75em;
+}
+/*********** Form *************/
+.ui.modal .small.form.segment{
+    margin-top: -40px;
+}
+
+.ui.modal .small.form.segment{
+    padding: 2% 3% 0%
+}
+
+.ui.modal .small.form.segment.componenteModalLarge{
+    padding: 2% 10% 0%
+}
+
+
+.ui.steps{
+    zoom:105%!important;
+}
+
+/*Lista Modals***/
+.ui.segment.listaModal{
+    border: 1px solid rgba(0,0,0,0.2);
+    overflow-y:auto;
+    max-height: 214px;
+    min-height: 214px;
+    width: 100%
+}
+
+
+/***Modal Pagos ****************
+
+/*******************************
+            Input File
+*******************************/
+#INP_ID_SelectorArchivosRequisitos {
+    display: block;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+/*******************************
+            Progress Bar
+*******************************/
+.ui.progress .bar{
+    min-width: 0;
+}
+
+
+
+
+/*******************************
+            Table
+*******************************/
+
+/********* Header **************/
+.ui.table thead th{
+    background:#437357;
+    color: rgba(255,255,255,0.9);
+
+}
+/********* Scroll **************/
+
+.ui.segment.scrollTabla {
+    padding: 0px;
+    max-height: 150px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ui.segment.scrollTabla.accordeon {
+    padding-right: 15px;
+
+}
+
+
+
+
+/*******************************
+         Botones Accion
+*******************************/
+
+/******** Aceptar ************/
+.ui.button.accion{
+    background-color: #437357;
+    color: #ffffff;
+}
+.ui.button.accion:hover{
+    opacity: 0.90;
+}
+/****** Cancelar ***********/
+.ui.button.cancelar{
+    background-color: #D95C5C;
+    color: #ffffff;
+}
+.ui.button.cancelar:hover{
+    opacity: 0.90;
+}
+
+/*****Finalizar Formulario ****/
+.actions.BTN_Finalizar{
+    float:right;padding : 35px 22px 0px;
+}
+
+
+
+
+
+/*******************************
+       Dropdown  y Lista
+*******************************/
+/*Dropdown Selecction*/
+.ui.dropdown.selected, .ui.dropdown .menu .selected.item{
+    background: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0.8)
+}
+/*Item Seleccion*/
+.ui.selection.list.list > .item:hover, .ui.selection.list > .item:hover {
+    background: rgba(0, 180, 169, 0.03);
+    color: rgba(0, 0, 0, 0.8) ;
+}
+.ui.selection.list .list > .item.active, .ui.selection.list > .item.active {
+    background: rgba(0, 180, 169, 0.15) !important;
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+.ui.selection.dropdown{
+    font-size:14px;
+    max-height:37px;
+}
+.ui.small.transparent.input{
+    padding-top: 10px;
+    font-size: 14px;
+}
+.ui.small.left.icon.input{
+    font-size: 14px;
+}
+
+.ui.transparent.input input {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    padding: 0em !important;
+}
+
+
+
+
+/*******************************
+       Boton Menu Sidebar
+*******************************/
+
+
+.ui.transparent.menu {
+    opacity: 0.95;
+}
+
+#servicing.pushable.left.overlay .fixed.launch.button {
+    transform: translate3d(0, 0, 0);
+}
+#servicing.pushable.overlay.left.pushed .fixed.launch.button {
+    transform: translate3d(260px, 0, 0);
+}
+.fixed.launch.button {
+    position: fixed;
+    top: 95px;
+    left: 0px;
+    color:#E4E3E2;
+    /* background-color: white;*/
+    width: 55px;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-transition:
+    0.3s width ease,
+    0.5s transform ease
+;
+    -moz-transition:
+    0.3s width ease,
+    0.5s transform ease
+;
+    -o-transition:
+    0.3s width ease,
+    0.5s transform ease
+;
+    -ms-transition:
+    0.3s width ease,
+    0.5s transform ease
+;
+    transition:
+    0.3s width ease,
+    0.5s transform ease
+;
+}
+
+.fixed.launch.button .text {
+    position: absolute;
+    white-space: nowrap;
+    top: auto;
+    left: 54px;
+    opacity: 0;
+    -webkit-transition:
+    0.3s opacity 0.3s
+;
+    -moz-transition:
+    0.3s opacity 0.3s
+;
+    -o-transition:
+    0.3s opacity 0.3s
+;
+    -ms-transition:
+    0.3s opacity 0.3s
+;
+    transition:
+    0.3s opacity 0.3s
+;
+}
+.fixed.launch.button:hover {
+    width: 130px;
+}
+.fixed.launch.button:hover .text {
+    opacity: 1;
+}
+.shortcuts {
+    float: right;
+    clear: both;
+}
+.launch.button .icon {
+    margin-left: 0px;
+}
+
+
+
