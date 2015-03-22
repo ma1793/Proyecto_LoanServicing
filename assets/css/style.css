@@ -335,7 +335,6 @@ h3{
 
 /*Lista Modals***/
 .ui.segment.listaModal{
-    border: 1px solid rgba(0,0,0,0.2);
     overflow-y:auto;
     max-height: 214px;
     min-height: 214px;
@@ -456,6 +455,28 @@ h3{
     background-color: transparent !important;
     padding: 0em !important;
 }
+
+
+
+
+
+/*******************************
+           Formularios
+*******************************/
+
+/*Validaciones*/
+.ng-invalid.ng-dirty{
+    border-color:#FA787E !important;
+}
+
+.ng-valid.ng-dirty {
+    border-color:#78FA89 !important;
+}
+
+
+
+
+
 
 
 
