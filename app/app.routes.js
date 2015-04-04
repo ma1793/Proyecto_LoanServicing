@@ -38,12 +38,26 @@ univerApp.config(['$stateProvider','$urlRouterProvider','$locationProvider','USE
                     controller: 'tareasCtrl'
                 })
                 //Prestamos *******************************************************
+
+                //Desglose
                 .state("root.prestamosDesglose", {
                     url:'prestamos/desglose',
                     templateUrl:'app/components/root/prestamos/desglose/desgloseView.html',
                     controller: 'desgloseCtrl'
 
                 })
+                //Consulta Prestamo
+                .state("root.prestamosConsulta", {
+                    url:'prestamos/consulta',
+                    templateUrl:'app/components/root/prestamos/consulta/consultaPrestamoView.html',
+                    controller: 'consultaCtrl'
+                })
+
+
+
+
+
+
                 //Modals
                 .state("root.prestamosPagosModal", {
                     url: '',

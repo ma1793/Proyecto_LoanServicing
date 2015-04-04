@@ -4,8 +4,7 @@ univerApp.factory('caratulasRest', ['$http', function($http){
             getCaratulas: function(callback,pIdDesglose){
                 var req = {
                     method: 'GET',
-                    url:'misc/users.json',
-                 //   url: rootURL + "/caratula/getCaratulas/"+pIdDesglose,
+                    url: rootURL + "/caratula/getCaratulas/"+pIdDesglose,
                     headers: {
                         'Content-Type': 'json'
                     }}

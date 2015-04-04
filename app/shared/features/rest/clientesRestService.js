@@ -4,8 +4,7 @@ univerApp.factory('clientesRest', ['$http', function($http){
             getClientesFisicos: function(callback){
                 var req = {
                     method: 'GET',
-                    url:'misc/users.json',
-                    //url: rootURL + "/cliente/getClientesFisicos",
+                    url: rootURL + "/cliente/getClientesFisicos",
                     headers: {
                         'Content-Type': 'json'
                     }}
@@ -19,8 +18,7 @@ univerApp.factory('clientesRest', ['$http', function($http){
             getClientesJuridicos: function(callback){
                 var req = {
                     method: 'GET',
-                    url:'misc/users.json',
-                    //url: rootURL + "/cliente/getClientesFisicos",
+                    url: rootURL + "/cliente/getClientesFisicos",
                     headers: {
                         'Content-Type': 'json'
                     }}

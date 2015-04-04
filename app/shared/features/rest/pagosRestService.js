@@ -4,8 +4,7 @@ univerApp.factory('pagosRest', ['$http', function($http){
             getEstadoCuenta: function(callback,pIdCaratula){
                 var req = {
                     method: 'GET',
-                    url:'misc/users.json',
-                //    url: rootURL + "/caratula/getEstadoCuenta/"+pIdCaratula,
+                    url: rootURL + "/caratula/getEstadoCuenta/"+pIdCaratula,
                     headers: {
                         'Content-Type': 'json'
                     }}
@@ -19,8 +18,7 @@ univerApp.factory('pagosRest', ['$http', function($http){
             postPagoMorosidad: function(callback,pPagoJSON){
                 var req = {
                     method: 'POST',
-                    url:'misc/users.json',
-                    //url: rootURL + "/pagos/Morosidad",
+                    url: rootURL + "/pagos/Morosidad",
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     },
@@ -37,8 +35,8 @@ univerApp.factory('pagosRest', ['$http', function($http){
             postPagoSobrante: function(callback,pPagoJSON){
                 var req = {
                     method: 'POST',
-                    url:'misc/users.json',
-                    //url: rootURL + "/pagos/Sobrante",
+                    //url:'misc/users.json',
+                    url: rootURL + "/pagos/Sobrante",
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     },
@@ -54,8 +52,7 @@ univerApp.factory('pagosRest', ['$http', function($http){
             postPagoFaltante: function(callback,pPagoJSON){
                 var req = {
                     method: 'POST',
-                    url:'misc/users.json',
-                    //url: rootURL + "/pagos/Faltante",
+                    url: rootURL + "/pagos/Faltante",
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     },
@@ -71,8 +68,7 @@ univerApp.factory('pagosRest', ['$http', function($http){
             postPagoCompleto: function(callback,pPagoJSON){
                 var req = {
                     method: 'POST',
-                    url:'misc/users.json',
-                    //url: rootURL + "/pagos/Completo",
+                    url: rootURL + "/pagos/Completo",
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'
                     },

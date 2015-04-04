@@ -48,13 +48,37 @@ body {
     -o-background-size: cover;
     -webkit-background-size: cover;
     -ms-content-zooming: none;
+
     position:absolute;
     width:100%;
     height:100%;
-    overflow-x:hidden;
+    overflow-y:auto;
+    overflow-x: hidden;
+
+
     zoom:110%!important;
+}
 
 
+
+
+
+.wrapper::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.wrapper::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.wrapper::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+    border: 2px solid #555555;
 }
 
 
@@ -172,11 +196,17 @@ h3{
 }
 .ui.top.right.attached.label:hover{
     opacity: 0.90;
+    cursor:pointer;
 }
 
 .ui.top.right.attached.label:hover .icon{
     transform: scale(1.2);
 
+}
+
+
+.ui.top.attached.label:first-child + :not(.attached) {
+  margin-top: -15px !important;
 }
 
 
@@ -375,7 +405,6 @@ h3{
 
 }
 /********* Scroll **************/
-
 .ui.segment.scrollTabla {
     padding: 0px;
     max-height: 150px;
@@ -470,6 +499,10 @@ h3{
 }
 
 .ng-valid.ng-dirty {
+    border-color:#78FA89 !important;
+}
+
+.valid {
     border-color:#78FA89 !important;
 }
 

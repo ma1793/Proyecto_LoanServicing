@@ -4,8 +4,7 @@ univerApp.factory('desglosesRest', ['$http', function($http){
             getDesgloses: function(callback,pIdCliente){
                 var req = {
                     method: 'GET',
-                    url:'misc/users.json',
-                   // url: rootURL + "/desgloce/getDesgloces/"+pIdCliente,
+                    url: rootURL + "/desgloce/getDesgloces/"+pIdCliente,
                     headers: {
                         'Content-Type': 'json'
                     }}

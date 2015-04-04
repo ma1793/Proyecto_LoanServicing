@@ -1,0 +1,16 @@
+<div class="ui selection dropdown" id="ID_DropdownBanco" ng-class="{'valid': bancoSeleccionado != null}">
+    <input type="hidden">
+    <div class="default text">Nombre del Banco</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        <div class="ui action small input" style="padding-right:  40px" >
+            <input type="text" placeholder="Nombre" ng-model = "nuevoBanco">
+            <div class="ui mini icon button accion" ng-click="AgregarNuevoBanco()">
+                <i class="add icon"></i>
+            </div>
+        </div>
+        <div class="item" data-value="{{banco.id}}"  ng-repeat="banco in bancos | orderBy:'name':false " ng-click="select_Banco(banco,$index)" ng-class="{active: $index === selectedDDBanco}">
+            {{banco.name}}
+        </div>
+    </div>
+</div>
