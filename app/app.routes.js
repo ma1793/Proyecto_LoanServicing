@@ -50,9 +50,25 @@ univerApp.config(['$stateProvider','$urlRouterProvider','$locationProvider','USE
                 .state("root.prestamosConsulta", {
                     url:'prestamos/consulta',
                     templateUrl:'app/components/root/prestamos/consulta/consultaPrestamoView.html',
-                    controller: 'consultaCtrl'
+                    controller: 'consultaPrestamoCtrl'
                 })
 
+
+                //Alquileres *******************************************************
+
+                //Contrato
+                .state("root.alquileresContrato", {
+                    url:'alquileres/contrato',
+                    templateUrl:'app/components/root/alquileres/contrato/contratoView.html',
+                    controller: 'contratoCtrl'
+
+                })
+                //Consulta Alquiler
+                .state("root.alquileresConsulta", {
+                    url:'alquileres/consulta',
+                    templateUrl:'app/components/root/alquileres/consulta/consultaAlquileresView.html',
+                    controller: 'consultaAlquilerCtrl'
+                })
 
 
 

@@ -6,6 +6,9 @@ var univerApp = angular.module('univerApp', [
     'univerApp.root.tareas',
     'univerApp.root.prestamos.desglose',
     'univerApp.root.prestamos.consulta',
+
+    'univerApp.root.alquileres.contrato',
+    'univerApp.root.alquileres.consulta',
     'angularModalService',
     'ui.router'
 ])
