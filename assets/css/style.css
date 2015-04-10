@@ -300,6 +300,7 @@ h3{
 }
 
 
+
 .ui.modal > .right.floated.header{
     padding-bottom: 0px;
 }
@@ -365,10 +366,13 @@ h3{
 
 /*Lista Modals***/
 .ui.segment.listaModal{
+    position: static;
     overflow-y:auto;
     max-height: 214px;
     min-height: 214px;
-    width: 100%
+    width: 100%;
+
+
 }
 
 

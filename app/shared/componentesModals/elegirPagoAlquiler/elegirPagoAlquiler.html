@@ -1,0 +1,27 @@
+<div class="ui divided grid">
+    <div class="four wide column">
+        <div class="ui form ">
+            <div class="field">
+                <label>Tipo de Pago</label>
+                <div class="grouped fields">
+                    <div class="field">
+                        <div class="ui radio checkbox morosidad" ng-click="CambioTipoPago(1)">
+                            <input type="radio" name="CB_TipoPagoMorosidad" checked="" >
+                            <label>Pago Mensualidad</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="CambioTipoPago(2)">
+                            <input type="radio" name="CB_TipoPagoMorosidad">
+                            <label>Pago Depósito</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="twelve wide column" >
+        <pago.mensualidad ng-if="tipoPago == 1"></pago.mensualidad>
+        <pago.deposito ng-if="tipoPago == 2"></pago.deposito>
+    </div>
+</div>
