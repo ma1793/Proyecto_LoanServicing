@@ -1,0 +1,58 @@
+<div class="ui sidebar accordion inverted labeled icon menu vertical ">
+    <a class="item titulo">
+        <div class="ui icon">
+            <svg-image  src="assets/img/Prestamos_icon.svg" class="main_Icon"></svg-image>
+        </div>
+        <b >PRÉSTAMOS</b>
+    </a>
+    <div class="item">
+        <i class="file text icon"></i>
+        <a class="title">
+            <i class="dropdown icon"></i>
+            Desglose de Gastos
+        </a>
+        <div class="content">
+            <div class="menu">
+                <a class="item " ng-click = "">Ver Desglose</a>
+                <a class="item " ng-click = "">Crear Desglose</a>
+                <a class="item " ng-click = "AbrirModalEliminarDesglose()" ng-if="currentUser.userRole == userRoles.admin">Eliminar Desglose</a>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <i class="folder open icon"></i>
+        <a class="title">
+            <i class="dropdown icon"></i>
+            Carátula Préstamo
+        </a>
+        <div class="content">
+            <div class="menu">
+                <a class="item" ng-click = "">Ver Carátula</a>
+                <a class="item" ng-click = "">Crear Carátula</a>
+                <a class="item" ng-click = "" ng-if="currentUser.userRole == userRoles.admin">Eliminar Carátula</a>
+            </div>
+        </div>
+    </div>
+    <a class="item " ng-click = "">
+        <i class="check square icon"></i> Requisitos Préstamo
+    </a>
+
+    <div class="item" ng-if="currentUser.userRole == userRoles.admin">
+        <i class="payment open icon"></i>
+        <a class="title">
+            <i class="dropdown icon"></i>
+            Pagos Préstamo
+        </a>
+        <div class="content">
+            <div class="menu">
+                <a class="item" ng-click = "AbrirModalPagosRegulares()" >Pago Regular</a>
+                <a class="item" ng-click = "AbrirModalPagosAntiguos()" >Pago Antiguo</a>
+            </div>
+        </div>
+    </div>
+
+    <a class="item" ng-click="">
+        <i class="search  icon"></i> Consulta Préstamo
+    </a>
+</div>
+

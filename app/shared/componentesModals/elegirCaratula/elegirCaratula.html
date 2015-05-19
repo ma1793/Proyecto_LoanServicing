@@ -1,0 +1,23 @@
+<div class="ui basic small form segment componenteModalLarge" >
+    <h4 class="ui center aligned  header">
+        Lista Carátulas de Préstamo
+    </h4>
+    <div class="ui  segment listaModal">
+        <div class="ui  small selection divided  list" >
+            <div class="item" ng-repeat="caratula in caratulasDesglose | filter:searchCaratula |orderBy: '-plazo' "  ng-click="seleccionCaratula(caratula,$index)" ng-class="{active: $index === selectedCaratulaIndex}">
+
+                <div class="right floated date">Constitución: {{caratula.fechaConstitucion}}  Vencimiento:{{caratula.fechaVencimiento}}</div>
+                <img class="ui avatar image" src="assets/img/verif.png">
+                <div class="content">
+                    <a class="header">Nombre Contacto: {{caratula.contacto.persona.nombre}} {{caratula.contacto.primerApellido}} {{caratula.contacto.segundoApellido}}</a>
+                    <div class="description">Cédula Acreedor: {{caratula.acreedor.cedula}} </div>
+                    <b>Plazo: {{caratula.plazo}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui left icon input">
+        <input type="text" placeholder="Buscar Carátula" ng-model="searchCaratula.$">
+        <i class="book icon"></i>
+    </div>
+</div>

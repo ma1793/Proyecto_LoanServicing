@@ -29,7 +29,7 @@ univerApp.config(['$stateProvider','$urlRouterProvider','$locationProvider','USE
                     templateUrl: 'app/components/root/rootView.html',
                     controller: 'rootCtrl',
                     data: {
-                        authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor, USER_ROLES.guest]
+                        authorizedRoles: [USER_ROLES.admin, USER_ROLES.editorPrestamos, USER_ROLES.editorAlquileres]
                     }
                 })
                 .state("root.tareas", {
@@ -66,7 +66,7 @@ univerApp.config(['$stateProvider','$urlRouterProvider','$locationProvider','USE
                 //Consulta Alquiler
                 .state("root.alquileresConsulta", {
                     url:'alquileres/consulta',
-                    templateUrl:'app/components/root/alquileres/consulta/consultaAlquileresView.html',
+                    templateUrl:'app/components/root/alquileres/consulta/consultaAlquilerView.html',
                     controller: 'consultaAlquilerCtrl'
                 })
 

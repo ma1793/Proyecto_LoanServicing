@@ -1,0 +1,22 @@
+<div class="ui basic small form segment componenteModalLarge">
+    <h4 class="ui center aligned  header">
+        Lista Desgloses de Gastos
+    </h4>
+    <div class="ui segment listaModal" >
+        <div class="ui  small selection divided  list" >
+            <div class="item" ng-repeat="desglose in desglosesCliente | filter:searchDesglose |orderBy: '-saldo'"  ng-click="SeleccionDesglose(desglose,$index)" ng-class="{active: $index === selectedDesgloseIndex}">
+                <div class="right floated date">Fecha: {{desglose.fecha}}</div>
+                <img class="ui avatar image" src="assets/img/verif.png">
+                <div class="content">
+                    <a class="header">Monto: {{desglose.monto  | currency}}</a>
+                    <div class="description">Tasa Anual Interés: {{desglose.tasaAnual}}% </div>
+                    <b>Saldo: {{desglose.saldo  | currency }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui left icon input">
+        <input type="text" placeholder="Buscar Desglose" ng-model="searchDesglose.$">
+        <i class="book icon"></i>
+    </div>
+</div>

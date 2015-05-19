@@ -11,7 +11,7 @@
         <div class="ui page grid">
             <div class="column" id = "log_Container">
                 <div class="ui transition information visible">
-                    <div class="ui form segment"  id = "log_Segmento">
+                    <form class="ui form segment"  id = "idLogSegmento" name="formularioLogin">
                         <img class="profile-img" src="assets/img/avatar.png">
                         <div class="field">
                             <div class="ui icon input">
@@ -26,7 +26,16 @@
                             </div>
                         </div>
                         <div class=" ui fluid submit accion button" ng-click="submit()" >Login</div>
+
+
+
+                    </form>
+                    <div class="ui bottom attached error message" id="idLogMensaje" ng-show="logIncorrecto == 1">
+                        <i class="icon help"></i>
+                        Usuario o Contraseña Incorrecta
                     </div>
+
+
                 </div>
             </div>
         </div>

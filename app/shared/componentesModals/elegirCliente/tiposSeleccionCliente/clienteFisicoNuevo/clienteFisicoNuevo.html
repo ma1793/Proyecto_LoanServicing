@@ -1,0 +1,39 @@
+<form class="ui basic small form segment"  name="formularioCrearClienteFisico" novalidate>
+    <h4 class="ui center aligned  header">
+        Cliente Físico
+    </h4>
+    <div class="four fields">
+        <div class="field">
+            <input placeholder="Nombre" type="text" ng-model = "nombreClienteFisicoCrearDesglose" ng-change="ComprobarCumpleFormulario(formularioCrearClienteFisico.$valid)" required>
+        </div>
+        <div class="field">
+            <input placeholder="Primer Apellido" type="text" ng-model = "primerApellidoClienteFisicoCrearDesglose"  ng-change="ComprobarCumpleFormulario(formularioCrearClienteFisico.$valid)" required>
+        </div>
+        <div class="field">
+            <input placeholder="Segundo Apellido" type="text" ng-model = "segundoApellidoClienteFisicoCrearDesglose" ng-change="ComprobarCumpleFormulario(formularioCrearClienteFisico.$valid)" required>
+        </div>
+        <div class="field">
+            <input placeholder="Cédula" type="number" min="0" ng-model = "cedulaClienteFisicoCrearDesglose" ng-change="ComprobarCumpleFormulario(formularioCrearClienteFisico.$valid)" required>
+        </div>
+    </div>
+    <div class="ui fitted divider" style="margin-top: 7px;"></div>
+    <h4 class="ui center aligned  header"  >
+        Teléfonos
+    </h4>
+    <div class="two fields">
+        <div class="field">
+            <input placeholder="Tel. Casa" type="number" min="0"  ng-model = "telCasaClienteFisicoCrearDesglose">
+        </div>
+        <div class="field">
+            <input placeholder="Tel. Celular" type="number" min="0" ng-model = "telCelClienteFisicoCrearDesglose">
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <input placeholder="Tel. Oficina" type="number"min="0" ng-model = "telOficinaClienteFisicoCrearDesglose">
+        </div>
+        <div class="field">
+            <input placeholder="Tel. Fax" type="number" min="0" ng-model = "telFaxClienteFisicoCrearDesglose">
+        </div>
+    </div>
+</form>

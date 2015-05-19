@@ -1,0 +1,43 @@
+<div class="ui modal large">
+    <div class="ui left floated header">
+        <div class="content">
+            <i class="chevron left icon back" ng-class="{disabled: !hasPreviousStep()}" ng-click="decrementStep()"></i>
+            {{tituloModal}}
+        </div>
+    </div>
+    <div class="ui right floated header">
+        <div class="content" ng-show="getCurrentStepIndex() > 0">
+           {{nombreCompletoClienteSeleccionado}}
+         <!-- <div class="sub header" ng-show="getCurrentStateText() == '<elegir.desglose/>'"><h5>Saldo Desglose: {{"100000"| currency}}</h5></div>-->
+        </div>
+    </div>
+    <div class="ui contenedor large"></div>
+    <div class="content" id="ID_ModalComponent" style="min-height: 355px">
+    </div>
+    <div class="acciones">
+        <div class="ui grid">
+            <div class="fourteen wide column">
+                <div class="ui ordered small steps fluid">
+                    <div ng-repeat ="step in steps" class="{{step[2]}} step">
+                        <div class="content">
+                            <div class="title">{{step[0]}}</div>
+                            <div class="description">{{step[1]}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="two wide column" id="ID_Btn_actions" >
+                <div class="ui icon large button cancelar" ng-click="close()">
+                    <i class="remove icon"></i>
+                </div>
+                <div class="ui icon large button accion"   ng-if="hasNextStep()"  ng-click="incrementStep()" ng-class="{disabled: !cumplePasoModal}">
+                    <i class="chevron right  icon"></i>
+                </div>
+                <div class="ui icon large button accion"   ng-if="!hasNextStep()"  ng-click="finalizarModal()" ng-class="{disabled: !cumplePasoModal}" >
+                    <i class="checkmark   icon"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

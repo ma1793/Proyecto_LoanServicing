@@ -1,0 +1,39 @@
+<div class="ui basic tareas segment">
+    <div class="ui page grid" style="margin-bottom: auto">
+        <div class="column" >
+            <form class="ui form" name="formularioTareas" ng-submit="agregarNuevaTarea()">
+                <div class="ui left icon  fluid input"  >
+                    <input type="text" placeholder="Añadir un elemento en 'Bandeja de Entrada'... "  ng-model="nuevaTarea" >
+                    <i class="alarm icon"></i>
+                </div>
+                <div class="ui tall stacked  segment" ng-show="listaTareas.length > 0" style="padding-top: 2px; padding-bottom: 6px;">
+                    <div class="ui divided very relaxed animated inbox list active tab" data-tab="unread" id="idListaTareas">
+                        <a class="item" ng-animate="'animate'"  ng-repeat="tarea in listaTareas"  >
+                                <div class="left floated ui">
+                                    <div class="ui checkbox" ng-click="eliminarTarea($index)">
+                                        <input type="checkbox" id="unique-id">
+                                    </div>
+                                </div>
+                            <div class="right floated ui star rating"  ng-click="actualizarTarea($index)">
+                                    <i class="icon" ng-class="{active:tarea.estrella}"></i>
+                            </div>
+                            <div class="right floated date">{{tarea.fecha}}</div>
+
+                            <div class="description">{{tarea.texto}}</div>
+
+                        </a>
+                    </div>
+                </div>
+                <div class="ui icon buttons" style="float: right;" ng-show="listaTareas.length > 0">
+                    <div class="ui button" ng-class="{disabled:paginaActual == 0}" ng-click="paginaAnterior()">
+                        <i class="chevron left icon" ></i>
+                    </div>
+
+                    <div class="ui button"  ng-class="{disabled:paginaActual >= (cantidadPaginas - 1)}" ng-click="paginaSiguiente()">
+                        <i class="chevron right icon"></i>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

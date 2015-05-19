@@ -1,0 +1,49 @@
+<div class="ui divided grid">
+    <div class="four wide column" >
+        <div class="ui form ">
+            <div class="field">
+                <label>Tipo Cliente</label>
+                <div class="grouped fields">
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="CambioTipoCliente(1)">
+                            <input type="radio" name="CB_TipoClienteCrearDesglose" checked="" >
+                            <label>Físico</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="CambioTipoCliente(2)">
+                            <input type="radio" name="CB_TipoClienteCrearDesglose" >
+                            <label>Jurídico</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui fitted divider" ></div>
+            </div>
+            <div class="field">
+                <label>Opción de Cliente</label>
+                <div class="grouped fields">
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="CambioOpcionCliente(1)">
+                            <input type="radio" name="CB_OpcionClienteDesglose" checked="">
+                            <label>Nuevo Cliente</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="CambioOpcionCliente(2)">
+                            <input type="radio" name="CB_OpcionClienteDesglose">
+                            <label>Cliente Existente</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="twelve wide column" >
+        <cliente.fisico.nuevo ng-if="tipoCliente == 1  && opcionCliente == 1 "></cliente.fisico.nuevo>
+        <cliente.juridico.nuevo ng-if="tipoCliente == 2  && opcionCliente == 1 "></cliente.juridico.nuevo>
+
+        <cliente.fisico.existente ng-if="tipoCliente == 1  && opcionCliente == 2 "></cliente.fisico.existente>
+        <cliente.jurico.existente ng-if="tipoCliente == 2  && opcionCliente == 2"></cliente.jurico.existente>
+
+    </div>
+</div>

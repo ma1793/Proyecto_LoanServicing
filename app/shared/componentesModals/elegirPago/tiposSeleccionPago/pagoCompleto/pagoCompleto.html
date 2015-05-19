@@ -1,0 +1,72 @@
+<form class="ui basic small form segment" name="formularioPagoCompleto"  novalidate  >
+    <h3 class="ui center aligned  header" >
+        Pago Completo
+    </h3>
+    <div class="two fields">
+        <div class="field ">
+            <label>Fecha de Pago</label>
+            <div class="ui mini corner labeled left icon input">
+                <i class="calendar icon"></i>
+                <input type="date" ng-model="fechaPago"ng-change="ComprobarFechaPago(formularioPagoCompleto.$valid)" required>
+                <div class="ui corner label">
+                    <i class="red asterisk icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field ">
+            <dropdown.banco></dropdown.banco>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>Meses a Pagar</label>
+            <div class="ui selection dropdown" id="DD_ID_Meses_PagoCompleto">
+                <input type="hidden">
+                <div class="default text">Meses(#)</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="ui action small input" style="padding-right:  40px" >
+                        <input type="number" placeholder="Valor" min="1" ng-model = "V_NuevoMes">
+                        <div class="ui right labeled mini icon button accion" ng-click="F_AgregarNuevoMes()">
+                            <i class="add icon"></i>
+                            Agregar
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="item" data-value="{{DD_Mes.id}}"  ng-repeat="DD_Mes in DD_Meses | orderBy:'name':false " ng-click="select_Mes(DD_Mes,$index)" ng-class="{active: $index === selectedDDMes}">
+                        {{DD_Mes.name}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="field">
+            <label>Pago Mensual</label>
+            <div class="ui transparent small input" >
+                <input type="text" value="{{V_PagoMensual|currency}}" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="two fields">
+        <div class="field ">
+            <label>Faltante</label>
+            <div class="ui small transparent input">
+                <input type="text" value="{{V_Faltante | currency}}" readonly>
+            </div>
+
+        </div>
+        <div class="field">
+            <label>Sobrante</label>
+            <div class="ui small transparent input">
+                <input type="text" value="{{V_Sobrante | currency}}" readonly>
+            </div>
+        </div>
+    </div>
+    <div class="field error ">
+        <label style="display: block;text-align: center;">Monto del Pago:</label>
+        <div class = "ui input" >
+            <input type="text" readonly value="{{F_MontoPagoCompleto() | currency }}">
+        </div>
+    </div>
+</form>

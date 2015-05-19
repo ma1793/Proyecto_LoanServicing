@@ -1,0 +1,27 @@
+    <div class="ui divided grid">
+        <div class="four wide column" >
+            <div class="ui form ">
+                <div class="field">
+                    <label>Tipo Cliente</label>
+                    <div class="grouped fields">
+                        <div class="field">
+                            <div class="ui radio checkbox" ng-click="CambioTipoCliente(1)">
+                                <input type="radio" name="CB_TipoClienteCrearDesglose" checked="" >
+                                <label>Físico</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox" ng-click="CambioTipoCliente(2)">
+                                <input type="radio" name="CB_TipoClienteCrearDesglose" >
+                                <label>Jurídico</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="twelve wide column" >
+            <cliente.fisico.existente ng-if="tipoCliente == 1"></cliente.fisico.existente>
+            <cliente.jurico.existente ng-if="tipoCliente == 2"></cliente.jurico.existente>
+        </div>
+    </div>

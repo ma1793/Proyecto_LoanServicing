@@ -1,0 +1,20 @@
+<div class="ui basic small form segment" >
+    <h4 class="ui center aligned  header">
+        Clientes Físicos
+    </h4>
+    <div class="ui  segment listaModal"  >
+        <div class="ui  small selection divided  list" >
+            <div class="item" ng-repeat="clienteFisico in clientesFisicos | filter:searchClienteFisico | orderBy: 'personafisica.primerApellido' "  ng-click="SeleccionClienteFisico(clienteFisico,$index)" ng-class="{active: $index === selectedClienteFisicoIndex}">
+                <img class="ui avatar image" src="assets/img/avatar.png">
+                <div class="content">
+                    <a class="header">{{clienteFisico.nombre}} {{clienteFisico.personafisica.primerApellido}} {{clienteFisico.personafisica.segundoApellido}}</a>
+                    <div class="description">Cédula: {{clienteFisico.personafisica.cedula}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui left icon input">
+        <input type="text" placeholder="Buscar Cliente Físico" ng-model="searchClienteFisico.$">
+        <i class="users icon"></i>
+    </div>
+</div>

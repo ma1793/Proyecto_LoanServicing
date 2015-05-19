@@ -30,7 +30,7 @@
                                     <div class="field">
                                         <label>Inquilino</label>
                                         <div class = "ui small transparent input">
-                                            <input type="text"  value = "{{nombreCompletoCliente}}" readonly>
+                                            <input type="text"  value = "{{nombreCompletoClienteSeleccionado}}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                     <div class="field">
                                         <label>Mensualidad</label>
                                         <div class = "ui small left icon input">
-                                            <input type="text" ng-model="nombreNegocio" required>
+                                            <input type="number" ng-model="mensualidad" required>
                                             <i class="dollar icon"></i>
                                             <div class="ui mini corner label">
                                                 <i class="icon red asterisk"></i>
@@ -114,7 +114,7 @@
                                         <label>Depósito</label>
 
                                         <div class = "ui small left icon input">
-                                            <input type="number" ng-model="numeroLocal"  required>
+                                            <input type="number" ng-model="deposito"  required>
                                             <i class="dollar icon"></i>
                                             <div class="ui mini corner label">
                                                 <i class="icon red asterisk"></i>
@@ -123,8 +123,11 @@
                                     </div>
                                     <div class="field">
                                         <label>Aumento Anual</label>
-                                        <div class = "ui transparent small  input">
-                                            <input type="text"  ng-model="actividadDesarrollada" required>
+                                        <div class = "ui  small  input">
+                                            <input type="text"  ng-model="actividadDesarrollada"  required>
+                                            <div class="ui mini corner label">
+                                                <i class="icon red asterisk"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +153,7 @@
                                     <div class="field">
                                         <label>Ubicación</label>
                                         <div class = "ui small  input">
-                                            <input type="text" ng-model="nombreNegocio" required>
+                                            <input type="text" ng-model="ubicacion" required>
                                             <div class="ui mini corner label">
                                                 <i class="icon red asterisk"></i>
                                             </div>
@@ -160,6 +163,20 @@
 
                                     <div class="field">
                                         <label>Provincia</label>
+                                        <div class="ui selection dropdown">
+                                            <input type="hidden" >
+                                            <div class="default text">Nombre</div>
+                                            <i class="dropdown icon"></i>
+                                            <div class="menu">
+                                                <div class="item" >San José</div>
+                                                <div class="item" >Alajuela</div>
+                                                <div class="item" >Cartago</div>
+                                                <div class="item" >Heredia</div>
+                                                <div class="item" >Puntarenas</div>
+                                                <div class="item" >Guanacaste</div>
+                                                <div class="item" >Limón</div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -340,7 +357,7 @@
                                             </div>
                                         </div>
                                         <div class=" content">
-                                            <textarea  ng-model="V_ComentarioCaratula">
+                                            <textarea  ng-model="comentarioCaratula">
                                             </textarea>
                                         </div>
                                     </div>
@@ -354,7 +371,7 @@
 
                     </div>
                     <div class="actions BTN_Finalizar">
-                        <div class=" ui left attached accion button" ng-click ="F_CrearCaratulaFormularioCompleto()" >
+                        <div class=" ui left attached accion button" ng-click ="" >
                             GUARDAR
                         </div>
                     </div>

@@ -1,0 +1,33 @@
+<form class="ui basic small form segment" name="formularioCrearClienteJuridico" novalidate>
+    <h4 class="ui center aligned  header">
+        Cliente Jurídico
+    </h4>
+    <div class="two fields">
+        <div class="field">
+            <input placeholder="Nombre" type="text" ng-model = "nombreClienteJuridicoCrearDesglose" ng-change="ComprobarCumpleFormulario(formularioCrearClienteJuridico.$valid)" required>
+        </div>
+        <div class="field">
+            <input placeholder="Cédula Jurídica" type="number" min="0" ng-model = "cedulaClienteJuridicoCrearDesglose" ng-change="ComprobarCumpleFormulario(formularioCrearClienteJuridico.$valid)" required>
+        </div>
+    </div>
+    <div class="ui fitted divider" style="margin-top: 7px"></div>
+    <h4 class="ui center aligned  header"  >
+        Teléfonos
+    </h4>
+    <div class="two fields">
+        <div class="field">
+            <input placeholder="Tel. Casa" type="number" min="0"  ng-model = "telCasaClienteJuridicoCrearDesglose">
+        </div>
+        <div class="field">
+            <input placeholder="Tel. Celular" type="number" min="0" ng-model = "telCelClienteJuridicoCrearDesglose">
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <input placeholder="Tel. Oficina" type="number" min="0" ng-model = "telOficinaClienteJuridicoCrearDesglose">
+        </div>
+        <div class="field">
+            <input placeholder="Tel. Fax" type="number" min="0" ng-model = "telFaxClienteJuridicoCrearDesglose">
+        </div>
+    </div>
+</form>

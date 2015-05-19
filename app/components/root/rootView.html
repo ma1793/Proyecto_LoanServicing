@@ -1,0 +1,22 @@
+
+
+<!-- Only visible is "prestamos" in menu is selected -->
+<sidebar.prestamos ng-if="prestamosSelected"></sidebar.prestamos>
+
+<!-- Only visible is "alquileres" in menu is selected -->
+<sidebar.alquileres ng-if="alquileresSelected"></sidebar.alquileres>
+
+<menu></menu>
+
+<div class="pusher ">
+    <div class="wrapper" ui-view>
+
+    </div>
+</div>
+
+<div class="ui black big right attached fixed launch button" id="BTN_ID_MenuSidebar" onclick="sidebarOpen()" ng-if="prestamosSelected || alquileresSelected">
+    <i class="content icon"></i>
+    <span class="text">Menu</span>
+</div>
+
+

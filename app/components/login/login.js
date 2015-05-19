@@ -2,7 +2,7 @@
 
 angular.module('univerApp.login', ['ui.router'])
 
-    .controller('loginCtrl', ['$scope', '$state', 'Auth',function($scope, $state, Auth) {
+    .controller('loginCtrl', ['$scope','$rootScope', '$state', 'Auth',function($scope,$rootScope, $state, Auth) {
         $scope.credentials = {};
         $scope.loginForm = {};
 
@@ -16,10 +16,21 @@ angular.module('univerApp.login', ['ui.router'])
             Auth.login(credentials, function(user) {
                 //success function
                 $state.go('root.tareas');
+
             }, function(err) {
+                $rootScope.logIncorrecto = 1;
+                $scope.setErrorInputLogin();
                 console.log("error");
             });
         };
+
+
+        $scope.setErrorInputLogin = function(){
+            $scope.credentials.password = "";
+            $scope.formularioLogin.password.$setPristine();
+        };
+
+
 
 
     }]);

@@ -1,0 +1,88 @@
+<form class="ui basic small form segment" name="formularioPagoMorosidad" novalidate >
+    <div class="ui two column grid">
+        <div class="column">
+            <h3 class="ui center red aligned  header" style="margin-top: 5px">
+                Informacíon de Morosidad
+            </h3>
+            <div class="fields">
+                <div class="eleven wide field">
+                    <p><b>{{numeroCuotas}}</b> Cuotas en Moratoria:</p>
+                </div>
+                <div class="five wide field">
+                    <div class="ui transparent input">
+                        <input type="text" value="{{montoCuotas | currency}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eleven wide field">
+                    <p>Cantidad de días atraso:</p>
+                </div>
+                <div class="five wide field">
+                    <div class="ui transparent input">
+                        <input type="text" value="{{cantidadDiasAtraso}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eleven wide field">
+                    <p>Intereses:</p>
+                </div>
+                <div class="five wide field">
+                    <div class="ui transparent input">
+                        <input type="text" value="{{cobroInteres| currency}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eleven wide field">
+                    <p>Faltante antiguo:</p>
+                </div>
+                <div class="five wide field">
+                    <div class="ui transparent input">
+                        <input type="text" value="{{faltanteMorosidad | currency}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="fields">
+                <div class="eleven wide field">
+                    <p>Sobrante a favor:</p>
+                </div>
+                <div class="five wide field">
+                    <div class="ui transparent input">
+                        <input type="text" value="{{sobranteMorosidad | currency}}" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="ui divider"></div>
+            <div class="fields">
+                <div class="ten wide field">
+                    <p style="font-size: 18px; font-weight: bold">Saldo a Cancelar:</p>
+                </div>
+                <div class="six wide field">
+                    <div class="ui transparent  error input">
+                        <input style="font-size: 18px" type="text" value="{{saldoCancelar | currency}}" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+
+            <div class="field" style="padding-top: 10px">
+                    <label>Banco</label>
+                    <dropdown.banco></dropdown.banco>
+            </div>
+            <div class="field">
+                <label style="display: block;text-align: center;">Monto del Pago:</label>
+                <div class = "ui left icon input" >
+                    <input type="number" min="{{saldoCancelar}}" ng-model ="montoPagoMorosidad"  ng-change="ComprobarMontoPago(formularioPagoMorosidad.$valid)"  required>
+                    <i class="dollar icon"></i>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</form>

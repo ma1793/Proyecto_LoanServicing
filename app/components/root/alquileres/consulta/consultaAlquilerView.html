@@ -8,13 +8,13 @@
                         <i class="remove icon" style="padding-left: 7px"></i>
                     </div>
                     <h1 class="ui center aligned header Titulo">
-                        Consulta de Prestamo
+                        CONSULTA ALQUILER
                     </h1>
                     <div class="ui vertically grid"  >
                         <div class="row">
                             <div class="column">
                                 <div class="ui center aligned header " >
-                                    <h3 style="margin-top: -2px;margin-bottom: -2px"><p>{{clienteSeleccionado.nombre}}</p>{{}}</h3>
+                                    <h3 style="margin-top: -2px;margin-bottom: -2px"><p>{{nombreCompletoClienteSeleccionado}}</p>{{}}</h3>
                                 </div>
                             </div>
                         </div>
@@ -24,88 +24,24 @@
                                     <table  class="ui small compact table Informe" >
                                         <thead>
                                         <tr>
-                                            <th>Detalle</th>
-                                            <th>Banco</th>
                                             <th>Fecha de Pago</th>
+                                            <th>Banco</th>
+                                            <th>Mensualidad</th>
                                             <th>Monto</th>
-                                            <th>Faltante</th>
-                                            <th>Sobrante</th>
                                         </tr>
                                         </thead>
                                         <tbody >
-                                        <tr ng-repeat="informe in informeSeleccionado.pagosprestamos">
-                                            <td>{{informe.pago.detalle}}</td>
-                                            <td>{{informe.pago.banco}}</td>
-                                            <td>{{informe.pago.fechaPago}}</td>
-                                            <td>{{informe.pago.montoPago|currency}}</td>
-                                            <td>{{informe.pago.faltante|currency}}</td>
-                                            <td>{{informe.pago.sobrante|currency}}</td>
-                                        </tr>
-                                        </tbody>
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="column">
-                                <div class="ui segment scrollTabla ">
-                                    <table  class="ui small compact table Informe" >
-                                        <thead>
                                         <tr>
-                                            <th>Detalle</th>
-                                            <th>Banco</th>
-                                            <th>Fecha de Pago</th>
-                                            <th>Monto</th>
-                                            <th>Faltante</th>
-                                            <th>Sobrante</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody >
-                                        <tr ng-repeat="informe in informeSeleccionado.pagosprestamos">
-                                            <td>{{informe.pago.detalle}}</td>
-                                            <td>{{informe.pago.banco}}</td>
-                                            <td>{{informe.pago.fechaPago}}</td>
-                                            <td>{{informe.pago.montoPago|currency}}</td>
-                                            <td>{{informe.pago.faltante|currency}}</td>
-                                            <td>{{informe.pago.sobrante|currency}}</td>
+                                            <td>25/04/15 </td>
+                                            <td>BCR</td>
+                                            <td>Abril</td>
+                                            <td>$ 1.000,00</td>
                                         </tr>
                                         </tbody>
-
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="column">
-                                <div class="ui segment scrollTabla ">
-                                    <table  class="ui small compact table Informe" >
-                                        <thead>
-                                        <tr>
-                                            <th>Detalle</th>
-                                            <th>Banco</th>
-                                            <th>Fecha de Pago</th>
-                                            <th>Monto</th>
-                                            <th>Faltante</th>
-                                            <th>Sobrante</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody >
-                                        <tr ng-repeat="informe in informeSeleccionado.pagosprestamos">
-                                            <td>{{informe.pago.detalle}}</td>
-                                            <td>{{informe.pago.banco}}</td>
-                                            <td>{{informe.pago.fechaPago}}</td>
-                                            <td>{{informe.pago.montoPago|currency}}</td>
-                                            <td>{{informe.pago.faltante|currency}}</td>
-                                            <td>{{informe.pago.sobrante|currency}}</td>
-                                        </tr>
-                                        </tbody>
-
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
 
 
 
@@ -116,7 +52,7 @@
                                     <div class="ui fluid styled accordion tabla">
                                         <div class=" title">
                                             <div class="ui center aligned red header SubTitulo Acordeon" style="padding-left: 20px" >
-                                                Morosidadades
+                                                Depósitos
                                                 <i class="dropdown icon"></i>
                                             </div>
                                         </div>
@@ -125,28 +61,19 @@
                                                 <table class="ui small compact table Morosidad" >
                                                     <thead>
                                                     <tr>
-                                                        <th>Detalle</th>
-                                                        <th>Banco</th>
+
                                                         <th>Fecha de Cobro</th>
-                                                        <th>Dias de Atraso</th>
-                                                        <th>Intereses</th>
-                                                        <th>Monto en Mora</th>
-                                                        <th>Faltante</th>
-                                                        <th>Sobrante</th>
-                                                        <th>Pago Cliente</th>
+                                                        <th>Banco</th>
+                                                        <th>Depósito</th>
+                                                        <th>Monto</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody >
-                                                    <tr ng-repeat="informe in informeSeleccionado.interesesprestamos">
-                                                        <td>{{informe.interes.detalle}}</td>
-                                                        <td>{{informe.interes.banco}}</td>
-                                                        <td>{{informe.interes.fechaCobro}}</td>
-                                                        <td>{{informe.interes.cantidadDias}}</td>
-                                                        <td>{{informe.interes.interesMora|currency}}</td>
-                                                        <td>{{informe.interes.montoenmora|currency}}</td>
-                                                        <td>{{informe.interes.faltante|currency}}</td>
-                                                        <td>{{informe.interes.sobrante|currency}}</td>
-                                                        <td>{{informe.interes.pagoCliente|currency}}</td>
+                                                    <tr >
+                                                        <td> </td>
+                                                        <td> </td>
+                                                        <td> </td>
+                                                        <td> </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -162,31 +89,31 @@
                                 <table class="ui table">
                                     <thead>
                                     <tr>
-                                        <th>Faltante</th>
-                                        <th>Sobrante</th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th> </th>
+
                                         <th>Fecha Próximo Pago</th>
+                                        <th> </th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>{{informeSeleccionado.faltanteActual | currency}}</td>
-                                        <td>{{informeSeleccionado.sobranteActual | currency}}</td>
-                                        <td>{{informeSeleccionado.fechaProxPago}}</td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td>21/05/16</td>
+                                        <td> </td>
                                     </tr>
 
                                 </table>
                             </div>
                         </div>
-
-
-
-
-
                     </div>
-
-
-
-
                     <div class="actions BTN_Finalizar">
                         <div class=" ui icon button accion" ng-click ="" >
                             <i class="icon large white print"></i>

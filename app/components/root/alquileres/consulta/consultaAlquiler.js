@@ -6,6 +6,6 @@ angular.module('univerApp.root.alquileres.consulta', ['ui.router'])
 
         console.log("entro iniciar");
         uiInitAccordion();
-        console.log(JSON.stringify($rootScope.informeSeleccionado));
+       // console.log(JSON.stringify($rootScope.informeSeleccionado));
 
     }]);

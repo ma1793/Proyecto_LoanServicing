@@ -16,9 +16,9 @@ var univerApp = angular.module('univerApp', [
     /*Constants regarding user login defined here*/
     .constant('USER_ROLES', {
         all : '*',
-        admin : 'admin',
-        editor : 'editor',
-        guest : 'guest',
+        admin : 'Administrador',
+        editorPrestamos : 'EditorPrestamos',
+        editorAlquileres : 'EditorAlquileres',
         public:'public'
     }).constant('AUTH_EVENTS', {
         loginSuccess : 'auth-login-success',

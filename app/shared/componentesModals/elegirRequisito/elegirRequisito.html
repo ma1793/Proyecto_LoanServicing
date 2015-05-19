@@ -1,0 +1,104 @@
+<div class="content">
+    <div class="ui divided grid">
+        <div class="four wide column" >
+            <div class="ui form ">
+                <div class="field">
+                    <label>Tipo Operación</label>
+                    <div class="grouped fields">
+                        <div class="field">
+                            <div class="ui radio checkbox requisito" ng-click="F_CambioOperacionRequisitos(1)">
+                                <input type="radio" name="CB_OperacionRequisitos" checked="" >
+                                <label>Ver Requisitos</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox" ng-click="F_CambioOperacionRequisitos(2)">
+                                <input type="radio" name="CB_OperacionRequisitos" >
+                                <label>Agregar Requisitos</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="twelve wide column" >
+            <div class="ui basic small form segment"  id="P_ID_VerRequisitos" style="margin-top: 0px; margin-bottom: -1px; margin-left: 15px;">
+                <h4 class="ui center aligned  header">
+                    Cliente: {{VG_NombreCompletoClienteDesglose}}
+                </h4>
+                <div class="ui  segment" style="overflow-y:scroll;max-height: 229px; min-height: 229px "  >
+                    <div class="ui  small selection divided  list" >
+                        <div class="item" ng-repeat="requisito in VG_ListaRequisitosPrestamo | filter:searchRequisito"  ng-click="selectValueRequisito($index)" ng-dblclick="F_ElegirOperacionRequisitos(requisito)"  ng-class="{active: $index === selectedRequisitoIndex}">
+                            <div class="right floated ">
+                                <i class="circular remove icon" id={{"IC_Requisito_ID_"+$index}} ng-click="F_EliminarRequisitoVer(requisito,$index)" ng-mouseover="F_HoverEnterBotonEliminarRequisitoVer($index)" ng-mouseleave="F_HoverLeaveBotonEliminarRequisitoVer($index)"></i>
+                            </div>
+                            <img class="ui avatar image" src="icons/verif.png">
+                            <div class="content">
+                                <a class="header">{{requisito.requisito.descripcion}} </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui left icon input">
+                    <input type="text" placeholder="Buscar Requisito" ng-model="searchRequisito.$">
+                    <i class="book icon"></i>
+                </div>
+            </div>
+            <div class="ui basic small form segment"  id="P_ID_AgregarRequisitos" style="margin-top: 0px; margin-bottom: -1px; margin-left: 15px;">
+                <input id="INP_ID_SelectorArchivosRequisitos"  type="file" file-model="myFile">
+
+                <div class="ui grid">
+                    <div class="row" style="padding-bottom: 50px">
+                        <div class="fourteen wide column" >
+                            <form class="ui form">
+                                <div class="ui selection fluid dropdown {{V_CondicionDropdownRequisitoTipo}}" id ="DD_ID_Requisito" >
+                                    <input type="hidden" name="gender">
+                                    <div class="default text">Nombre Requisito</div>
+                                    <i class="dropdown icon"></i>
+                                    <div class="menu">
+                                        <div class="item" data-value="{{requisito.idRequisito}}"  ng-repeat="requisito in VG_ListaRequisitosTipoCliente | orderBy:'descripcion' " ng-click="select_Requisito(requisito,$index)" ng-class="{active: $index === selectedDDRequisito}">
+                                            <div class="ui {{requisito.estado}} empty circular label"></div>
+                                            {{requisito.descripcion}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="one wide column"  >
+                            <div class="ui basic icon teal button" style="margin-left: 20px;margin-top: -3px" ng-click="F_SeleccionarArchivo()">
+                                <i class="icon large attach"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="ui  segment" style="overflow-y:scroll;max-height: 229px; min-height: 229px;margin-right: 5px "  >
+                    <div class="ui  small selection divided list" >
+
+                        <div class="item" ng-repeat="requisito in VG_ListaRequisitosAgregados" >
+                            <div class="right floated ">
+                                <i class="circular remove icon" id={{"IC_ID_"+$index}} ng-click="FG_EliminarRequisitoAgregado($index)" ng-mouseover="F_HoverEnterBotonEliminar($index)" ng-mouseleave="F_HoverLeaveBotonEliminar($index)"></i>
+                            </div>
+                            <div class="right floated">
+                                <div class="ui tiny teal progress" id = {{"PR_ID_"+F_IndiceRequisitoUpload($index)}} style="min-width: 120px;margin:5px 20px 1px">
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <img class="ui avatar image" src="icons/verif.png">
+                            <div class="content">
+                                <a class="header" id = {{"H_ID_"+F_IndiceRequisitoUpload($index)}}>{{requisito.nombreRequisito}}</a>
+                                <div class="description">Nombre Archivo: {{requisito.nombreArchivo}}</div>
+                                <b>Tamaño: {{F_ObtenerPesoArchivo(requisito.peso)}}</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

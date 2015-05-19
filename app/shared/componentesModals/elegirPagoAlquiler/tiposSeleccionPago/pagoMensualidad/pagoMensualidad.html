@@ -1,0 +1,33 @@
+<form class="ui basic small form segment" name="formularioPagoMensualidad"  novalidate  >
+    <h3 class="ui center aligned  header" >
+        Pago Mensualidad
+    </h3>
+
+        <div class="field ">
+            <label>Fecha de Pago</label>
+            <div class="ui mini corner labeled left icon input">
+                <i class="calendar icon"></i>
+                <input type="date" ng-model="fechaPago"ng-change="ComprobarFechaPago(formularioPagoMensualidad.$valid)" required>
+                <div class="ui corner label">
+                    <i class="red asterisk icon"></i>
+                </div>
+            </div>
+        </div>
+    <div class="field ">
+        <label>Banco</label>
+        <dropdown.banco></dropdown.banco>
+    </div>
+
+
+    <div class="ui divider"></div>
+    <div class="fields" style="padding-top: 15px">
+        <div class="ten wide field">
+            <p style="font-size: 18px; font-weight: bold">Saldo a Cancelar:</p>
+        </div>
+        <div class="six wide field">
+            <div class="ui transparent  error input">
+                <input style="font-size: 18px" type="text" value="$ 12.500,00" readonly>
+            </div>
+        </div>
+    </div>
+</form>
