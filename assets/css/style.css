@@ -29,13 +29,19 @@ html,
 body {
     font-size: 15px;
     height: 100%;
+    
+       
+
 }
 body {
     font-family: 'Open Sans', sans-serif;
     text-rendering: optimizeLegibility;
-    min-width: 320px;
     margin: 0px;
     padding: 0px;
+    
+    min-width:1000px; /* suppose you want minimun width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+    width:1000px;
     zoom:90%;
 
 }
@@ -226,6 +232,8 @@ h3{
 
 .ui.inverted.menu{
     background: #1b1c1d;
+  
+
 }
 /***********Item*********/
 
@@ -369,7 +377,7 @@ h3{
 
 
 .ui.steps{
-    zoom:105%!important;
+    zoom:95%!important;
 }
 
 /*Lista Modals***/

@@ -35,7 +35,6 @@ univerApp.factory('pagosRest', ['$http', function($http){
             postPagoSobrante: function(callback,pPagoJSON){
                 var req = {
                     method: 'POST',
-                    //url:'misc/users.json',
                     url: rootURL + "/pagos/Sobrante",
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8'

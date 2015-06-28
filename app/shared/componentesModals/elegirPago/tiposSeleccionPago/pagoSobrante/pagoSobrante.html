@@ -7,7 +7,7 @@
             <label>Fecha de Pago</label>
             <div class="ui mini corner labeled left icon input">
                 <i class="calendar icon"></i>
-                <input type="date" ng-model ="fechaPago" ng-change="ComprobarFechaPago(formularioPagoSobrante.$valid)" required>
+                <input type="date" ng-model ="fechaPago" ng-change="comprobarInput(formularioPagoSobrante.$valid)" required>
                 <div class="ui corner label">
                     <i class="red asterisk icon"></i>
                 </div>
@@ -15,30 +15,14 @@
         </div>
         <div class="field">
             <label>Banco</label>
-            <div class="ui selection dropdown" id="DD_ID_Banco_PagoSobranteMorosidad">
-                <input type="hidden">
-                <div class="default text">Nombre del Banco</div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <div class="ui action small input" style="padding-right:  40px" >
-                        <input type="text" placeholder="Nombre" ng-model = "V_NuevoBanco">
-                        <div class="ui right labeled mini icon button accion" ng-click="F_AgregarNuevoBanco()">
-                            <i class="add icon"></i>
-                            Agregar
-                        </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="item" data-value="{{DD_Banco.id}}"  ng-repeat="DD_Banco in DD_Bancos | orderBy:'name':false " ng-click="select_Banco(DD_Banco,$index)" ng-class="{active: $index === selectedDDBanco}">
-                        {{DD_Banco.name}}
-                    </div>
-                </div>
-            </div>
+            <dropdown.banco></dropdown.banco>
+            
         </div>
     </div>
     <div class="field ">
         <label style="display: block;text-align: center;">Monto del Pago:</label>
         <div class = "ui left icon input" >
-            <input type="number" min="0" ng-model ="montoPago" ng-change="ComprobarMontoPago(formularioPagoSobrante.$valid)" required>
+            <input type="number" min="0.01" ng-model ="montoPagoSobrante" ng-change="comprobarInput(formularioPagoSobrante.$valid)" required>
             <i class="dollar icon"></i>
         </div>
     </div>

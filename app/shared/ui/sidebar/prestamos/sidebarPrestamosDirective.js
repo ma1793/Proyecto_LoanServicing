@@ -30,7 +30,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
                     inputs: {
-                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'], ['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'],['Pagos','Selección Tipo de Pago','disabled','<elegir.pago.morosidad/>']],
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'], ['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'],['Pagos','Selección Tipo de Pago','disabled','<elegir.pago.prestamo/>','<elegir.pago.morosidad/>']],
                         titulo: "Pagos Prestamo"
                     }
                 });
@@ -42,7 +42,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
                     inputs: {
-                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'], ['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'],['Pagos','Realizar Pago Antiguo','disabled','<elegir.pago.antiguo/>']],
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'], ['Fecha','Selección Fecha Pago','disabled','<elegir.fecha/>'],['Pagos','Realizar Pago Antiguo','disabled','<elegir.pago.morosidad/>']],
                         titulo: "Pagos Prestamo Antiguos"
                     }
                 });

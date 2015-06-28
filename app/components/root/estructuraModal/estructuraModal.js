@@ -4,24 +4,33 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
 
     //Se utiliza para verificar si cumple el paso actual seleccionado para asi verificar si puede pasar al siguiente
     $rootScope.cumplePasoModal = false;
+    
+    /*Pago Antiguo*/
+    $rootScope.pagoMorosidadActivado = false;
+    $rootScope.fechaPagoAntiguo=null;
+    
 
     $scope.steps =  steps;
     $scope.tituloModal = titulo;
-    console.log("titulo: " + titulo);
 
     $scope.setComponenteModal = function(pIndice){
-            //Verificar si se debe hacer un pago normal, o uno con morosidad
             var directive;
-           // if(pIndice == 3 ){
-             //   if($scope.caratulaSeleccionada.estadoMorosidad)
-               //     directive = $compile($scope.steps[pIndice][3])($scope);
-               // else
-                 //   directive = $compile($scope.steps[pIndice][4])($scope);
-            //}
-            //else
+            /*Init*/
+            if(pIndice==0){
+                $rootScope.pagoMorosidadActivado = false;
+            } 
+            //Verificar si se debe hacer un pago normal, o uno con morosidad
+            if($scope.tituloModal === "Pagos Prestamo" && pIndice === 3){
+               if($rootScope.caratulaSeleccionada.estadoMorosidad){
+                   $rootScope.pagoMorosidadActivado = true;
+                    directive = $compile($scope.steps[pIndice][4])($scope);
+                }
+               else
+                    directive = $compile($scope.steps[pIndice][3])($scope);
+            }
+            else
                 directive = $compile($scope.steps[pIndice][3])($scope);
             $('#ID_ModalComponent').empty();
-            $('#ID_ModalComponent').transition({animation : 'pulse', interval  : 1200});
             $('#ID_ModalComponent').append(directive);
             setTimeout(function(){ $scope.$apply();});
     };
@@ -30,8 +39,6 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
     setTimeout(function(){ $scope.setComponenteModal(0) },50);
 
     $scope.getCurrentStateText = function(){
-        console.log($scope.steps[$scope.getCurrentStepIndex()][3]);
-        console.log("fue una prueba");
         return $scope.steps[$scope.getCurrentStepIndex()][3];
     };
 
@@ -90,17 +97,27 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         var cerrarModal = false;
         switch($scope.steps[$scope.steps.length-1][3]){
             //Prestamos
-            case "<elegir.pago.morosidad/>":
-                $rootScope.FinalizarModalPrestamosPagoMorosidad();
-                $state.go('root.prestamosConsulta');
-                break;
             case "<elegir.desglose/>":
                 if( $scope.tituloModal == 'Elimar Deslose') {
                     $rootScope.EliminarDesglose();
-                    cerrarModal = true;
-                }
-
+                    cerrarModal = true;}
                 break;
+            case "<elegir.pago.prestamo/>":
+                if($rootScope.caratulaSeleccionada.estadoMorosidad){
+                    $rootScope.finalizarModalPrestamosPagoMorosidad();
+                    $state.go('root.prestamosConsulta');
+                }else{
+                    $rootScope.finalizarModalPrestamosPago();
+                    $state.go('root.prestamosConsulta');
+                }
+                break;
+            case "<elegir.pago.morosidad/>":
+                    console.log("entrooo");
+                    $rootScope.finalizarModalPrestamosPagoMorosidad();
+                    $state.go('root.prestamosConsulta');
+                    break;
+            
+           
 
 
             //Alquileres

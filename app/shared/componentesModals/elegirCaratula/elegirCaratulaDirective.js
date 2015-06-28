@@ -17,9 +17,7 @@ univerApp.directive("elegir.caratula", function() {
             /**/
 
             caratulasRest.getCaratulas(function(data){
-                console.log("entro caratula");
                 $scope.caratulasDesglose =  data;
-                console.log( $scope.caratulasDesglose);
             },$rootScope.desgloseSeleccionado.idDesgloceGasto);
 
             $scope.seleccionCaratula = function(pCaratula,pIndice){

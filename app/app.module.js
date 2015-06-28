@@ -10,7 +10,8 @@ var univerApp = angular.module('univerApp', [
     'univerApp.root.alquileres.contrato',
     'univerApp.root.alquileres.consulta',
     'angularModalService',
-    'ui.router'
+    'ui.router',
+    'ngLoadingSpinner'
 ])
 
     /*Constants regarding user login defined here*/

@@ -76,7 +76,7 @@
             <div class="field">
                 <label style="display: block;text-align: center;">Monto del Pago:</label>
                 <div class = "ui left icon input" >
-                    <input type="number" min="{{saldoCancelar}}" ng-model ="montoPagoMorosidad"  ng-change="ComprobarMontoPago(formularioPagoMorosidad.$valid)"  required>
+                    <input type="number" min="{{saldoCancelar.toFixed(2)}}" ng-model ="montoPagoMorosidad"  ng-change="comprobarMontoPago(formularioPagoMorosidad.$valid)"  required>
                     <i class="dollar icon"></i>
                 </div>
             </div>

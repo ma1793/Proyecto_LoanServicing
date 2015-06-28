@@ -18,10 +18,35 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="column">
+                                <div class="ui segment scrollTabla ">
+                                    <table  class="ui small compact table Informe" >
+                                        <thead>
+                                            <tr>
+                                                <th>Detalle</th>
+                                                <th>Banco</th>
+                                                <th>Fecha de Pago</th>
+                                                <th>Monto</th>
+                                                <th>Faltante</th>
+                                                <th>Sobrante</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr ng-repeat="informe in informeSeleccionado.pagosprestamos">
+                                                <td>{{informe.pago.detalle}}</td>
+                                                <td>{{informe.pago.banco}}</td>
+                                                <td>{{informe.pago.fechaPago}}</td>
+                                                <td>{{informe.pago.montoPago|currency}}</td>
+                                                <td>{{informe.pago.faltante|currency}}</td>
+                                                <td>{{informe.pago.sobrante|currency}}</td>
+                                            </tr>
+                                        </tbody>
 
-
-
-
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row" >
                             <div class="column">
 

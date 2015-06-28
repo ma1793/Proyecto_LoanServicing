@@ -1,0 +1,19 @@
+<div class="ui basic small form segment componenteModalLarge" name="formularioFecha" novalidate>
+    <h4 class="ui center aligned  header">
+        Selección Fecha
+    </h4>
+    <div class="ui segment listaModal" >
+        <div class="two fields">
+            <div class="field">
+                <label>Fecha de Pago Actual</label>
+                <input type="date" ng-model="fechaPago" ng-change="comprobarInput(formularioFecha.$valid)" required>
+            </div>
+            <div class="field">
+                 <label>Fecha Proximo Pago</label>
+                 <div class="ui transparent input">
+                     <input type="text" value="{{caratulaSeleccionada.fechaProxPago}}" readonly>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>

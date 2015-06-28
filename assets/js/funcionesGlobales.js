@@ -1,6 +1,6 @@
 // The root URL for the RESTful services
-//var rootURL = "http://190.171.60.53:8080/LoanServicing/webresources";
-var rootURL = "http://186.176.108.114:8080/LoanServicing/webresources";
+var rootURL = "http://190.171.60.53:8080/LoanServicing/webresources";
+//var rootURL = "http://186.176.108.114:8080/LoanServicing/webresources";
 //var rootURL = "http://localhost:8080/LoanServicing/webresources";
 var rootFileDirectory = "C:\\\\Users\\\\Oscar Montes\\\\Files\\\\";
 
@@ -60,6 +60,17 @@ function esperaTiempoFuncion(pFuncion,pTiempoMilisegundos){
 function currencyFormat(num) {
     return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }
+
+
+function isInJson(JSON,tagName){
+    var i = null;
+    for (i = 0; JSON.length > i; i += 1) {
+        if (JSON[i].name === tagName) {
+            return true;
+        }
+    }
+    return false;
+};
 
 function indice2dArreglo(pArreglo,pElemento){
     var fila = pArreglo.filter(function(value,index) {return value[0]==pElemento;});

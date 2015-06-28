@@ -8,10 +8,6 @@ angular.module('univerApp.root.tareas', ['ui.router'])
         uiInitInicio();
 
 
-      // console.log("roles adm");
-      //  console.log($rootScope.currentUser.userRole);
-      //  console.log($scope.userRoles.admin);
-
         $scope.paginaActual = 0;
         $scope.cantidadPaginas = 0;
         $scope.listaTareas = [];
@@ -30,7 +26,6 @@ angular.module('univerApp.root.tareas', ['ui.router'])
 
         tareasRest.getTareas(function(data){
             $scope.listaTareas  =  data;
-            console.log(JSON.stringify($scope.listaTareas));
             $scope.updateUiComponents();
         },$scope.currentUser.id,$scope.paginaActual);
 
@@ -46,7 +41,6 @@ angular.module('univerApp.root.tareas', ['ui.router'])
         };
 
         $scope.actualizarTarea= function(pIndice){
-            console.log("id wunder: " +  $scope.listaTareas[pIndice].idMessage);
             var nuevaTareaJSON = {"@type": "usuario", "idUser":$scope.currentUser.id, "wunders": [ {"idMessage":$scope.listaTareas[pIndice].idMessage,"texto":$scope.listaTareas[pIndice].texto,"fecha":$scope.listaTareas[pIndice].fecha,"estado":false,"estrella":!$scope.listaTareas[pIndice].estrella} ]};
             tareasRest.postActualizarTarea(function(data){$scope.listaTareas  =  data;console.log(JSON.stringify($scope.listaTareas));$scope.updateUiComponents();},nuevaTareaJSON);
             tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);

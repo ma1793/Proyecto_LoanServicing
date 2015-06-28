@@ -3,6 +3,7 @@
         Clientes Jurídicos
     </h4>
     <div class="ui  segment listaModal"   >
+        <span us-spinner="{radius:30, width:8, length: 16}"></span>
 
         <div class="ui selection list">
             <div class="item" ng-repeat="clienteJuridico in clientesJuridicos  | filter:searchClienteJuridico | orderBy: 'nombre'" ng-click="SeleccionClienteJuridico(clienteJuridico,$index)" ng-class="{active: $index === selectedClienteJuridicoIndex}">

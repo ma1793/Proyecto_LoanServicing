@@ -9,7 +9,7 @@ univerApp.directive("elegir.cliente", function() {
 
 
             $scope.tipoCliente = 1;
-            $scope.CambioTipoCliente = function(pTipoCliente) {
+            $scope.cambioTipoCliente = function(pTipoCliente) {
                 $scope.tipoCliente = pTipoCliente;
                 esperaTiempoFuncion(uiInitCheckbox,50);
             };

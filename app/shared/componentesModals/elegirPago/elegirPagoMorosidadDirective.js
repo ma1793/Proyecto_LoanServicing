@@ -8,17 +8,17 @@ univerApp.directive("elegir.pago.morosidad", function() {
             uiInitCheckbox();
             $scope.tipoPago = 1;
 
-            $scope.CambioTipoPago = function(pTipoPago) {
+            $scope.cambioTipoPago = function(pTipoPago) {
                 $scope.tipoPago = pTipoPago;
                 esperaTiempoFuncion(uiInitCheckbox,50);
             };
 
-            $rootScope.FinalizarModalPrestamosPagoMorosidad = function(){
+            $rootScope.finalizarModalPrestamosPagoMorosidad = function(){
                     if ($scope.tipoPago == 1) {
-                        $rootScope.ConstruirPagoMorosidadJSON();
+                        $rootScope.construirPagoMorosidadJSON();
                     }
                     else {
-                        $rootScope.ContruirPagoSobranteJSON();
+                        $rootScope.construirPagoSobranteJSON();
                     }
             };
 

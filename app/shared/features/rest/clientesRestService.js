@@ -18,7 +18,7 @@ univerApp.factory('clientesRest', ['$http', function($http){
             getClientesJuridicos: function(callback){
                 var req = {
                     method: 'GET',
-                    url: rootURL + "/cliente/getClientesFisicos",
+                    url: rootURL + "/cliente/getClientesJuridicos",
                     headers: {
                         'Content-Type': 'json'
                     }}

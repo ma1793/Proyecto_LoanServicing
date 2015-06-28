@@ -13,44 +13,51 @@ univerApp.directive("pago.morosidad", function() {
 
 
             // Verificacion Formulario
-            $scope.ComprobarDropDowns = function(){
-                if($rootScope.bancoSeleccionado != null){
+            $scope.comprobarDropDowns = function(){
+                if($rootScope.bancoSeleccionado != null ){
                     $scope.cumpleDropdowns = true;
                 }
-                $scope.ComprobarCumpleFormulario();
+                $scope.comprobarCumpleFormulario();
             };
 
-            $scope.ComprobarCumpleFormulario = function(){
+            $scope.comprobarCumpleFormulario = function(){
                 $rootScope.cumplePasoModal = $scope.cumpleInputs && $scope.cumpleDropdowns;
             };
 
-            $scope.ComprobarMontoPago = function(pEstadoFormulario){
+            $scope.comprobarMontoPago = function(pEstadoFormulario){
                 $scope.cumpleInputs = pEstadoFormulario;
-                $scope.ComprobarCumpleFormulario();
+                $scope.comprobarCumpleFormulario();
             };
 
             //Funciones Pago Morosidad
-            $scope.InitPagosMorosidad=function(){
+            $scope.initPagosMorosidad=function(){
                 $scope.montoPagoMorosidad = 0;
-
-                $scope.fechaActual =getFechaActual();
+                
+                if($rootScope.pagoMorosidadActivado){
+                    $scope.fechaActual =getFechaActual();
+                    $scope.fechaActual = $scope.fechaActual +"T00:00:00";
+                }
+                else{
+                    $scope.fechaActual = $rootScope.fechaPagoAntiguo;
+                }
+               
                 $scope.cantidadDiasAtraso= parseInt($scope.fechaActual.substring(8,10));;
-                $scope.numeroCuotas = $scope.NumeroCuotas($scope.fechaActual);
-                $scope.montoCuotas = $scope.MontoCuotas($scope.numeroCuotas);
-                $scope.cobroInteres=$scope.CobroInteres($scope.cantidadDiasAtraso);
+                $scope.numeroCuotas = $scope.numeroCuotas($scope.fechaActual);
+                $scope.montoCuotas = $scope.montoCuotas($scope.numeroCuotas);
+                $scope.cobroInteres=$scope.cobroInteres($scope.cantidadDiasAtraso);
                 $scope.faltanteMorosidad = $rootScope.caratulaSeleccionada.faltanteActual;
                 $scope.sobranteMorosidad = $rootScope.caratulaSeleccionada.sobranteActual;
-                $scope.saldoCancelar = $scope.SaldoCancelar($scope.montoCuotas, $scope.cobroInteres,$scope.faltanteMorosidad,$scope.sobranteMorosidad);
+                $scope.saldoCancelar = $scope.saldoCancelar($scope.montoCuotas, $scope.cobroInteres,$scope.faltanteMorosidad,$scope.sobranteMorosidad);
             };
 
 
-            $scope.NumeroCuotas = function(pFechaActual){
+            $scope.numeroCuotas = function(pFechaActual){
                 var mesFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(5,7);
                 return parseInt(pFechaActual.substring(5,7))-parseInt(mesFechaProxPago) + 1;
             };
 
 
-            $scope.MontoCuotas = function(pNumeroCuotas){
+            $scope.montoCuotas = function(pNumeroCuotas){
                 var montoCuotas = 0;
                 var pagoMensual=($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnual)/(100*12);
                 var pagoMensualMoratoria = ($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnualMoratoria)/(100*12);
@@ -62,24 +69,25 @@ univerApp.directive("pago.morosidad", function() {
                 return montoCuotas;
             };
 
-            $scope.CobroInteres = function(pDiasAtraso){
+            $scope.cobroInteres = function(pDiasAtraso){
                 var pagoMensual=($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnual)/(100*12);
                 var pagoMensualMoratoria = ($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnualMoratoria)/(100*12);
                 return ((pagoMensualMoratoria - pagoMensual)/30)*pDiasAtraso;
             };
 
 
-            $scope.SaldoCancelar = function(pMesAtraso,pInteres,pFaltante,pSobrante){
+            $scope.saldoCancelar = function(pMesAtraso,pInteres,pFaltante,pSobrante){
                 return (pMesAtraso+pInteres+pFaltante)-pSobrante;
             };
 
-            $rootScope.ConstruirPagoMorosidadJSON = function(){
+            $rootScope.construirPagoMorosidadJSON = function(){
+                
                 var pagoMorosidad  = {
                     "id": {
                         "idCaratulaPrestamo": $rootScope.caratulaSeleccionada.idCaratulaPrestamo
                     },
                     "interes": {
-                        "fechaCobro": $scope.fechaActual+"T00:00:00",
+                        "fechaCobro": $scope.fechaActual,
                         "interesMora": $scope.cobroInteres,
                         "montoenmora": $scope.montoCuotas,
                         "faltante": $scope.faltanteMorosidad,
@@ -87,21 +95,19 @@ univerApp.directive("pago.morosidad", function() {
                         "detalle": listaMeses[parseInt($scope.fechaActual.substring(5,7))-1],
                         "cantidadDias": $scope.cantidadDiasAtraso,
                         "pagoCliente": $scope.montoPagoMorosidad,
-                        "banco":$rootScope.bancoSeleccionado
+                        "banco":$rootScope.bancoSeleccionado.name
                     }
                 };
 
-                console.log(JSON.stringify(pagoMorosidad));
                  pagosRest.postPagoMorosidad(function(data) {
                      $rootScope.informeSeleccionado = data;
                  },pagoMorosidad);
 
-                console.log(JSON.stringify($rootScope.informeSeleccionado));
 
             };
 
             //init**
-            $scope.InitPagosMorosidad();
+            $scope.initPagosMorosidad();
 
 
 
