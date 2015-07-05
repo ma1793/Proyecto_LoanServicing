@@ -21,10 +21,12 @@ univerApp.controller('parentController', ['$scope','$rootScope', '$state','Auth'
 
         //Global Var ***
         $rootScope.nombreCompletoClienteSeleccionado = "";
+        $rootScope.tipoClienteSeleccionado = 1; //1 =  cliente fisico, 2 = cliente juridico
         $rootScope.clienteSeleccionado = [];
         $rootScope.desgloseSeleccionado = [];
         $rootScope.caratulaSeleccionada = [];
         $rootScope.informeSeleccionado = [];
+        
 
 
         $rootScope.logActivo = 0;    // cambia a 1 cuando la sesion esta iniciada
@@ -35,19 +37,8 @@ univerApp.controller('parentController', ['$scope','$rootScope', '$state','Auth'
 
         //Auth
         $scope.currentUser = null;
-
         $scope.userRoles = USER_ROLES;
         $scope.isAuthorized = Auth.isAuthorized;
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -59,5 +50,15 @@ univerApp.controller('parentController', ['$scope','$rootScope', '$state','Auth'
         //$rootScope.$on(AUTH_EVENTS.logoutSuccess, showLogin);
         $rootScope.$on(AUTH_EVENTS.notAuthorized, showNotAuthorized);
         $rootScope.$on(AUTH_EVENTS.loginSuccess, setCurrentUser);
+        
+        
+        
+        /*funciones globales*/
+        
+
+       
+
+        
+        
 
     } ]);

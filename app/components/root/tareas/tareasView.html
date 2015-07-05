@@ -7,7 +7,8 @@
                     <i class="alarm icon"></i>
                 </div>
                 <div class="ui tall stacked  segment" ng-show="listaTareas.length > 0" style="padding-top: 2px; padding-bottom: 6px;">
-
+                    <span us-spinner="{radius:5, width:2, length: 4}"></span>
+    
                     <div class="ui divided very relaxed animated inbox list active tab" data-tab="unread" id="idListaTareas">
                         <a class="item" ng-animate="'animate'"  ng-repeat="tarea in listaTareas"  >
                                 <div class="left floated ui">

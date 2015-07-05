@@ -1,7 +1,7 @@
 
 univerApp.factory('desglosesRest', ['$http', function($http){
         return{
-            GetDesgloses: function(callback,pIdCliente){
+            getDesgloses: function(callback,pIdCliente){
                 var req = {
                     method: 'GET',
                     url: rootURL + "/desgloce/getDesgloces/"+pIdCliente,
@@ -15,7 +15,7 @@ univerApp.factory('desglosesRest', ['$http', function($http){
                     });
             },
 
-            GetVerificarEliminarDesglose:function(callback,pIdDesglose){
+            getVerificarEliminarDesglose:function(callback,pIdDesglose){
                 var req = {
                     method: 'GET',
                     url: rootURL  + "/desgloce/verificarEliminar/"+pIdDesglose,
@@ -27,7 +27,7 @@ univerApp.factory('desglosesRest', ['$http', function($http){
                         callback(data);
                     });
             },
-            EliminarDesglose:function(callback,pIdDesglose){
+            eliminarDesglose:function(callback,pIdDesglose){
                 var req = {
                     method: 'DELETE',
                     url: rootURL  + "/desgloce/delete/"+pIdDesglose,

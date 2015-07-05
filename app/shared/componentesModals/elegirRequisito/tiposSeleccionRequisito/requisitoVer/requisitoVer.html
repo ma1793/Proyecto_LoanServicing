@@ -1,0 +1,22 @@
+<div class="ui basic small form segment"  >
+    <h4 class="ui center aligned  header">
+        Requisitos  del Préstamo
+    </h4>
+    <div class="ui  segment listaModal"  >
+        <div class="ui  small selection divided  list" >
+            <div class="item" ng-repeat="requisito in listaRequisitosPrestamo | orderBy:'requisito.descripcion' |filter:searchRequisito"  ng-click="selectValueRequisito($index)" ng-dblclick="elegirOperacionRequisitos(requisito)"  ng-class="{active: $index === selectedRequisitoIndex}">
+                <div class="right floated ">
+                    <i class="circular remove icon" id={{"ID_Requisito_"+$index}} ng-click="eliminarRequisitoVer(requisito, $index)" ng-mouseover="hoverEnterBotonEliminarRequisitoVer($index)" ng-mouseleave="hoverLeaveBotonEliminarRequisitoVer($index)"></i>
+                </div>
+                <img class="ui avatar image" src="assets/img/verif.png">
+                <div class="content">
+                    <a class="header">{{requisito.requisito.descripcion}} </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui left icon input">
+        <input type="text" placeholder="Buscar Requisito" ng-model="searchRequisito.$">
+        <i class="book icon"></i>
+    </div>
+</div>

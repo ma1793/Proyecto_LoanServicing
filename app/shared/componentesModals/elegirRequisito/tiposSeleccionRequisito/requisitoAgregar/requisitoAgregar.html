@@ -1,0 +1,53 @@
+<div class="ui basic small form segment" >
+    <input id="ID_SelectorArchivosRequisitos"  type="file" file-model="myFile">
+
+    <div class="ui grid">
+        <div class="row" style="padding-bottom: 50px">
+            <div class="fourteen wide column" >
+                <form class="ui form">
+                    <div class="ui selection fluid dropdown" id="ID_DropdownRequisitosTipoCliente">
+                        <input type="hidden" name="gender">
+                        <div class="default text">Nombre Requisito</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="{{requisito.idRequisito}}"  ng-repeat="requisito in listaRequisitosTipoCliente| orderBy:'descripcion' " ng-click="selectRequisito(requisito, $index)" ng-class="{active: $index === selectedDDRequisito}">
+                                <div class="ui {{requisito.estado}} empty circular label"></div>
+                                {{requisito.descripcion}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="one wide column"  >
+                <div class="ui basic icon teal button " style="margin-left: 20px;margin-top: -3px" ng-class="{'disabled': requisitoSeleccionadoAgregar == null}" ng-click="seleccionarArchivo()">
+                    <i class="icon large attach"></i>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="ui  segment listaModal">
+        <div class="ui  small selection divided list" >
+            <div class="item" ng-repeat="requisito in listaRequisitosAgregados" >
+                <div class="right floated ">
+                    <i class="circular remove icon" id={{"ID_IC"+$index}} ng-click="eliminarRequisitoAgregado($index)" ng-mouseover="hoverEnterBotonEliminar($index)" ng-mouseleave="hoverLeaveBotonEliminar($index)"></i>
+                </div>
+                <div class="right floated">
+                    <div class="ui tiny teal progress" id = {{"ID_PR"+indiceRequisitoUpload($index)}} style="min-width: 120px;margin:5px 20px 1px">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <img class="ui avatar image" src="assets/img/verif.png">
+                <div class="content">
+                    <a class="header" id = {{"ID_H"+indiceRequisitoUpload($index)}}>{{requisito.nombreRequisito}}</a>
+                    <div class="description">Nombre Archivo: {{requisito.nombreArchivo}}</div>
+                    <b>Tamaño: {{obtenerPesoArchivo(requisito.peso)}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

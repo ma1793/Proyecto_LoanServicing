@@ -75,6 +75,22 @@ function sidebarClose() {
 function modalOpen(){
     $('.ui.modal').modal({allowMultiple: true}).modal('setting', 'closable', false).modal('show');
 }
+function dialogHide(){
+    $('.ui.small.modal').modal('hide');
+}
+
 function modalHide(){
     $('.ui.modal').modal('hide');
 }
+
+
+// Scroll vertical tablas
+ function ajustarTablaScroll(pIdTabla) {
+            var $table = $(pIdTabla);
+            $table.floatThead({
+                useAbsolutePositioning: true,
+                scrollContainer: function($table) {
+                    return $table.closest('.ui.segment.scrollTabla');
+                }
+            });
+        }

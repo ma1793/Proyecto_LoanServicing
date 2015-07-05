@@ -3,36 +3,36 @@ univerApp.directive("elegir.desglose", function() {
         restrict: "E",
         replace: true,
         templateUrl: "app/shared/componentesModals/elegirDesglose/elegirDesglose.html",
-        controller: function ($scope,$rootScope,desglosesRest) {
-        //Init***
+        controller: function($scope, $rootScope, desglosesRest) {
+            //Init***
 
-        //Init Global Desglose Seleccionado
-            $rootScope.desgloseSeleccionado =[];
+            //Init Global Desglose Seleccionado
+            $rootScope.desgloseSeleccionado = [];
 
-        //Init condicion de paso en el modal
-        $rootScope.cumplePasoModal = false;
+            //Init condicion de paso en el modal
+            $rootScope.cumplePasoModal = false;
 
             $scope.desglosesCliente = [];
             $scope.selectedDesgloseIndex = -1;
 
-            desglosesRest.GetDesgloses(function(data){
-                $scope.desglosesCliente =  data;
-            },$rootScope.clienteSeleccionado.idPersona);
+            desglosesRest.getDesgloses(function(data) {
+                $scope.desglosesCliente = data;
+            }, $rootScope.clienteSeleccionado.idPersona);
 
-            $scope.SeleccionDesglose = function(pDesglose,pIndice){
+            $scope.seleccionDesglose = function(pDesglose, pIndice) {
                 $rootScope.desgloseSeleccionado = pDesglose;
                 $scope.selectedDesgloseIndex = pIndice;
-                $rootScope.cumplePasoModal =  true;
+                $rootScope.cumplePasoModal = true;
             };
 
 
-            $rootScope.EliminarDesglose =function(){
-                desglosesRest.GetVerificarEliminarDesglose(function(data){
-                    if(data){
-                        desglosesRest.EliminarDesglose(function(data){
-                           console.log(data);
+            $rootScope.eliminarDesglose = function() {
+                desglosesRest.getVerificarEliminarDesglose(function(data) {
+                    if (data) {
+                        desglosesRest.eliminarDesglose(function(data) {
+                            console.log(data);
                             alert("lo logro");
-                        },$rootScope.desgloseSeleccionado.idDesgloceGasto);
+                        }, $rootScope.desgloseSeleccionado.idDesgloceGasto);
                     }
                     else
                         alert("no se puede eliminar");

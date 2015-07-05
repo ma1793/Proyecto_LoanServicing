@@ -30,12 +30,19 @@
                 <div class="ui icon large button cancelar" ng-click="close()">
                     <i class="remove icon"></i>
                 </div>
+                
                 <div class="ui icon large button accion"   ng-if="hasNextStep()"  ng-click="incrementStep()" ng-class="{disabled: !cumplePasoModal}">
                     <i class="chevron right  icon"></i>
                 </div>
-                <div class="ui icon large button accion"   ng-if="!hasNextStep()"  ng-click="finalizarModal()" ng-class="{disabled: !cumplePasoModal}" >
+                <div class="ui icon large button accion"   ng-if="!hasNextStep() && isPrintStep()"  ng-click="printStepModal()" ng-class="{disabled: !cumplePasoModal}" >
+                    <i class=" print icon"></i>
+                </div>
+                <div class="ui icon large button accion"   ng-if="!hasNextStep() && !isPrintStep()"  ng-click="finalizarModal()" ng-class="{disabled: !cumplePasoModal}" >
                     <i class="checkmark   icon"></i>
                 </div>
+                
+                 
+                
 
             </div>
         </div>

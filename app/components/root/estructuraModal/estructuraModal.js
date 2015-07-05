@@ -1,6 +1,6 @@
 
 
-univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$compile,steps,titulo,$state) {
+univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$compile,steps,titulo,$state,ModalService) {
 
     //Se utiliza para verificar si cumple el paso actual seleccionado para asi verificar si puede pasar al siguiente
     $rootScope.cumplePasoModal = false;
@@ -44,7 +44,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
 
     $scope.getCurrentStepIndex = function(){
         // Get the index of the current step given selection
-        var fila = indice2dArreglo($scope.steps,$scope.selection)
+        var fila = indice2dArreglo($scope.steps,$scope.selection);
         return $scope.steps.indexOf(fila[0]);
     };
 
@@ -91,7 +91,25 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
             $scope.setComponenteModal(previousStep);
         }
     };
+    
+    $scope.isPrintStep = function(){
+        var isPrint =false;
+        switch($scope.steps[$scope.steps.length-1][3]){
+            case "<elegir.requisitos/>":
+                isPrint = true;
+        }
+        return isPrint;
+    };
 
+    $scope.printStepModal = function(){
+        switch($scope.steps[$scope.steps.length-1][3]){
+            case "<elegir.requisitos/>":
+                $rootScope.imprimirRequisitos(); 
+                break;
+                
+            
+        }
+    };
 
     $scope.finalizarModal = function(){
         var cerrarModal = false;
@@ -112,17 +130,22 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                 }
                 break;
             case "<elegir.pago.morosidad/>":
-                    console.log("entrooo");
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
                     $state.go('root.prestamosConsulta');
                     break;
+            case "<elegir.caratula/>":
+                if( $scope.tituloModal == 'Consulta Préstamos') {
+                   $state.go('root.prestamosConsulta');
+                }
+                break;
+                 
             
            
 
 
             //Alquileres
             case "<elegir.crear.cliente/>":
-                $rootScope.FinalizarModalAlquileresCrearContrato();
+                $rootScope.finalizarModalAlquileresCrearContrato();
                 $state.go('root.alquileresContrato');
                 break;
             case "<elegir.contrato/>":
@@ -139,6 +162,8 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         if(!cerrarModal)
             $scope.completoModal();
     };
+    
+    
 
 
 
@@ -156,7 +181,19 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         modalHide();
         close();
     };
-
+    
+    
+    //Dialog
+    $rootScope.abrirDialog = function(pTitulo, pMensaje) {
+        ModalService.showModal({
+            templateUrl: "app/components/root/estructuraModal/dialogModal/dialogModalView.html",
+            controller: "dialogModalCtrl",
+            inputs: {
+                titulo: pTitulo,
+                mensaje: pMensaje            }
+        });
+        esperaTiempoFuncion(modalOpen, 300);
+    };
 
 });
 

@@ -9,16 +9,17 @@ univerApp.directive("elegir.crear.cliente", function() {
 
             $scope.tipoCliente = 1;
             $scope.opcionCliente = 1;
-            $scope.CambioTipoCliente = function(pTipoCliente) {
+            $scope.cambioTipoCliente = function(pTipoCliente) {
+                $rootScope.tipoClienteSeleccionado = pTipoCliente;
                 $scope.tipoCliente = pTipoCliente;
                 esperaTiempoFuncion(uiInitCheckbox,50);
             };
-            $scope.CambioOpcionCliente = function(pOpcionCliente) {
+            $scope.cambioOpcionCliente = function(pOpcionCliente) {
                 $scope.opcionCliente = pOpcionCliente;
                 esperaTiempoFuncion(uiInitCheckbox,50);
             };
 
-            $rootScope.FinalizarModalAlquileresCrearContrato = function(){
+            $rootScope.finalizarModalAlquileresCrearContrato = function(){
                 if ($scope.tipoCliente == 1) {
                     if($scope.opcionCliente == 1){
                         $rootScope.ContruirClienteFisicoJSON();

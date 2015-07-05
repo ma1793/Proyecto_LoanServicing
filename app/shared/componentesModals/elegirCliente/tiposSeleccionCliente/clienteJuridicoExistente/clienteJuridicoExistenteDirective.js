@@ -20,7 +20,7 @@ univerApp.directive("cliente.jurico.existente", function() {
                 $scope.clientesJuridicos =  data;
             });
 
-            $scope.SeleccionClienteJuridico = function(pCliente,pIndice){
+            $scope.seleccionClienteJuridico = function(pCliente,pIndice){
                 $rootScope.clienteSeleccionado = pCliente;
                 $scope.selectedClienteJuridicoIndex = pIndice;
                 $rootScope.nombreCompletoClienteSeleccionado = pCliente.nombre;

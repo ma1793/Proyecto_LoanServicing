@@ -397,7 +397,7 @@ h3{
 /*******************************
             Input File
 *******************************/
-#INP_ID_SelectorArchivosRequisitos {
+#ID_SelectorArchivosRequisitos {
     display: block;
     visibility: hidden;
     width: 0;
@@ -432,10 +432,7 @@ h3{
     overflow-y: auto;
     overflow-x: hidden;
 }
-.ui.segment.scrollTabla.accordeon {
-    padding-right: 15px;
 
-}
 
 
 

@@ -6,7 +6,7 @@
         <span us-spinner="{radius:30, width:8, length: 16}"></span>
 
         <div class="ui selection list">
-            <div class="item" ng-repeat="clienteJuridico in clientesJuridicos  | filter:searchClienteJuridico | orderBy: 'nombre'" ng-click="SeleccionClienteJuridico(clienteJuridico,$index)" ng-class="{active: $index === selectedClienteJuridicoIndex}">
+            <div class="item" ng-repeat="clienteJuridico in clientesJuridicos  | filter:searchClienteJuridico | orderBy: 'nombre'" ng-click="seleccionClienteJuridico(clienteJuridico,$index)" ng-class="{active: $index === selectedClienteJuridicoIndex}">
                 <img class="ui avatar image" src="assets/img/avatar.png">
                 <div class="content">
                     <a class="header">{{clienteJuridico.nombre}} </a>

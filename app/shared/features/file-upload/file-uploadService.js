@@ -1,22 +1,22 @@
 univerApp.service('fileUpload', function ($http,$rootScope) {
     function uploadProgress(evt,pIndice) {
-        var V_PorcentajeProgreso = 0;
+        var porcentajeProgreso = 0;
         if (evt.lengthComputable) {
-            V_PorcentajeProgreso = Math.round(evt.loaded * 100 / evt.total);
-            $rootScope.FG_ObtenerPorcentajeUpload(V_PorcentajeProgreso,pIndice);
+            porcentajeProgreso = Math.round(evt.loaded * 100 / evt.total);
+            $rootScope.obtenerPorcentajeUpload(porcentajeProgreso,pIndice);
         }
     }
 
     function uploadComplete(evt,pIndice){
-        $rootScope.FG_OcultarBarraProgreso(pIndice);
-        $rootScope.VG_ListaRequisitosPrestamo =JSON.parse(evt.target.responseText);
-        $rootScope.FG_OrdenarAlfabeticamenteRequisitos();
-        $rootScope.FG_AgregarIconoExisteRequisito();
+        $rootScope.ocultarBarraProgreso(pIndice);
+        $rootScope.listaRequisitosPrestamo =JSON.parse(evt.target.responseText);
+        $rootScope.ordenarAlfabeticamenteRequisitos();
+        $rootScope.agregarIconoExisteRequisito();
     }
 
     function uploadFailed(pIndice){
-        alert("El Requisito: \" "+$rootScope.VG_ListaRequisitosAgregados[pIndice].nombreRequisito+" \" no pudo ser subido por un error en la conexion");
-        $rootScope.FG_salirRequisitos();
+        alert("El Requisito: \" "+$rootScope.listaRequisitosAgregados[pIndice].nombreRequisito+" \" no pudo ser subido por un error en la conexion");
+        $rootScope.salirRequisitos();
 
     }
 
@@ -37,9 +37,9 @@ univerApp.service('fileUpload', function ($http,$rootScope) {
 
         xhr.open("POST", uploadUrl);
         xhr.send(fd);
-        $rootScope.VG_ListaXHRUpload.splice(0, 0,xhr);
+        $rootScope.listaXHRUpload.splice(0, 0,xhr);
 
-    }
+    };
 });
 
 

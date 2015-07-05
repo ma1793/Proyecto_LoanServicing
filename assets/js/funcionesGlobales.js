@@ -35,6 +35,8 @@ function getFechaActualFormatoVista(){
 
 
 
+
+
 function getHoraActual(){
     var today = new Date();
     var horas = today.getHours();
@@ -76,3 +78,14 @@ function indice2dArreglo(pArreglo,pElemento){
     var fila = pArreglo.filter(function(value,index) {return value[0]==pElemento;});
     return fila;
 };
+
+
+function openInNewTab(pUrl) {
+    var win = window.open(pUrl, '_blank');
+    win.focus();
+}
+
+
+
+
+

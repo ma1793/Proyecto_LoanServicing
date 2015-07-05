@@ -18,12 +18,11 @@ univerApp.directive("cliente.fisico.existente", function() {
 
 
             clientesRest.getClientesFisicos(function(data){
-                console.log("entro data");
-                console.log(data);
+         
                 $scope.clientesFisicos =  data;
             });
 
-            $scope.SeleccionClienteFisico = function(pCliente,pIndice){
+            $scope.seleccionClienteFisico = function(pCliente,pIndice){
                 $rootScope.clienteSeleccionado = pCliente;
                 $scope.selectedClienteFisicoIndex = pIndice;
                 $rootScope.nombreCompletoClienteSeleccionado = pCliente.nombre + " "+ pCliente.personafisica.primerApellido +" "+ pCliente.personafisica.segundoApellido;

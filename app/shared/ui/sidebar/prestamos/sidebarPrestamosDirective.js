@@ -9,7 +9,7 @@ univerApp.directive("sidebar.prestamos", function() {
 
 
             //Desgloses*/
-            $scope.AbrirModalEliminarDesglose = function () {
+            $scope.abrirModalEliminarDesglose = function () {
                 ModalService.showModal({
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
@@ -20,12 +20,27 @@ univerApp.directive("sidebar.prestamos", function() {
                 });
                 esperaTiempoFuncion(modalOpen,300);
             };
-
+            //Requisitos*/
+            $scope.abrirModalRequisitos = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'],['Requisitos','Selección Requisitos de Préstamos','disabled','<elegir.requisitos/>']],
+                        titulo: "Requisitos de Préstamos"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
+            
+           
+            
 
 
 
             //Pagos*/
-            $scope.AbrirModalPagosRegulares = function () {
+            $scope.abrirModalPagosRegulares = function () {
                 ModalService.showModal({
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
@@ -37,7 +52,7 @@ univerApp.directive("sidebar.prestamos", function() {
                 esperaTiempoFuncion(modalOpen,300);
             };
 
-            $scope.AbrirModalPagosAntiguos = function () {
+            $scope.abrirModalPagosAntiguos = function () {
                 ModalService.showModal({
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
@@ -48,6 +63,21 @@ univerApp.directive("sidebar.prestamos", function() {
                 });
                 esperaTiempoFuncion(modalOpen,300);
             };
+            /*Consulta Prestamo*/
+            $scope.abrirModalConsulta = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>']],
+                        titulo: "Consulta Préstamos"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
+            
+            
 
         },
         controllerAs: "sidebar"
