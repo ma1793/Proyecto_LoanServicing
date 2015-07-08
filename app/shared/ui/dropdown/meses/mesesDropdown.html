@@ -3,11 +3,10 @@
     <div class="default text">Número de Meses</div>
     <i class="dropdown icon"></i>
     <div class="menu">
-        <div class="ui action small input" style="padding-right:  40px">
+        <div class="ui action small input" >
             <input type="number" placeholder="Valor" min="1" ng-model = "nuevoMes">
-            <div class="ui right labeled small icon button accion" ng-click="agregarNuevoMes()">
+            <div class="ui mini icon button accion" ng-click="agregarNuevoMes()">
                 <i class="add icon"></i>
-                Agregar
             </div>
         </div>
         <div class="item" data-value="{{mes.id}}"  ng-repeat="mes in meses | orderBy:'name':false " ng-click="selectMes(mes,$index)" ng-class="{active: $index === selectedDDMes}">

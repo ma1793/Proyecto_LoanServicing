@@ -1,6 +1,6 @@
 
 
-univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$compile,steps,titulo,$state,ModalService) {
+univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$compile,steps,titulo,$state) {
 
     //Se utiliza para verificar si cumple el paso actual seleccionado para asi verificar si puede pasar al siguiente
     $rootScope.cumplePasoModal = false;
@@ -115,13 +115,38 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         var cerrarModal = false;
         switch($scope.steps[$scope.steps.length-1][3]){
             //Prestamos
+            case "<elegir.crear.cliente/>":
+                $rootScope.tipoOperacionTramite = 1;
+                $state.go('root.prestamosDesglose');
+                break;
             case "<elegir.desglose/>":
-                if( $scope.tituloModal == 'Elimar Deslose') {
-                    $rootScope.EliminarDesglose();
-                    cerrarModal = true;}
+                switch($scope.tituloModal){
+                    case 'Crear Carátula de Préstamo':
+                         $rootScope.tipoOperacionTramite = 1;
+                         $state.go('root.prestamosCaratula');
+                         break;
+                    case 'Ver/Actualizar Deslose de Préstamo':
+                         $rootScope.tipoOperacionTramite = 2;
+                         $state.go('root.prestamosDesglose');
+                         break;
+                    case 'Elimar Deslose de Préstamo':
+                        $rootScope.eliminarDesglose();
+                        break;
+                }
+                break;
+            case "<elegir.caratula/>":
+                switch($scope.tituloModal){
+                    case 'Ver/Actualizar Carátula de Préstamo':
+                         $rootScope.tipoOperacionTramite = 2;
+                         $state.go('root.prestamosCaratula');
+                         break;
+                    case 'Consulta Préstamos':
+                        $state.go('root.prestamosConsulta');
+                        break;
+                }  
                 break;
             case "<elegir.pago.prestamo/>":
-                if($rootScope.caratulaSeleccionada.estadoMorosidad){
+                if ($rootScope.caratulaSeleccionada.estadoMorosidad){
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
                     $state.go('root.prestamosConsulta');
                 }else{
@@ -133,11 +158,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
                     $state.go('root.prestamosConsulta');
                     break;
-            case "<elegir.caratula/>":
-                if( $scope.tituloModal == 'Consulta Préstamos') {
-                   $state.go('root.prestamosConsulta');
-                }
-                break;
+         
                  
             
            
@@ -182,18 +203,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         close();
     };
     
-    
-    //Dialog
-    $rootScope.abrirDialog = function(pTitulo, pMensaje) {
-        ModalService.showModal({
-            templateUrl: "app/components/root/estructuraModal/dialogModal/dialogModalView.html",
-            controller: "dialogModalCtrl",
-            inputs: {
-                titulo: pTitulo,
-                mensaje: pMensaje            }
-        });
-        esperaTiempoFuncion(modalOpen, 300);
-    };
+  
 
 });
 

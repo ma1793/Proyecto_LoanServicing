@@ -1,0 +1,38 @@
+<div class="ui basic small form segment"  >
+    <h4 class="ui center aligned  header">
+        Información Terreno
+    </h4>
+    <div class="three fields">
+        <div class="field">
+            <input placeholder="Número Plano" type="text" ng-model = "numeroPlanoGarantia">
+        </div>
+        <div class="field">
+            <input placeholder="Finca" type="text" ng-model = "fincaGarantia">
+        </div>
+        <div class="field">
+            <input placeholder="Medida" type="number" ng-model = "medidaGarantia">
+        </div>
+
+    </div>
+    <div class="ui fitted divider" style="margin-top: 7px;"></div>
+    <h4 class="ui center aligned  header"  >
+        Localización  Terreno
+    </h4>
+    <div class="three fields">
+        <div class="field">
+            <div class="ui selection dropdown">
+                <i class="dropdown icon"></i>
+                <div class="text">Provincia</div>
+                <div class="menu">
+                    <div class="item" ng-repeat="provincia in provincias" ng-click="seleccionProvincia(provincia)">{{provincia.name}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <input placeholder="Cantón" type="text" ng-model = "cantonGarantia">
+        </div>
+        <div class="field">
+            <input placeholder="Distrito" type="text" ng-model = "distritoGarantia">
+        </div>
+    </div>
+</div>

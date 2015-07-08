@@ -8,12 +8,14 @@
   <title>JCF Inversiones</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='assets/img/icon/cube_stack.ico' rel='icon' type='image/x-icon'/>
+  
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="assets/libs/semantic-ui/1.11.4/semantic.css">
+  <link rel="stylesheet" href="assets/libs/semantic-ui/2.0.2/semantic.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script src="assets/libs/angularjs/1.3.13/angular.js"></script>
+  <script src="assets/libs/angularjs/1.4.2/angular.js"></script>
   <script src="assets/libs/angular-ui/angular-ui-router.js"></script>
 
   <script src="app/app.module.js"></script>
@@ -38,16 +40,33 @@
 </body>
 
 <script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/libs/semantic-ui/1.11.4/semantic.js"></script>
+<script src="assets/libs/semantic-ui/2.0.2/semantic.js"></script>
 <script src="assets/libs/angular-modal-service/angular-modal-service.js"></script>
 
+<script type="text/javascript" src="assets/libs/angular-loading-spinner/spin.min.js"></script>
+<script type="text/javascript" src="assets/libs/angular-loading-spinner/angular-spinner.min.js"></script>
+<script type="text/javascript" src="assets/libs/angular-loading-spinner/angular-loading-spinner.js"></script>
+
+<script src="app/shared/features/rest/tareasRestService.js"></script>
+<script src="app/shared/features/rest/clientesRestService.js"></script>
+<script src="app/shared/features/rest/desglosesRestService.js"></script>
+<script src="app/shared/features/rest/caratulasRestService.js"></script>
+<script src="app/shared/features/rest/pagosRestService.js"></script>
+<script src="app/shared/features/rest/contratosRestService.js"></script>
+<script src="app/shared/features/rest/requisitosRestService.js"></script>
+
+<script src="assets/js/ui.js"></script>
+<script src="assets/js/funcionesGlobales.js"></script>
+<script src="assets/js/impresion.js"></script>
+
+
+<script src="app/components/root/estructuraModal/dialogModal/dialogModal.js"></script>
 <script src="app/components/root/estructuraModal/estructuraModal.js"></script>
 <script src="app/components/root/prestamos/desglose/desglose.js"></script>
 <script src="app/components/root/prestamos/caratula/caratula.js "></script>
 <script src="app/components/root/prestamos/consulta/consultaPrestamo.js"></script>
 
 
-<script src="app/components/root/estructuraModal/dialogModal/dialogModal.js"></script>
 
 
 <script src="app/components/root/alquileres/consulta/consultaAlquiler.js"></script>
@@ -75,7 +94,9 @@
 <script src="app/shared/componentesModals/elegirRequisito/elegirRequisitoDirective.js"></script>
 <script src="app/shared/componentesModals/elegirRequisito/tiposSeleccionRequisito/requisitoAgregar/requisitoAgregarDirective.js"></script>
 <script src="app/shared/componentesModals/elegirRequisito/tiposSeleccionRequisito/requisitoVer/requisitoVerDirective.js"></script>
-
+<script src="app/shared/componentesModals/elegirGarantia/elegirGarantiaDirective.js"></script>
+<script src="app/shared/componentesModals/elegirGarantia/tipoSeleccionGarantia/garantiaExistente/garantiaExistenteDirective.js"></script>
+<script src="app/shared/componentesModals/elegirGarantia/tipoSeleccionGarantia/garantiaNueva/garantiaNuevaDirective.js"></script>
 
 <script src="app/shared/componentesModals/elegirPagoAlquiler/elegirPagoAlquilerDirective.js"></script>
 <script src="app/shared/componentesModals/elegirPagoAlquiler/tiposSeleccionPago/pagoDeposito/pagoDepositoDirective.js"></script>
@@ -85,28 +106,27 @@
 
 <script src="app/shared/ui/dropdown/banco/bancoDropdownDirective.js"></script>
 <script src="app/shared/ui/dropdown/meses/mesesDropdownDirective.js"></script>
+<script src="app/shared/ui/dropdown/apertura/aperturaDropdownDirective.js"></script>
+<script src="app/shared/ui/dropdown/comision/comisionDropdownDirective.js"></script>
+<script src="app/shared/ui/dropdown/honorariosGastos/honorariosGastosDropdownDirective.js"></script>
+<script src="app/shared/ui/dropdown/moratoria/moratoriaDropdownDirective.js"></script>
+<script src="app/shared/ui/dropdown/plazos/plazosDropdownDirective.js"></script>
+<script src="app/shared/ui/dropdown/tasaAnual/tasaAnualDropdownDirective.js"></script>
+
+
+
+
+
+
 
 
 <script src="app/shared/features/file-upload/file-uploadDirective.js"></script>
 <script src="app/shared/features/file-upload/file-uploadService.js"></script>
 
-<script src="app/shared/features/rest/clientesRestService.js"></script>
-<script src="app/shared/features/rest/desglosesRestService.js"></script>
-<script src="app/shared/features/rest/caratulasRestService.js"></script>
-<script src="app/shared/features/rest/pagosRestService.js"></script>
-<script src="app/shared/features/rest/contratosRestService.js"></script>
-<script src="app/shared/features/rest/tareasRestService.js"></script>
-<script src="app/shared/features/rest/requisitosRestService.js"></script>
-
-<script type="text/javascript" src="assets/libs/angular-loading-spinner/spin.min.js"></script>
-<script type="text/javascript" src="assets/libs/angular-loading-spinner/angular-spinner.min.js"></script>
-<script type="text/javascript" src="assets/libs/angular-loading-spinner/angular-loading-spinner.js"></script>
 
 
 
-<script src="assets/js/ui.js"></script>
-<script src="assets/js/funcionesGlobales.js"></script>
-<script src="assets/js/impresion.js"></script>
+
 
 <script type="text/javascript" src="assets/libs/filesize/filesize.min.js"></script>
 

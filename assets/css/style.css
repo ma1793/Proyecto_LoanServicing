@@ -41,8 +41,8 @@ body {
     
     min-width:1000px; /* suppose you want minimun width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
-    width:1000px;
-    zoom:90%;
+  // width:1000px;
+ // zoom:90%;
 
 }
 .wrapper {
@@ -60,13 +60,7 @@ body {
     height:100%;
     overflow-y:auto;
     overflow-x: hidden;
-
-
-    zoom:110%!important;
 }
-
-
-
 
 
 .wrapper::-webkit-scrollbar-track
@@ -101,15 +95,13 @@ body {
     margin-right: 10px;
 }
 
-.container {
-    position: relative;
-    width: auto;
-    margin-left: 0em;
-    margin-right: 0em;
-    padding-left: 8%;
-    padding-right: 9%;
-}
+/*******************************
+            Segment
+*******************************/
 
+.ui.stacked.segment{
+     border: 0px solid rgba(0, 0, 0, 0.15) !important; 
+}
 
 /*******************************
             Login
@@ -179,6 +171,7 @@ body {
 
 /*Header de los formularios*/
 .ui.header.Titulo {
+    
     background-color:#437357;
     color: rgba(255,255,255,0.9);
     padding-top: 30px;
@@ -230,10 +223,14 @@ h3{
             Menu y Sidebar
 *******************************/
 
+
 .ui.inverted.menu{
     background: #1b1c1d;
-  
 
+}
+.ui.inverted.menu.fixed{
+    padding-left: 8%;
+    padding-right: 8%;
 }
 /***********Item*********/
 
@@ -354,14 +351,12 @@ h3{
 
 /******* actions buttton *******/
 .ui.modal .acciones {
-    padding: 1rem 2rem;
+    padding: 1.5rem 1.5rem;
     text-align: right;
     border-top:1px solid rgba(255, 255, 255, 0.8);
     background:  linear-gradient(transparent,rgba(27,28,29,0.45))
 }
-.ui.modal .acciones > .button {
-    margin-left: 0.75em;
-}
+
 /*********** Form *************/
 .ui.modal .small.form.segment{
     margin-top: -40px;

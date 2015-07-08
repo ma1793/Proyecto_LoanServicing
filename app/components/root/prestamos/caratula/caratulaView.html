@@ -22,7 +22,7 @@
                                 <div class="two fields">
                                     <div class="field">
                                         <label>Acreedor</label>
-                                        <div class="ui selection dropdown" id ="DD_ID_Acreedor">
+                                        <div class="ui selection dropdown" id ="ID_DropdownAcreedor">
                                             <input type="hidden" >
                                             <div class="default text">Cédula</div>
                                             <i class="dropdown icon"></i>
@@ -100,23 +100,7 @@
 
                                     <div class="field">
                                         <label>Plazo (años)</label>
-                                        <div class="ui fluid selection dropdown" id ="DD_ID_Plazo" >
-                                            <input type="hidden" >
-                                            <div class="default text">Años(#)</div>
-                                            <i class="dropdown icon"></i>
-                                            <div class="menu">
-                                                <div class="ui action small fluid input" style="padding-right:  60px;margin-left: 5px;margin-right: -2px" >
-                                                    <input type="number" placeholder="Valor" min="0" max="100" ng-model = "nuevoPlazo">
-                                                    <div class="ui teal mini icon button " ng-click="agregarNuevoPlazo()">
-                                                        <i class="add icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="divider"></div>
-                                                <div class="item" data-value="{{DD_Plazo.id}}"  ng-repeat="DD_Plazo in DD_Plazos| orderBy:'name':false " ng-click="selectPlazo(DD_Plazo, $index)" ng-class="{active: $index === selectedDDPlazo}">
-                                                    {{DD_Plazo.name}}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <dropdown.plazos></dropdown.plazos>
                                     </div>
                                 </div>
                             </div>

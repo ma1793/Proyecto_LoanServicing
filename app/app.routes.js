@@ -46,6 +46,13 @@ univerApp.config(['$stateProvider','$urlRouterProvider','$locationProvider','USE
                     controller: 'desgloseCtrl'
 
                 })
+                //Caratula
+                .state("root.prestamosCaratula", {
+                    url:'prestamos/caratula',
+                    templateUrl:'app/components/root/prestamos/caratula/caratulaView.html',
+                    controller: 'caratulaCtrl'
+
+                })
                 //Consulta Prestamo
                 .state("root.prestamosConsulta", {
                     url:'prestamos/consulta',

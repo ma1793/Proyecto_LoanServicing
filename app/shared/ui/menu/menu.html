@@ -1,29 +1,23 @@
-<div class="ui inverted menu top fixed " style="margin-top:-16px ">
-    <div class="container" style="margin-bottom: 0px ">
-        <a class="item title" style="margin-top: 15px;padding: 24px; cursor: pointer"  ui-sref="root.tareas" >
-            <img src="assets/img/logo.svg">
+<div class="ui inverted  menu  fixed " style="margin-top:-16px;">
+
+    <a class="item title" style="padding-top: 17px;padding-bottom: 5px; cursor: pointer"  ui-sref="root.tareas" >
+        <svg-image  src="assets/img/logo.svg" </svg-image>
+    </a>
+    <div class="ui  inverted labeled icon menu " > 
+        <a class="item" ng-class="{active: prestamosSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="Prestamos()">
+            <i class="payment  icon"></i>
+            PRÉSTAMOS
         </a>
-        <div class="ui inverted menu labeled icon" >
-            <a class="item" ng-class="{active: prestamosSelected}" style="padding-top: 30px"  ng-click="Prestamos()">
-                <div class="ui icon" style="padding-bottom: 0px;margin-bottom: 0px !important; margin-top: -2px !important;">
-                    <svg-image  src="assets/img/Prestamos_icon.svg" class="menu_Icon Prestamos"></svg-image>
-                </div>
-                PRÉSTAMOS
-            </a>
-            <a class="item" ng-class="{active: alquileresSelected}" style="padding-top: 30px" ng-click="Alquileres()">
-                <div class="ui icon" style="padding-bottom: 0px;margin-bottom: 0px !important; margin-top: 0px !important;">
-                    <svg-image  src="assets/img/Alquileres_icon.svg" class="menu_Icon Alquileres"></svg-image>
-                </div>
-                ALQUILERES
-            </a>
-        </div>
-        <div class="right menu"  style="padding-top: 30px;margin-right: 5px" >
-            <div class="ui dropdown item" >
-                <i class="large user icon"></i>{{currentUser.username}}<i class="dropdown icon"></i>
-                <div class="ui menu">
-                    <a class="item" ng-click="LogOut()">Cerrar Sesión</a>
-                </div>
+        <a class="item" ng-class="{active: alquileresSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="Alquileres()">
+            <i class="huge home icon"></i>
+            ALQUILERES
+        </a>
+    </div>
+    <div class="right item"  style="padding-bottom: 5px;padding-top: 20px;padding-left: 0px" >
+        <div class="ui dropdown item" >
+            <i class="large user icon"></i>{{currentUser.username}}<i class="dropdown icon"></i>
+            <div class="ui menu">
+                <a class="item" ng-click="LogOut()">Cerrar Sesión</a>
             </div>
         </div>
     </div>
-</div>

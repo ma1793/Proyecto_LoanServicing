@@ -14,6 +14,8 @@ univerApp.directive("elegir.cliente", function() {
                 $scope.tipoCliente = pTipoCliente;
                 esperaTiempoFuncion(uiInitCheckbox,50);
             };
+            
+            
 
 
 

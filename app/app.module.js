@@ -5,6 +5,7 @@ var univerApp = angular.module('univerApp', [
     'univerApp.root',
     'univerApp.root.tareas',
     'univerApp.root.prestamos.desglose',
+    'univerApp.root.prestamos.caratula',
     'univerApp.root.prestamos.consulta',
 
     'univerApp.root.alquileres.contrato',

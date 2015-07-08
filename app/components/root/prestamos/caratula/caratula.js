@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('univerApp.root.caratula', ['ui.router'])
+angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
 
-        .controller('caratulaCtrl', ['$scope', '$rootScope', , function($scope, $rootScope) {
+        .controller('caratulaCtrl', ['$scope', '$rootScope','caratulasRest' , function($scope, $rootScope,caratulasRest) {
 
                 //UI Components ***
-                uiInitInicio();
-
+                uiInitAccordion();
 
 
                 var pagoMensual = 0;
@@ -20,45 +19,6 @@ angular.module('univerApp.root.caratula', ['ui.router'])
                     
                     $rootScope.listaGarantiasCliente = listaGarantiasClienteJSON;
                     modalAgregarGarantias();
-                };
-
-                //Dropdown Plazos *******************
-                var DD_PlazosJSON = [{
-                        id: 1,
-                        name: 1
-                    }, {
-                        id: 2,
-                        name: 2
-                    }, {
-                        id: 3,
-                        name: 3
-                    }];
-                $scope.DD_Plazos = DD_PlazosJSON;
-                $scope.selectedDDPlazo = -1;
-                $scope.select_Plazo = function(DD_Plazo, pIndice) {
-                    $scope.selectedItemPlazo = DD_Plazo.name;
-                    selectedDDPlazo = pIndice;
-                };
-                $scope.agregarNuevoPlazo = function() {
-                    if ($.isNumeric($scope.nuevoPlazo) && ($scope.nuevoPlazo >= 0 && $scope.nuevoPlazo < 100)) {
-                        contadorPlazos = contadorPlazos + 1;
-                        DD_PlazosJSON.push({
-                            id: contadorPlazos,
-                            name: $scope.nuevoPlazo
-                        });
-                        $scope.DD_Plazos = DD_PlazosJSON;
-                        $scope.selectedItemPlazo = $scope.nuevoPlazo;
-                        setTimeout(function() {
-                            $("#DD_ID_Plazo")
-                                    .data()
-                                    .moduleDropdown
-                                    .action
-                                    .activate(undefined, contadorPlazos.toString())
-                                    ;
-                        }, 100);
-                    }
-                    else {
-                    }
                 };
 
                
@@ -89,19 +49,10 @@ angular.module('univerApp.root.caratula', ['ui.router'])
 
                 $scope.verificarExisteAgregarValorDropdown = function(pFiltroDropDown, pTipoContadorDropDown, pIdDropdown, pValor) {
                     if ((pFiltroDropDown).length !== 0) {
-                        $scope.selectedItemPlazo = pValor;
+                        $rootScope.plazoSeleccionado  = pValor;
                         $rootScope.setActiveOpcionValorDropDown(pIdDropdown, pFiltroDropDown[0].id);
                     }
-                    else {
-                        contadorPlazos++;
-                        DD_PlazosJSON.push({
-                            id: contadorPlazos,
-                            name: pValor
-                        });
-                        $scope.DD_Plazos = DD_PlazosJSON;
-                        $scope.selectedItemPlazo = pValor;
-                        $rootScope.setActiveOpcionValorDropDown(pIdDropdown, contadorPlazos);
-                    }
+                   
                 };
 
                
@@ -155,12 +106,12 @@ angular.module('univerApp.root.caratula', ['ui.router'])
                             "fechaConstitucion": $scope.fechaConstitucion + "T00:00:00",
                             "fechaVencimiento": $scope.fechaVencimiento + "T00:00:00",
                             "fechaProxPago": $scope.agregarMesesFecha($scope.fechaConstitucion, $rootScope.desgloseSeleccionado.cantidadMeses) + "T00:00:00",
-                            "plazo": $scope.selectedItemPlazo,
+                            "plazo": $rootScope.plazoSeleccionado ,
                             "faltanteActual": $scope.faltanteActualCaratula,
                             "sobranteActual": $scope.V_SobranteActualCaratula,
                             "estadoMorosidad": $scope.estadoMorosidad,
                             "garantias": []
-                        }
+                        };
                         for (contador = 0; contador < $rootScope.listaGarantiasCaratula.length; contador++) {
                             if ($.isNumeric($rootScope.listaGarantiasCaratula[contador].idGarantia)) {
                                 caratulaJSON.garantias.push(
@@ -192,7 +143,7 @@ angular.module('univerApp.root.caratula', ['ui.router'])
                                         });
                             }
                         }
-                        if ($rootScope.VG_IdOperacionPrestamoSeleccion == 3) {
+                        if ($rootScope.tipoOperacionTramite == 2) {
                             caratulaJSON.NewFile = 'idCaratulaPrestamo';
                             caratulaJSON.idCaratulaPrestamo = $rootScope.caratulaSeleccionada.idCaratulaPrestamo;
                         }
@@ -224,9 +175,7 @@ angular.module('univerApp.root.caratula', ['ui.router'])
                     $scope.sobranteActualCaratula = $rootScope.caratulaSeleccionada.sobranteActual;
 
                     $scope.estadoMorosidad = $rootScope.caratulaSeleccionada.estadoMorosidad;
-                    var filtroPlazosDropDown = $rootScope.verificarExisteValorDropDown(DD_PlazosJSON, $rootScope.caratulaSeleccionada.plazo);
-                    $scope.verificarExisteAgregarValorDropdown(filtroPlazosDropDown, "contadorPlazos", "DD_ID_Plazo", $rootScope.caratulaSeleccionada.plazo);
-
+                   
 
                     $rootScope.setActiveOpcionValorDropDown("DD_ID_Acreedor", $rootScope.caratulaSeleccionada.acreedor.idAcreedor);
                     $scope.selectedItemAcreedor = $rootScope.caratulaSeleccionada.acreedor;
@@ -253,7 +202,7 @@ angular.module('univerApp.root.caratula', ['ui.router'])
                 };
 
                 $scope.construirPrimerPagoJSON = function() {
-                    var PrimerPagoJSON = {
+                    var primerPagoJSON = {
                         "id": {
                             "idCaratulaPrestamo": VG_IdCaratulaPOST
                         },
@@ -307,7 +256,7 @@ angular.module('univerApp.root.caratula', ['ui.router'])
                     $scope.selectedDDAcreedor = -1;
                     $scope.selectedDDPlazo = -1;
                     $scope.selectedItemAcreedor = null;
-                    $scope.selectedItemPlazo = null;
+                    $rootScope.plazoSeleccionado  = null;
 
                     $('.ui.accordion.Caratula.Comentario').accordion('close', 0);
                     $('.ui.accordion.Caratula.Garantias').accordion('open', 0);

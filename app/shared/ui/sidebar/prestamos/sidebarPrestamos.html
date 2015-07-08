@@ -1,10 +1,9 @@
-<div class="ui sidebar accordion inverted labeled icon menu vertical ">
-    <a class="item titulo">
-        <div class="ui icon">
-            <svg-image  src="assets/img/Prestamos_icon.svg" class="main_Icon"></svg-image>
-        </div>
-        <b >PRÉSTAMOS</b>
+<div class="ui sidebar compact accordion inverted labeled icon menu vertical ">
+    <a class="item titulo" style="margin-top: 10px">
+        <i class="huge payment  icon"></i>
+        <b>PRÉSTAMOS</b>
     </a>
+    <div class="ui divider" style="margin-top:  15px;margin-bottom: 10px"></div>
     <div class="item">
         <i class="file text icon"></i>
         <a class="title">
@@ -13,8 +12,8 @@
         </a>
         <div class="content">
             <div class="menu">
-                <a class="item " ng-click = "">Ver Desglose</a>
-                <a class="item " ng-click = "">Crear Desglose</a>
+                <a class="item " ng-click = "abrirModalCrearDesglose()">Crear Desglose</a>
+                <a class="item " ng-click = "abrirModalVerDesglose()">Ver Desglose</a>
                 <a class="item " ng-click = "abrirModalEliminarDesglose()" ng-if="currentUser.userRole == userRoles.admin">Eliminar Desglose</a>
             </div>
         </div>
@@ -27,9 +26,9 @@
         </a>
         <div class="content">
             <div class="menu">
-                <a class="item" ng-click = "">Ver Carátula</a>
-                <a class="item" ng-click = "">Crear Carátula</a>
-                <a class="item" ng-click = "" ng-if="currentUser.userRole == userRoles.admin">Eliminar Carátula</a>
+                <a class="item" ng-click = "abrirModalCrearCaratula()">Crear Carátula</a>
+                <a class="item" ng-click = "abrirModalVerCaratula()">Ver Carátula</a>
+                <a class="item" ng-click = "abrirModalEliminarCaratula()" ng-if="currentUser.userRole == userRoles.admin">Eliminar Carátula</a>
             </div>
         </div>
     </div>

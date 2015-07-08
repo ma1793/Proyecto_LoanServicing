@@ -9,17 +9,80 @@ univerApp.directive("sidebar.prestamos", function() {
 
 
             //Desgloses*/
+             $scope.abrirModalCrearDesglose = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección/Creación de Cliente','active','<elegir.crear.cliente/>']],
+                        titulo: "Crear Deslose de Préstamo"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+             $scope.abrirModalVerDesglose = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>']],
+                        titulo: "Ver/Actualizar Deslose de Préstamo"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
             $scope.abrirModalEliminarDesglose = function () {
                 ModalService.showModal({
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>']],
-                        titulo: "Elimar Deslose"
+                        titulo: "Elimar Deslose de Préstamo"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);
             };
+            //Caratulas*/
+            $scope.abrirModalCrearCaratula = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>']],
+                        titulo: "Crear Carátula de Préstamo"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
+             $scope.abrirModalVerCaratula = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>']],
+                        titulo: "Ver/Actualizar Carátula de Préstamo"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
+             $scope.abrirModalEliminarCaratula = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
+                    controller: "estructuraModalCtrl",
+                    inputs: {
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>']],
+                        titulo: "Eliminar Carátula de Préstamo"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
+            
+            
+            
             //Requisitos*/
             $scope.abrirModalRequisitos = function () {
                 ModalService.showModal({
@@ -46,7 +109,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'], ['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'],['Pagos','Selección Tipo de Pago','disabled','<elegir.pago.prestamo/>','<elegir.pago.morosidad/>']],
-                        titulo: "Pagos Prestamo"
+                        titulo: "Pagos Préstamo"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);
@@ -58,7 +121,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'], ['Fecha','Selección Fecha Pago','disabled','<elegir.fecha/>'],['Pagos','Realizar Pago Antiguo','disabled','<elegir.pago.morosidad/>']],
-                        titulo: "Pagos Prestamo Antiguos"
+                        titulo: "Pagos Préstamo Antiguos"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);

@@ -2,7 +2,7 @@
 
 angular.module('univerApp.root.prestamos.consulta', ['ui.router'])
 
-        .controller('consultaPrestamoCtrl', ['$rootScope', 'pagosRest', function($rootScope, pagosRest) {
+        .controller('consultaPrestamoCtrl', ['$scope','$rootScope', 'pagosRest', function($scope,$rootScope, pagosRest) {
 
                 /*Init UI*/
                 uiInitAccordion();

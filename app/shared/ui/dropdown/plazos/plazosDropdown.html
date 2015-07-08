@@ -1,17 +1,16 @@
-<div class="ui selection dropdown" id="ID_DropdownMes" ng-class="{'valid': mesSeleccionado != null}">
+<div class="ui selection dropdown" id="ID_DropdownPlazo" ng-class="{'valid': plazoSeleccionado  != null}">
     <input type="hidden">
-    <div class="default text">Número de Meses</div>
+    <div class="default text">Número de Plazos</div>
     <i class="dropdown icon"></i>
     <div class="menu">
-        <div class="ui action small input" style="padding-right:  40px">
-            <input type="number" placeholder="Valor" min="1" ng-model = "nuevoMes">
-            <div class="ui right labeled small icon button accion" ng-click="agregarNuevoMes()">
+        <div class="ui action small input" >
+            <input type="number" placeholder="Valor" min="0" max="100" ng-model = "nuevoPlazo">
+            <div class="ui mini icon button accion" ng-click="agregarNuevoPlazo()">
                 <i class="add icon"></i>
-                Agregar
             </div>
         </div>
-        <div class="item" data-value="{{mes.id}}"  ng-repeat="mes in meses | orderBy:'name':false " ng-click="selectMes(mes,$index)" ng-class="{active: $index === selectedDDMes}">
-            {{mes.name}}
+        <div class="item" data-value="{{plazo.id}}"  ng-repeat="plazo in plazos | orderBy:'name':false " ng-click="selectPlazo(plazo,$index)" ng-class="{active: $index === selectedDDPlazo}">
+            {{plazo.name}}
         </div>
     </div>
 </div>

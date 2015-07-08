@@ -39,15 +39,7 @@ univerApp.directive("dropdown.banco", function() {
             $scope.agregarNuevoBanco = function() {
                 if ($scope.nuevoBanco != "" && $scope.nuevoBanco != null) {
                     if (!isInJson(bancosJSON, $scope.nuevoBanco)) {
-                        contadorBanco = contadorBanco + 1;
-                        bancosJSON.push({
-                            id: contadorBanco,
-                            name: $scope.nuevoBanco
-                        });
-                        $scope.bancos = bancosJSON;
-                        $rootScope.bancoSeleccionado = $scope.nuevoBanco;
-                        $scope.nuevoBanco = "";
-                        $scope.comprobarDropDowns();
+                        $scope.setNuevoElemento();
                         setTimeout(function() {
                             $("#ID_DropdownBanco").data().moduleDropdown.action.activate(undefined, contadorBanco.toString());
                         }, 300);
@@ -55,6 +47,42 @@ univerApp.directive("dropdown.banco", function() {
                     
                 }
             };
+            
+            //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
+            $scope.setNuevoElemento = function() {
+                contadorBanco++;
+                bancosJSON.push({
+                    id: contadorBanco,
+                    name: $scope.nuevoBanco
+                });
+                $scope.bancos = bancosJSON;
+                $rootScope.bancoSeleccionado = $scope.nuevoBanco;
+                $scope.nuevoBanco = "";
+                $scope.comprobarDropDowns();
+            };
+            
+            //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
+            $rootScope.setValorDropDown = function(pValue) {
+                var filtroDropDown = bancosJSON.filter(function(bancosJSON) {
+                    return bancosJSON.name === pValue;
+                });
+                if ((filtroDropDown).length !== 0) {
+                    $rootScope.bancoSeleccionado = pValue;
+                    setTimeout(function() {
+                            $("#ID_DropdownBanco").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                    }, 200);
+                }
+                else{
+                    $scope.setNuevoElemento();
+                    setTimeout(function() {
+                            $("#ID_DropdownBanco").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                    }, 200);
+                }
+            };
+            
+            
+            
+            
         }
     };
 });

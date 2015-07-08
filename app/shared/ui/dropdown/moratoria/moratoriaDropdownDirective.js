@@ -1,60 +1,91 @@
-univerApp.directive("dropdown.meses", function() {
+univerApp.directive("dropdown.moratoria", function() {
     return {
         restrict: "E",
         replace: true,
-        templateUrl: "app/shared/ui/dropdown/meses/mesesDropdown.html",
+        templateUrl: "app/shared/ui/dropdown/moratoria/moratoriaDropdown.html",
         controller: function ($scope,$rootScope) {
-            //Init***
-            $rootScope.mesSeleccionado = null;
-
+            /*Init UI*/
             uiInitDropdown();
+            
+            //Init***
+            $rootScope.moratoriaSeleccionada = null;
+
+            
 
             //Variables Dropdown
-            var contadorMes = 3;
+            var contadorMoratoria = 5;
 
             //Valores Default Dropdown
-            var mesesJSON = [{
-                id: 1,
-                name: 1
-            }, {
-                id: 2,
-                name: 2
-            }, {
-                id: 3,
-                name: 3
-            }];
-            //Dropdown Meses
-            $scope.meses = mesesJSON;
-            $scope.selectedDDMes= -1;
+            var moratoriasJSON = [{
+                        id: 1,
+                        name: 14
+                    }, {
+                        id: 2,
+                        name: 15
+                    }, {
+                        id: 3,
+                        name: 16
+                    }, {
+                        id: 4,
+                        name: 17
+                    }, {
+                        id: 5,
+                        name: 18
+                    }];
+            //Dropdown Moratorias
+            $scope.moratorias = moratoriasJSON;
+            $scope.selectedDDMoratoria= -1;
 
-            $scope.selectMes = function(pMes,pIndice) {
-                $rootScope.mesSeleccionado = pMes;
-                $scope.selectedDDMes = pIndice;
+            $scope.selectMoratoria = function(pMoratoria,pIndice) {
+                $rootScope.moratoriaSeleccionada = pMoratoria;
+                $scope.selectedDDMoratoria = pIndice;
                 $scope.comprobarDropDowns();
 
             };
-            $scope.agregarNuevoMes = function() {
-                if ($.isNumeric($scope.nuevoMes) && ($scope.nuevoMes > 0)) {
-                    if (!isInJson(mesesJSON, $scope.nuevoMes)) {
-                        contadorMes = contadorMes + 1;
-                        mesesJSON.push({
-                            id: contadorMes,
-                            name: $scope.nuevoMes
-                        });
-                        $scope.meses = mesesJSON;
-                        $rootScope.mesSeleccionado = {id: contadorMes,name: $scope.nuevoMes};
-                        $scope.nuevoMes = "";
-                        $scope.comprobarDropDowns();
+            $scope.agregarNuevoMoratoria = function() {
+                if ($.isNumeric($scope.nuevaMoratoria) && ($scope.nuevaMoratoria > 0)) {
+                    if (!isInJson(moratoriasJSON, $scope.nuevaMoratoria)) {
+                        $scope.setNuevoElemento();
                         setTimeout(function() {
-                            $("#ID_DropdownMes").data().moduleDropdown.action.activate(undefined, contadorMes.toString());
+                            $("#ID_DropdownMoratoria").data().moduleDropdown.action.activate(undefined, contadorMoratoria.toString());
                         }, 200);
                     }
                 }
             };
-
+            
+             //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
+            $scope.setNuevoElemento = function() {
+                contadorMoratoria++;
+                moratoriasJSON.push({
+                    id: contadorMoratoria,
+                    name: $scope.nuevaMoratoria
+                });
+                $scope.moratorias = moratoriasJSON;
+                $rootScope.moratoriaSeleccionada = {id: contadorMoratoria, name: $scope.nuevaMoratoria};
+                $scope.nuevaMoratoria = "";
+                $scope.comprobarDropDowns();
+            };
+            
+            //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
+            $rootScope.setValorDropDown = function(pValue) {
+                var filtroDropDown = moratoriasJSON.filter(function(moratoriasJSON) {
+                    return moratoriasJSON.name === pValue;
+                });
+                if ((filtroDropDown).length !== 0) {
+                    $rootScope.moratoriaSeleccionada = pValue;
+                    setTimeout(function() {
+                            $("#ID_DropdownMoratoria").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                    }, 200);
+                }
+                else{
+                    $scope.setNuevoElemento();
+                    setTimeout(function() {
+                            $("#ID_DropdownMoratoria").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                    }, 200);
+                }
+            };
+            
         }
-
-
         
     };
 });

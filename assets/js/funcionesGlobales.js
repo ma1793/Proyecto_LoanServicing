@@ -85,6 +85,9 @@ function openInNewTab(pUrl) {
     win.focus();
 }
 
+function xor(x,y){
+    return true==(x!==y);
+}
 
 
 

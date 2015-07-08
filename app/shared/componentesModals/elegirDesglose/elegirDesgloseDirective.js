@@ -30,12 +30,11 @@ univerApp.directive("elegir.desglose", function() {
                 desglosesRest.getVerificarEliminarDesglose(function(data) {
                     if (data) {
                         desglosesRest.eliminarDesglose(function(data) {
-                            console.log(data);
-                            alert("lo logro");
+                          alert("El Desglose Seleccionado Ha Sido Eliminado");
                         }, $rootScope.desgloseSeleccionado.idDesgloceGasto);
                     }
                     else
-                        alert("no se puede eliminar");
+                        alert("No Se Puede Eliminar El Desglose Seleccionado");
                 }, $rootScope.desgloseSeleccionado.idDesgloceGasto);
             };
         }

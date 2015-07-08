@@ -4,6 +4,7 @@ univerApp.directive("elegir.fecha", function() {
         replace: true,
         templateUrl: "app/shared/componentesModals/elegirFecha/elegirFecha.html",
         controller: function($scope, $rootScope) {
+            
             //Init condicion de paso en el modal
             $rootScope.cumplePasoModal = false;
             

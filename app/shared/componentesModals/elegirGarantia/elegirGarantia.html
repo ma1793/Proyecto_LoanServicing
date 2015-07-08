@@ -1,0 +1,28 @@
+
+<div class="ui divided grid">
+    <div class="four wide column" >
+        <div class="ui form ">
+            <div class="field">
+                <label>Opción de Garantía</label>
+                <div class="grouped fields">
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="cambioOpcionAgregarGarantia(1)">
+                            <input type="radio" name="CB_OpcionNuevaGarantia" checked="">
+                            <label>Nueva Garantía</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox" ng-click="cambioOpcionAgregarGarantia(2)">
+                            <input type="radio" name="CB_OpcionNuevaGarantia">
+                            <label>Garantía Existente</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="twelve wide column">
+        <garantia.nueva ng-if="tipoGarantia == 1"></garantia.nueva>
+        <garantia.existente ng-if="tipoGarantia == 2"></garantia.existente>
+    </div>
+</div>

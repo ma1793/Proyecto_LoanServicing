@@ -1,0 +1,16 @@
+<div class="ui selection dropdown" id="ID_DropdownHonorariosGastos" ng-class="{'valid': honorarioGastoSeleccionado  != null}">
+    <input type="hidden">
+    <div class="default text">Porcentage (%)</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+        <div class="ui action small input">
+            <input type="number" placeholder="Valor" min="0" max="100" ng-model = "nuevoHonorarioGasto">
+            <div class="ui mini icon button accion" ng-click="agregarHonorarioGasto()">
+                <i class="add icon"></i>
+            </div>
+        </div>
+        <div class="item" data-value="{{honorarioGasto.id}}"  ng-repeat="honorarioGasto in honorariosGastos | orderBy:'name':false " ng-click="selectHonorarioGasto(honorarioGasto,$index)" ng-class="{active: $index === selectedDDHonorarioGasto}">
+            {{honorarioGasto.name}}
+        </div>
+    </div>
+</div>
