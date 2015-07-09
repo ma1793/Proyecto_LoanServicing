@@ -19,7 +19,7 @@ univerApp.directive("elegir.crear.cliente", function() {
                 esperaTiempoFuncion(uiInitCheckbox,50);
             };
 
-            $rootScope.finalizarModalAlquileresCrearContrato = function(){
+            $rootScope.finalizarModalCrearCliente = function(){
                 if ($scope.tipoCliente == 1) {
                     if($scope.opcionCliente == 1){
                         $rootScope.ContruirClienteFisicoJSON();
