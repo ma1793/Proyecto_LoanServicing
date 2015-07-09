@@ -4,7 +4,34 @@ univerApp.directive("garantia.nueva", function() {
         replace: true,
         templateUrl: "app/shared/componentesModals/elegirGarantia/tipoSeleccionGarantia/garantiaNueva/garantiaNueva.html",
         controller: function($scope, $rootScope) {
+            /*Init UI*/
+             uiInitDropdown();
+            
+            //Init condicion de paso en el modal
+            $scope.cumpleDropdowns =  false;
+            $scope.cumpleInputs =  false;
+            $rootScope.cumplePasoModal = false;
 
+
+            // Verificacion Formulario
+             $scope.comprobarInput = function(pEstadoFormulario) {
+                $scope.cumpleInputs = pEstadoFormulario;
+                $scope.comprobarCumpleFormulario();
+            };
+            
+            $scope.comprobarDropDowns = function(){
+                if($scope.provinciaSeleccionada != null ){
+                    $scope.cumpleDropdowns = true;
+                }
+                $scope.comprobarCumpleFormulario();
+            };
+
+            $scope.comprobarCumpleFormulario = function(){
+                $rootScope.cumplePasoModal = $scope.cumpleInputs && $scope.cumpleDropdowns;
+                 console.log($rootScope.cumplePasoModal);
+            };
+
+            
             $scope.provincias = [{
                     id: 1,
                     name: 'San José'
@@ -34,10 +61,10 @@ univerApp.directive("garantia.nueva", function() {
 
             $scope.seleccionProvincia = function(pProvincia) {
                 $scope.provinciaSeleccionada = pProvincia;
-
+                $scope.comprobarDropDowns();
             };
 
-            $scope.agregarGarantiaJSON = function() {
+            $rootScope.agregarGarantiaJSON = function() {
                 $rootScope.listaGarantiasCaratula.push({
                     "provincia": {"idProvincia": $scope.provinciaSeleccionada.id,
                         "descripcion": $scope.provinciaSeleccionada.name
@@ -49,36 +76,12 @@ univerApp.directive("garantia.nueva", function() {
                     "numeroplano": $scope.numeroPlanoGarantia
                 }
                 );
+                console.log($rootScope.listaGarantiasCaratula);
+                setTimeout(function(){ $scope.$apply();});
             };
 
 
-            $scope.descripcionProvincia = function(pIndice) {
-                var resultado;
-                switch (pIndice) {
-                    case 1:
-                        resultado = "San José";
-                        break;
-                    case 2:
-                        resultado = "Alajuela";
-                        break;
-                    case 3:
-                        resultado = "Cartago";
-                        break;
-                    case 4:
-                        resultado = "Heredia";
-                        break;
-                    case 5:
-                        resultado = "Puntarenas";
-                        break;
-                    case 6:
-                        resultado = "Guanacaste";
-                        break;
-                    case 7:
-                        resultado = "Límon";
-                        break;
-                }
-                return resultado;
-            };
+         
 
 
         }

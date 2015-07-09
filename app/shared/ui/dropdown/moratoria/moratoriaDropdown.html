@@ -1,16 +1,16 @@
-<div class="ui selection dropdown" id="ID_DropdownMes" ng-class="{'valid': moratoriaSeleccionada  != null}">
+<div class="ui selection dropdown" id="ID_DropdownMoratoria" ng-class="{'valid': moratoriaSeleccionada  != null}">
     <input type="hidden">
     <div class="default text">Moratorio(%)</div>
     <i class="dropdown icon"></i>
     <div class="menu">
         <div class="ui action small input" >
             <input type="number" placeholder="Valor" min="0" max="100"  ng-model = "nuevaMoratoria">
-            <div class="ui mini icon button accion" ng-click="agregarNuevaMoratoria()">
-                <i class="add icon"></i>
+            <div class="ui mini icon button" ng-click="agregarNuevaMoratoria()">
+                <i class="add icon" style="margin-top: -5px"></i>
             </div>
         </div>
         <div class="item" data-value="{{moratoria.id}}"  ng-repeat="moratoria in moratorias | orderBy:'name':false " ng-click="selectMoratoria(moratoria,$index)" ng-class="{active: $index === selectedDDMoratoria}">
-            {{moratoria.name}}
+            {{moratoria.name}}%
         </div>
     </div>
 </div>

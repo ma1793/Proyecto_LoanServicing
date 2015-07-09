@@ -202,8 +202,7 @@ univerApp.directive("elegir.requisitos.agregar", function() {
                     }, 100);
                 }
                 else {
-                    $rootScope.abrirDialog("Sustituir Elemento","¿Esta Seguro de Sustituir el Requisito?");
-  
+                    $rootScope.abrirDialog("Sustituir Elemento","¿Esta Seguro de Sustituir el Requisito?","retweet");
               }
             });
             
@@ -213,8 +212,7 @@ univerApp.directive("elegir.requisitos.agregar", function() {
                     case 1:
                         $scope.sobreescribirRequisito();
                         break;
-                }
-                
+                } 
             };
 
             

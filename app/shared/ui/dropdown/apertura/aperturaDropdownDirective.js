@@ -36,42 +36,46 @@ univerApp.directive("dropdown.apertura", function() {
             $scope.agregarNuevaApertura = function() {
                 if ($.isNumeric($scope.nuevaApertura) && ($scope.nuevaApertura > 0)) {
                     if (!isInJson(aperturasJSON, $scope.nuevaApertura)) {
-                        $scope.setNuevoElemento();
+                        contadorApertura++;
+                        aperturasJSON.push({
+                            id: contadorApertura,
+                            name: $scope.nuevaApertura
+                        });
+                        $scope.aperturas = aperturasJSON;
+                        $rootScope.aperturaSeleccionada = {id: contadorApertura, name: $scope.nuevaApertura};
+                        $scope.nuevaApertura = "";
+                        $scope.comprobarDropDowns();
                         setTimeout(function() {
-                            $("#ID_DropdownApertura").data().moduleDropdown.action.activate(undefined, contadorApertura.toString());
+                            $("#ID_DropdownApertura").dropdown('set selected',contadorApertura.toString());
                         }, 200);
                     }
                 }
             };
 
-            //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
-            $scope.setNuevoElemento = function() {
-                contadorApertura++;
-                aperturasJSON.push({
-                    id: contadorApertura,
-                    name: $scope.nuevaApertura
-                });
-                $scope.aperturas = aperturasJSON;
-                $rootScope.aperturaSeleccionada = {id: contadorApertura, name: $scope.nuevaApertura};
-                $scope.nuevaApertura = "";
-                $scope.comprobarDropDowns();
-            };
-            
             //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
-            $rootScope.setValorDropDown = function(pValue) {
+            $rootScope.setValorDropDownApertura = function(pValue) {
                 var filtroDropDown = aperturasJSON.filter(function(aperturasJSON) {
                     return aperturasJSON.name === pValue;
                 });
                 if ((filtroDropDown).length !== 0) {
-                    $rootScope.aperturaSeleccionada = pValue;
+                    $rootScope.aperturaSeleccionada = {id: filtroDropDown[0].id, name: pValue};
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownApertura").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_DropdownApertura").dropdown('set selected',filtroDropDown[0].id);
                     }, 200);
                 }
                 else{
-                    $scope.setNuevoElemento();
+                    contadorApertura++;
+                    aperturasJSON.push({
+                        id: contadorApertura,
+                        name: pValue
+                    });
+                    $scope.aperturas = aperturasJSON;
+                    $rootScope.aperturaSeleccionada = {id: contadorApertura, name:pValue};
+                    $scope.nuevaApertura = "";
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownApertura").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_DropdownApertura").dropdown('set selected', contadorApertura.toString());
                     }, 200);
                 }
             };

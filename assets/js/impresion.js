@@ -26,7 +26,7 @@ function verificarNull(pValor){
 
 }
 
-function imprimeDesgloses(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,pComision,pComisionVal,pHonorariosGastos,pHonorariosGastosVal,pHonorariosTimbres,pApertura,pAperturaVal,pMeses,pMesesVal,pTraslado,pSaldo,pArrayCobrosAdicionales,pArrayCobrosLegales,pComentario){
+function imprimeDesglose(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,pComision,pComisionVal,pHonorariosGastos,pHonorariosGastosVal,pHonorariosTimbres,pApertura,pAperturaVal,pMeses,pMesesVal,pTraslado,pSaldo,pArrayCobrosAdicionales,pArrayCobrosLegales,pComentario){
     var documentoImprimirDesglose = {
         content: [
             {
@@ -58,7 +58,7 @@ function imprimeDesgloses(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,p
                         [ {text:'Tasa anual de interés con Moratoria',style: 'cuerpo'}, { text:pTasaAnualMoratoria.toString()+"%",colSpan: 2,style:'cuerpo'},{}],
                         [ {text:'',colSpan: 3, margin:[0,0,0,0]}, {},{}],
                         [ {text: agregarEspaciosNumeroImprimir(pComision,'Comisión',1), style:'cuerpo'}, { text:pComisionVal,colSpan: 2,style:'cuerpo'},{}],
-                        [ {text: agregarEspaciosNumeroImprimir(pHonorariosGastos,'Honorarios y gastos de inscripción de fideicomiso ó Hipoteca',1),style:'cuerpo'}, { text:pHonorariosGastosVal,colSpan: 2,style:'cuerpo'},{}],
+                        [ {text: agregarEspaciosNumeroImprimir(pHonorariosGastos,'Honorarios y gastos de inscripción de Fideicomiso ó Hipoteca',1),style:'cuerpo'}, { text:pHonorariosGastosVal,colSpan: 2,style:'cuerpo'},{}],
                         [ {text:'Honorarios y timbres(cancelación de hipoteca ó fideicomiso)',  margin:[51,0,0,15]}, { text:pHonorariosTimbres,colSpan: 2},{}],
 
                         [ {text:agregarEspaciosNumeroImprimir(pApertura,'Apertura y Manejo de cuenta',1), style:'cuerpo'}, { text:pAperturaVal,colSpan: 2,style:'cuerpo'},{}],
@@ -67,7 +67,7 @@ function imprimeDesgloses(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,p
                         [ {text:'',colSpan: 3, margin:[0,15,0,0]}, {},{}],
 
 
-                        [ {text:'Saldo a girar', style:'saldo'}, { text:pSaldo,colSpan: 2,style:'saldo'},{}],
+                        [ {text:'Saldo a Girar', style:'saldo'}, { text:pSaldo,colSpan: 2,style:'saldo'},{}],
 
 
 
@@ -151,10 +151,10 @@ function imprimeDesgloses(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,p
     var existenCobrosLegales = 0; //cambia de valor si no existen cobros adicionales para asi colocar los legales en la posicion correcta
 
     //Cobros Adicionales Legales
-    if($.isNumeric(pArrayCobrosLegales[0].Monto)) {
+    if(pArrayCobrosLegales.length > 0) {
         documentoImprimirDesglose.content[1].table.body.splice(8, 0,[ {text:'',colSpan: 3, margin:[0,0,0,0]}, {},{}]);
         for (contador = 0; contador < cantidadLegales; contador++) {
-            documentoImprimirDesglose.content[1].table.body.splice(9 + contador, 0, [{text: pArrayCobrosLegales[contador].Descripcion, margin: [51, 0, 0, 0]}, {text: FG_currencyFormat(pArrayCobrosLegales[contador].Monto), colSpan: 2}, {}]);
+            documentoImprimirDesglose.content[1].table.body.splice(9 + contador, 0, [{text: pArrayCobrosLegales[contador].Descripcion, margin: [51, 0, 0, 0]}, {text: currencyFormat(pArrayCobrosLegales[contador].Monto), colSpan: 2}, {}]);
         }
         documentoImprimirDesglose.content[1].table.body.splice(9 + cantidadLegales, 0,[ {text:'',colSpan: 3, margin:[0,0,0,15]}, {},{}]);
     }
@@ -163,12 +163,12 @@ function imprimeDesgloses(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,p
     }
 
     //Cobros Adicionales 
-    if($.isNumeric(pArrayCobrosAdicionales[0].Monto))
+    if(pArrayCobrosAdicionales.length > 0)
         for (contador = 0; contador < pArrayCobrosAdicionales.length; contador++) {
-            documentoImprimirDesglose.content[1].table.body.splice(14 - existenCobrosLegales + cantidadLegales + contador, 0, [{text: pArrayCobrosAdicionales[contador].Descripcion, margin: [51, 0, 0, 0]}, {text: FG_currencyFormat(pArrayCobrosAdicionales[contador].Monto), colSpan: 2}, {}]);
+            documentoImprimirDesglose.content[1].table.body.splice(14 - existenCobrosLegales + cantidadLegales + contador, 0, [{text: pArrayCobrosAdicionales[contador].Descripcion, margin: [51, 0, 0, 0]}, {text: currencyFormat(pArrayCobrosAdicionales[contador].Monto), colSpan: 2}, {}]);
         }
 
-
+    alert(documentoImprimirDesglose);    
     pdfMake.createPdf(documentoImprimirDesglose).open();
 }
 

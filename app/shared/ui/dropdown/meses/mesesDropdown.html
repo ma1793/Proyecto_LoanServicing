@@ -5,8 +5,8 @@
     <div class="menu">
         <div class="ui action small input" >
             <input type="number" placeholder="Valor" min="1" ng-model = "nuevoMes">
-            <div class="ui mini icon button accion" ng-click="agregarNuevoMes()">
-                <i class="add icon"></i>
+            <div class="ui mini icon button " ng-click="agregarNuevoMes()">
+                <i class="add icon" style="margin-top: -5px"></i>
             </div>
         </div>
         <div class="item" data-value="{{mes.id}}"  ng-repeat="mes in meses | orderBy:'name':false " ng-click="selectMes(mes,$index)" ng-class="{active: $index === selectedDDMes}">

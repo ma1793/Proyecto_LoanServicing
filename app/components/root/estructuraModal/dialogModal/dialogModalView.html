@@ -1,18 +1,26 @@
 <div class="ui small modal">
-    <div class="header">
-        {{tituloDialog}}
+   
+    <div class="ui left floated header">
+        <div class="content">
+            {{tituloDialog}}
+        </div>
     </div>
-    <div class="content">
+<div class="ui contenedor"></div>
+    <div class="image content">
+        <div class="image">
+            <i class="{{iconDialog}} icon"></i>
+        </div>
+        <div class="description">
             <p>{{mensajeDialog}}</p>
+        </div>
     </div>
     <div class="actions">
-            <div class="ui red inverted button" ng-click="close()">
+            <div class="ui red  icon cancelar button" ng-click="close()">
                 <i class="remove icon"></i>
-                Cancelar
+               
             </div>
-            <div class="ui green inverted button" ng-click="tipoDialogAccion()">
+            <div class="ui  button icon accion" ng-click="tipoDialogAccion()">
                 <i class="checkmark icon"></i>
-                Aceptar
             </div>
     </div>
 </div>

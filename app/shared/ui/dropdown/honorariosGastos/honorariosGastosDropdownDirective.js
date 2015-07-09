@@ -37,41 +37,46 @@ univerApp.directive("dropdown.honorarios.gastos", function() {
             $scope.agregarNuevoHonorarioGasto = function() {
                 if ($.isNumeric($scope.nuevoHonorarioGasto) && ($scope.nuevoHonorarioGasto > 0)) {
                     if (!isInJson(honorariosGastosJSON, $scope.nuevoHonorarioGasto)) {
-                        $scope.setNuevoElemento();
+                        contadorHonorarioGasto++;
+                        honorariosGastosJSON.push({
+                            id: contadorHonorarioGasto,
+                            name: $scope.nuevoHonorarioGasto 
+                        });
+                        $scope.honorariosGastos = honorariosGastosJSON;
+                        $rootScope.honorarioGastoSeleccionado = {id: contadorHonorarioGasto, name: $scope.nuevoHonorariosGastos };
+                        $scope.nuevoHonorarioGasto = "";
+                        $scope.comprobarDropDowns();
                         setTimeout(function() {
-                            $("#ID_DropdownHonorariosGastos").data().moduleDropdown.action.activate(undefined, contadorHonorarioGasto.toString());
+                            $("#ID_DropdownHonorariosGastos").dropdown('set selected', contadorHonorarioGasto.toString());
                         }, 200);
                     }
                 }
             };
-            //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
-            $scope.setNuevoElemento = function() {
-                contadorHonorarioGasto++;
-                honorariosGastosJSON.push({
-                    id: contadorHonorarioGasto,
-                    name: $scope.nuevoHonorarioGasto
-                });
-                $scope.honorariosGastos = honorariosGastosJSON;
-                $rootScope.honorarioGastoSeleccionado = {id: contadorHonorarioGasto, name: $scope.nuevoHonorariosGastos};
-                $scope.nuevoHonorariosGastos = "";
-                $scope.comprobarDropDowns();
-            };
-            
+           
             //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
-            $rootScope.setValorDropDown = function(pValue) {
+            $rootScope.setValorDropDownHonorariosGastos = function(pValue) {
                 var filtroDropDown = honorariosGastosJSON.filter(function(honorariosGastosJSON) {
                     return honorariosGastosJSON.name === pValue;
                 });
                 if ((filtroDropDown).length !== 0) {
-                    $rootScope.honorarioGastoSeleccionado = pValue;
+                    $rootScope.honorarioGastoSeleccionado = {id: filtroDropDown[0].id, name: pValue};
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownHonorariosGastos").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_DropdownHonorariosGastos").dropdown('set selected', filtroDropDown[0].id);
                     }, 200);
                 }
-                else{
-                    $scope.setNuevoElemento();
+                else {
+                    contadorHonorarioGasto++;
+                    honorariosGastosJSON.push({
+                        id: contadorHonorarioGasto,
+                        name: pValue
+                    });
+                    $scope.honorariosGastos = honorariosGastosJSON;
+                    $rootScope.honorarioGastoSeleccionado = {id: contadorHonorarioGasto, name: pValue};
+                    $scope.nuevoHonorariosGastos = "";
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownHonorariosGastos").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                        $("#ID_DropdownHonorariosGastos").dropdown('set selected', contadorHonorarioGasto.toString());
                     }, 200);
                 }
             };

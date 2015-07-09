@@ -1,10 +1,8 @@
 
 univerApp.factory('caratulasRest', ['$http', function($http){
         return{
-            
-            
-            
-            getCaratulas: function(callback,pIdDesglose){
+                      
+          getCaratulas: function(callback,pIdDesglose){
                 var req = {
                     method: 'GET',
                     url: rootURL + "/caratula/getCaratulas/"+pIdDesglose,
@@ -47,6 +45,36 @@ univerApp.factory('caratulasRest', ['$http', function($http){
                         callback(data);
                     });
             },
+            postCrearCaratula: function(callback,pCaratulaJSON){
+                var req = {
+                    method: 'POST',
+                    url: rootURL + "/caratula/crearCaratula",
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                    data: JSON.stringify(pCaratulaJSON)
+                }
+                $http(req)
+                    .success(function(data) {
+                        // prepare data here
+                        callback(data);
+                    });
+            },
+            postPrimerPago: function(callback,pPrimerPagoJSON){
+                var req = {
+                    method: 'POST',
+                    url: rootURL + "/caratula/crearPrimerPago",
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                    data: JSON.stringify(pPrimerPagoJSON)
+                }
+                $http(req)
+                    .success(function(data) {
+                        // prepare data here
+                        callback(data);
+                    });
+            }
             
             
             

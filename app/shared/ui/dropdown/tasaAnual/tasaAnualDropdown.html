@@ -1,16 +1,16 @@
-<div class="ui selection dropdown" id="ID_DropdownTasaAnual" ng-class="{'valid': tasaAnualSeleccionada  != null}">
+<div class="ui selection dropdown" id="ID_TasaAnualInteres" ng-class="{'valid': tasaAnualSeleccionada  != null}">
     <input type="hidden">
-    <div class="default text">Tasa Anual de Interés</div>
+    <div class="default text">Tasa Anual Interés</div>
     <i class="dropdown icon"></i>
     <div class="menu">
         <div class="ui action small input" >
             <input type="number" placeholder="Valor"  min="0" max="100" ng-model = "nuevaTasaAnual">
-            <div class="ui mini icon button accion" ng-click="agregarNuevaTasaAnual()">
-                <i class="add icon"></i>
+            <div class="ui mini icon button" ng-click="agregarNuevaTasaAnual()">
+                <i class="add icon" style="margin-top: -5px"></i>
             </div>
         </div>
         <div class="item" data-value="{{tasaAnual.id}}"  ng-repeat="tasaAnual in tasasAnuales | orderBy:'name':false " ng-click="selectTasaAnual(tasaAnual,$index)" ng-class="{active: $index === selectedDDTasaAnual}">
-            {{tasaAnual.name}}
+            {{tasaAnual.name}}%
         </div>
     </div>
 </div>

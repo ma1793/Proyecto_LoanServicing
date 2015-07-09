@@ -27,6 +27,7 @@ univerApp.directive("cliente.juridico.nuevo", function() {
                 };
                 console.log(JSON.stringify(clienteJuridicoJSON));
                 $rootScope.clienteSeleccionado = clienteJuridicoJSON;
+                
 
             };
 

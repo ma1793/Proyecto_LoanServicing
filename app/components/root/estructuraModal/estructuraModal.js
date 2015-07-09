@@ -105,9 +105,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         switch($scope.steps[$scope.steps.length-1][3]){
             case "<elegir.requisitos/>":
                 $rootScope.imprimirRequisitos(); 
-                break;
-                
-            
+                break;           
         }
     };
 
@@ -117,17 +115,20 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
             //Prestamos
             case "<elegir.crear.cliente/>":
                 $rootScope.tipoOperacionTramite = 1;
-                $state.go('root.prestamosDesglose');
+                $state.go('root.clear');
+                setTimeout(function(){$state.go('root.prestamosDesglose');},200);   
                 break;
             case "<elegir.desglose/>":
                 switch($scope.tituloModal){
                     case 'Crear Carátula de Préstamo':
                          $rootScope.tipoOperacionTramite = 1;
-                         $state.go('root.prestamosCaratula');
+                         $state.go('root.clear');
+                         setTimeout(function(){$state.go('root.prestamosCaratula');},200);   
                          break;
                     case 'Ver/Actualizar Deslose de Préstamo':
                          $rootScope.tipoOperacionTramite = 2;
-                         $state.go('root.prestamosDesglose');
+                         $state.go('root.clear');
+                         setTimeout(function(){$state.go('root.prestamosDesglose');},200);                            
                          break;
                     case 'Elimar Deslose de Préstamo':
                         $rootScope.eliminarDesglose();
@@ -138,31 +139,37 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                 switch($scope.tituloModal){
                     case 'Ver/Actualizar Carátula de Préstamo':
                          $rootScope.tipoOperacionTramite = 2;
-                         $state.go('root.prestamosCaratula');
+                         $state.go('root.clear');
+                         setTimeout(function(){$state.go('root.prestamosCaratula');},200); 
                          break;
                     case 'Consulta Préstamos':
-                        $state.go('root.prestamosConsulta');
+                        $state.go('root.clear');
+                         setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                         break;
                 }  
+                break;
+                
+            case "<elegir.garantia/>":
+                $rootScope.agregarGarantiaJSON();
+                $scope.close();
                 break;
             case "<elegir.pago.prestamo/>":
                 if ($rootScope.caratulaSeleccionada.estadoMorosidad){
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
-                    $state.go('root.prestamosConsulta');
+                    $state.go('root.clear');
+                    setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                 }else{
                     $rootScope.finalizarModalPrestamosPago();
-                    $state.go('root.prestamosConsulta');
+                    $state.go('root.clear');
+                    setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                 }
                 break;
             case "<elegir.pago.morosidad/>":
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
-                    $state.go('root.prestamosConsulta');
+                    $state.go('root.clear');
+                    setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                     break;
          
-                 
-            
-           
-
 
             //Alquileres
             case "<elegir.crear.cliente/>":
@@ -190,8 +197,6 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
 
     //Cerrar Modal mediante boton cancelar
     $scope.close = function() {
-        //Ir a estado Inicial
-        $state.go('root.tareas');
         modalHide();
         close();
     };

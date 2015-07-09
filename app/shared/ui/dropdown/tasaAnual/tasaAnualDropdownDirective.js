@@ -36,45 +36,52 @@ univerApp.directive("dropdown.tasa.anual", function() {
                 $scope.comprobarDropDowns();
 
             };
-            $scope.agregarNuevoTasaAnual = function() {
+            $scope.agregarNuevaTasaAnual = function() {
                 if ($.isNumeric($scope.nuevaTasaAnual) && ($scope.nuevaTasaAnual > 0)) {
                     if (!isInJson(tasasAnualesJSON, $scope.nuevaTasaAnual)) {
-                        $scope.setNuevoElemento();
+                        contadorTasaAnual++;
+                        tasasAnualesJSON.push({
+                            id: contadorTasaAnual,
+                            name: $scope.nuevaTasaAnual
+                        });
+                        
+                        $scope.tasasAnuales = tasasAnualesJSON;
+                        $rootScope.tasaAnualSeleccionada = {id: contadorTasaAnual, name: $scope.nuevaTasaAnual};
+                        $scope.nuevaTasaAnual = "";
+                        $scope.comprobarDropDowns();
                         setTimeout(function() {
-                            $("#ID_TasaAnualInteres").data().moduleDropdown.action.activate(undefined, contadorTasaAnual.toString());
+                            $("#ID_TasaAnualInteres").dropdown('set selected',  contadorTasaAnual.toString());
                         }, 200);
                     }
                 }
             };
             
-             //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
-            $scope.setNuevoElemento = function() {
-                contadorTasaAnual++;
-                tasasAnualesJSON.push({
-                    id: contadorTasaAnual,
-                    name: $scope.nuevaTasaAnual
-                });
-                $scope.tasasAnuales = tasasAnualesJSON;
-                $rootScope.tasaAnualSeleccionada = {id: contadorTasaAnual, name: $scope.nuevaTasaAnual};
-                $scope.nuevaTasaAnual = "";
-                $scope.comprobarDropDowns();
-            };
+          
             
             //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
-            $rootScope.setValorDropDown = function(pValue) {
+            $rootScope.setValorDropDownTasaAnual = function(pValue) {
                 var filtroDropDown = tasasAnualesJSON.filter(function(tasasAnualesJSON) {
                     return tasasAnualesJSON.name === pValue;
                 });
                 if ((filtroDropDown).length !== 0) {
-                    $rootScope.tasaAnualSeleccionada= pValue;
+                    $rootScope.tasaAnualSeleccionada= {id: filtroDropDown[0].id, name: pValue};
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_TasaAnualInteres").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_TasaAnualInteres").dropdown('set selected',  filtroDropDown[0].id);
                     }, 200);
                 }
                 else{
-                    $scope.setNuevoElemento();
+                    contadorTasaAnual++;
+                    tasasAnualesJSON.push({
+                        id: contadorTasaAnual,
+                        name: pValue
+                    });
+                    $scope.tasasAnuales = tasasAnualesJSON;
+                    $rootScope.tasaAnualSeleccionada = {id: contadorTasaAnual, name: pValue};
+                    $scope.nuevaTasaAnual = "";
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_TasaAnualInteres").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_TasaAnualInteres").dropdown('set selected',  contadorTasaAnual.toString());
                     }, 200);
                 }
             };

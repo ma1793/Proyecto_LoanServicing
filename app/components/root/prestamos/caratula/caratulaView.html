@@ -1,12 +1,12 @@
 <div class="ui basic segment" style="margin-top:0px; margin-bottom: 0px">
     <div class="ui page grid" >
         <div class="column" >
-            <div class="ui form">
-                <div class="ui  secondary segment"  >
+            <form class="ui form" name="formularioCaratulaPrestamo" novalidate>
+                <div class="ui stacked segment">
                     <div class="ui top right  attached label"  ui-sref="root.tareas"  style="padding:6px 12px 6px">
                         <i class="remove icon" style="padding-left: 7px"></i>
                     </div>
-                    <h1 class="ui center aligned header Titulo">
+                    <h1 class="ui center aligned header Titulo"  >
                         Carátula de Préstamo
                     </h1>
                     <div class="ui vertically divided grid"  >
@@ -22,13 +22,13 @@
                                 <div class="two fields">
                                     <div class="field">
                                         <label>Acreedor</label>
-                                        <div class="ui selection dropdown" id ="ID_DropdownAcreedor">
+                                        <div class="ui selection dropdown" id ="ID_DropdownAcreedor" ng-class="{'valid': acreedorSeleccionado  != null}">
                                             <input type="hidden" >
                                             <div class="default text">Cédula</div>
                                             <i class="dropdown icon"></i>
                                             <div class="menu">
-                                                <div class="item" data-value="{{DD_Acreedor.idAcreedor}}"  ng-repeat="DD_Acreedor in ListaAcreedores| orderBy:'cedula':false " ng-click="selectAcreedor(DD_Acreedor, $index)" ng-class="{active: $index === selectedDDAcreedor}">
-                                                    {{DD_Acreedor.cedula}}
+                                                <div class="item" data-value="{{acreedor.idAcreedor}}"  ng-repeat="acreedor in listaAcreedores| orderBy:'cedula':false " ng-click="selectAcreedor(acreedor, $index)" ng-class="{active: $index === selectedDDAcreedor}">
+                                                    {{acreedor.cedula}}
                                                 </div>
                                             </div>
                                         </div>
@@ -36,7 +36,7 @@
                                     <div class="field">
                                         <label>Deudor</label>
                                         <div class = "ui small transparent input">
-                                            <input type="text"  value = "{{nombreCompletoClienteDesglose}}" readonly>
+                                            <input type="text"  value = "{{nombreCompletoClienteSeleccionado}}" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -46,14 +46,14 @@
                                     <div class="field">
                                         <label>Fecha Constitución</label>
                                         <div class = "ui small left icon input">
-                                            <input type="date" ng-model = "fechaConstitucion">
+                                            <input type="date" ng-model = "fechaConstitucion" ng-class="{'valid': fechaConstitucion  != null}" ng-change="comprobarInput(formularioCaratulaPrestamo.$valid)" required>
                                             <i class="calendar icon"></i>
                                         </div>
                                     </div>
                                     <div class="field">
                                         <label>Fecha Vencimiento</label>
                                         <div class = "ui small left icon input">
-                                            <input type="date" ng-model = "fechaVencimiento">
+                                            <input type="date" ng-model = "fechaVencimiento" ng-class="{'valid': fechaVencimiento  != null}" ng-change="comprobarInput(formularioCaratulaPrestamo.$valid)" required>
                                             <i class="calendar outline icon"></i>
                                         </div>
                                     </div>
@@ -71,17 +71,22 @@
                                             <input type="text"  value = "{{desgloseSeleccionado.monto|currency}}" readonly>
                                         </div>
                                     </div>
+
                                     <div class="field">
-                                        <label>Pago Mensual</label>
-                                        <div class = "ui transparent small  input">
-                                            <input type="text"  value = "{{pagoMensual() | currency}}" readonly>
-                                        </div>
+                                        <label>Plazo (años)</label>
+                                        <dropdown.plazos></dropdown.plazos>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="column">
                                 <div class="three fields">
+                                    <div class="field">
+                                        <label>Pago Mensual</label>
+                                        <div class = "ui transparent small  input">
+                                            <input type="text"  value = "{{pagoMensual() | currency}}" readonly>
+                                        </div>
+                                    </div>
 
                                     <div class="field">
                                         <label>Interés Anual</label>
@@ -97,11 +102,6 @@
                                         </div>
                                     </div>
 
-
-                                    <div class="field">
-                                        <label>Plazo (años)</label>
-                                        <dropdown.plazos></dropdown.plazos>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                             </div>
 
                                             <div ng-repeat="garantia in listaGarantiasCaratula">
-                                                <div class="seven fields" style="margin-bottom: 10px">
+                                                <div class="seven fields" style="margin-bottom: 15px">
                                                     <div class="field">
                                                         <h5 class="ui center aligned header">
                                                             {{garantia.provincia.descripcion}}
@@ -186,7 +186,7 @@
                                                         </h5>
                                                     </div>
                                                     <div class="field">
-                                                        <div class="ui labeled red small icon button " ng-click="removeGarantia($index)" style="margin-top: -10px;float:right" >
+                                                        <div class="ui labeled cancelar small icon button " ng-click="removeGarantia($index)" style="margin-top: -10px;float:right" >
                                                             <i class="trash icon"></i>
                                                             Quitar
                                                         </div>
@@ -194,7 +194,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="ui  labeled teal  small icon button" ng-click="abrirModalGarantias()" style="margin-top: 10px;float:right;">
+                                            <div class="ui  labeled accion  small icon button" ng-click="abrirModalGarantias()" style="margin-top: 10px;float:right;">
                                                 <i class="add icon"></i>
                                                 Nueva
                                             </div>
@@ -224,7 +224,7 @@
                                     <div class="field">
                                         <label>Nombre</label>
                                         <div class = "ui small  input">
-                                            <input type="text"  ng-model="nombreContacto">
+                                            <input type="text"  ng-model="nombreContacto" ng-class="{'valid': nombreContacto  != null}" ng-change="comprobarInput(formularioCaratulaPrestamo.$valid)" required>
                                             <div class="ui  mini  corner label">
                                                 <i class="icon red asterisk"></i>
                                             </div>
@@ -234,7 +234,7 @@
                                     <div class="field">
                                         <label>Primer Apellido</label>
                                         <div class = "ui small  input">
-                                            <input type="text"  ng-model="primerApellidoContacto">
+                                            <input type="text"  ng-model="primerApellidoContacto" ng-class="{'valid': primerApellidoContacto != null }" ng-change="comprobarInput(formularioCaratulaPrestamo.$valid)" required>
                                             <div class="ui  mini  corner label">
                                                 <i class="icon red asterisk"></i>
                                             </div>
@@ -243,7 +243,7 @@
                                     <div class="field">
                                         <label>Segundo Apellido</label>
                                         <div class = "ui small  input">
-                                            <input type="text"  ng-model="segundoApellidoContacto">
+                                            <input type="text"  ng-model="segundoApellidoContacto" ng-class="{'valid': segundoApellidoContacto != null }" ng-change="comprobarInput(formularioCaratulaPrestamo.$valid)" required>
                                             <div class="ui  mini  corner label">
                                                 <i class="icon red asterisk"></i>
                                             </div>
@@ -256,14 +256,14 @@
                                     <div class="field">
                                         <label>Empresa</label>
                                         <div class = "ui small left icon input">
-                                            <input type="text"  ng-model = "empresaContacto" >
+                                            <input type="text"  ng-model = "empresaContacto" ng-class="{'valid': empresaContacto != null && empresaContacto != ''  }">
                                             <i class="building icon"></i>
                                         </div>
                                     </div>
                                     <div class="field">
                                         <label>Email</label>
                                         <div class = "ui small left icon input">
-                                            <input type="email"   ng-model = "emailContacto">
+                                            <input type="email"   ng-model = "emailContacto" ng-class="{'valid': emailContacto != null && emailContacto != ''}">
                                             <i class="mail icon"></i>
                                         </div>
                                     </div>
@@ -279,14 +279,14 @@
                                     <div class="field">
                                         <label>Tel. Casa</label>
                                         <div class = "ui small left icon input">
-                                            <input type="number" ng-model = "telCasaContacto">
+                                            <input type="number" ng-model = "telCasaContacto" ng-class="{'valid': telCasaContacto != null }">
                                             <i class="call icon"></i>
                                         </div>
                                     </div>
                                     <div class="field">
                                         <label>Tel. Celular</label>
                                         <div class = "ui small left icon input">
-                                            <input type="number" ng-model = "telCelularContacto">
+                                            <input type="number" ng-model = "telCelularContacto" ng-class="{'valid': telCelularContacto != null}">
                                             <i class="tablet icon"></i>
                                         </div>
                                     </div>
@@ -297,7 +297,7 @@
                                     <div class="field">
                                         <label>Tel. Oficina</label>
                                         <div class = "ui small left icon input">
-                                            <input type="number" ng-model = "telOficinaContacto">
+                                            <input type="number" ng-model = "telOficinaContacto" ng-class="{'valid': telOficinaContacto != null}">
                                             <i class="call square icon"></i>
                                         </div>
 
@@ -305,7 +305,7 @@
                                     <div class="field">
                                         <label>Tel. Fax</label>
                                         <div class = "ui small left icon input">
-                                            <input type="number" ng-model = "telFaxContacto" >
+                                            <input type="number" ng-model = "telFaxContacto" ng-class="{'valid': telFaxContacto != null}" >
                                             <i class="fax icon"></i>
                                         </div>
                                     </div>
@@ -317,16 +317,14 @@
                                 <div class="field">
                                     <label>Dirección</label>
                                     <div class = "ui small left icon input">
-                                        <input type="text" ng-model = "direccionContacto">
+                                        <input type="text" ng-model = "direccionContacto" ng-class="{'valid': direccionContacto != null && direccionContacto != ''}">
                                         <i class="home icon"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <div class="row" >
                             <div class="column">
-
                                 <div class="field ">
                                     <div class="ui fluid accordion Caratula Comentario">
                                         <div class=" title">
@@ -336,7 +334,7 @@
                                             </div>
                                         </div>
                                         <div class=" content">
-                                            <textarea  ng-model="comentarioCaratula">
+                                            <textarea  ng-model="comentarioCaratula" ng-class="{'valid': comentarioCaratula != null  && comentarioCaratula != ''}">
                                             </textarea>
                                         </div>
                                     </div>
@@ -344,18 +342,20 @@
                             </div>
                         </div>
                         <div class="row" >
-
-                        </div>
-
-
-                    </div>
-                    <div class="actions BTN_Finalizar" id="ID_ButtonFinalizacionCaratula">
-                        <div class=" ui left attached  button teal" ng-click ="crearCaratulaFormularioCompleto()" >
-                            {{textoBotonFinalizar}}
+                            <div class="column"> 
+                                <div class="actions BTN_Finalizar">
+                                    <div class=" ui icon button accion" ng-click ="crearCaratulaFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
+                                        <i class="icon large save"></i>
+                                    </div>
+                                    <div class=" ui icon button accion" ng-click ="imprimirElemento()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
+                                        <i class="icon large print"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

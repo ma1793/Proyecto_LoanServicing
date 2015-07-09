@@ -5,12 +5,12 @@
     <div class="menu">
         <div class="ui action small input">
             <input type="number" placeholder="Valor" min="0" max="100"  ng-model = "nuevaApertura">
-            <div class="ui mini icon button accion" ng-click="agregarNuevaApertura()">
-                <i class="add icon"></i>
+            <div class="ui mini icon button" ng-click="agregarNuevaApertura()">
+                 <i class="add icon" style="margin-top: -5px"></i>
             </div>
         </div>
         <div class="item" data-value="{{apertura.id}}"  ng-repeat="apertura in aperturas | orderBy:'name':false " ng-click="selectApertura(apertura,$index)" ng-class="{active: $index === selectedDDApertura}">
-            {{apertura.name}}
+            {{apertura.name}}%
         </div>
     </div>
 </div>

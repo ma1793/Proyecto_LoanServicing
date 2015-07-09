@@ -1,14 +1,23 @@
-univerApp.controller('dialogModalCtrl', function($scope,$rootScope,close,$compile,titulo,mensaje) {
+univerApp.controller('dialogModalCtrl', function($scope,$rootScope,close,$compile,$state,titulo,mensaje,icon) {
     $scope.tituloDialog = titulo;
     $scope.mensajeDialog = mensaje;
+    $scope.iconDialog = icon;
     
     
     $scope.tipoDialogAccion = function(){
       switch($scope.tituloDialog){
           case "Sustituir Elemento":
               $rootScope.selectorAccionDialog(1);
-              break;   
+              break;  
+          case "Imprimir Elemento":
+              $rootScope.imprimirElemento();
+              break;  
+                  
+          case "Elemento Posteado Correctamente":
+              $state.go('root.tareas');
+              break;
       }
+      $scope.close();
     };
     
     

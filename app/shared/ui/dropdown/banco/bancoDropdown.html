@@ -5,8 +5,8 @@
     <div class="menu">
         <div class="ui action small input"  >
             <input type="text" placeholder="Nombre del Banco" ng-model = "nuevoBanco">
-            <div class="ui mini icon button accion" ng-click="agregarNuevoBanco()">
-                <i class="add icon"></i>
+            <div class="ui  mini icon button" ng-click="agregarNuevoBanco()">
+                <i class="add icon" style="margin-top: -5px"></i>
             </div>
         </div>
         <div class="item" data-value="{{banco.id}}"  ng-repeat="banco in bancos | orderBy:'name':false " ng-click="selectBanco(banco,$index)" ng-class="{active: $index === selectedDDBanco}">

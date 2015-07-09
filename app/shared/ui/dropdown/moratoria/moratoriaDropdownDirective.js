@@ -42,45 +42,51 @@ univerApp.directive("dropdown.moratoria", function() {
                 $scope.comprobarDropDowns();
 
             };
-            $scope.agregarNuevoMoratoria = function() {
+            $scope.agregarNuevaMoratoria = function() {
                 if ($.isNumeric($scope.nuevaMoratoria) && ($scope.nuevaMoratoria > 0)) {
                     if (!isInJson(moratoriasJSON, $scope.nuevaMoratoria)) {
-                        $scope.setNuevoElemento();
+                        contadorMoratoria++;
+                        moratoriasJSON.push({
+                            id: contadorMoratoria,
+                            name: $scope.nuevaMoratoria
+                        });
+                        $scope.moratorias = moratoriasJSON;
+                        $rootScope.moratoriaSeleccionada = {id: contadorMoratoria, name: $scope.nuevaMoratoria};
+                        $scope.nuevaMoratoria = "";
+                        $scope.comprobarDropDowns();
                         setTimeout(function() {
-                            $("#ID_DropdownMoratoria").data().moduleDropdown.action.activate(undefined, contadorMoratoria.toString());
+                            $("#ID_DropdownMoratoria").dropdown('set selected',contadorMoratoria.toString());
                         }, 200);
                     }
                 }
             };
             
-             //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
-            $scope.setNuevoElemento = function() {
-                contadorMoratoria++;
-                moratoriasJSON.push({
-                    id: contadorMoratoria,
-                    name: $scope.nuevaMoratoria
-                });
-                $scope.moratorias = moratoriasJSON;
-                $rootScope.moratoriaSeleccionada = {id: contadorMoratoria, name: $scope.nuevaMoratoria};
-                $scope.nuevaMoratoria = "";
-                $scope.comprobarDropDowns();
-            };
+         
             
             //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
-            $rootScope.setValorDropDown = function(pValue) {
+            $rootScope.setValorDropDownMoratoria = function(pValue) {
                 var filtroDropDown = moratoriasJSON.filter(function(moratoriasJSON) {
                     return moratoriasJSON.name === pValue;
                 });
                 if ((filtroDropDown).length !== 0) {
-                    $rootScope.moratoriaSeleccionada = pValue;
+                    $rootScope.moratoriaSeleccionada = {id: filtroDropDown[0].id, name: pValue};
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownMoratoria").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_DropdownMoratoria").dropdown('set selected',contadorMoratoria.toString());
                     }, 200);
                 }
-                else{
-                    $scope.setNuevoElemento();
+                else {
+                    contadorMoratoria++;
+                    moratoriasJSON.push({
+                        id: contadorMoratoria,
+                        name: pValue
+                    });
+                    $scope.moratorias = moratoriasJSON;
+                    $rootScope.moratoriaSeleccionada = {id: contadorMoratoria, name: pValue};
+                    $scope.nuevaMoratoria = "";
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownMoratoria").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                        $("#ID_DropdownMoratoria").dropdown('set selected', filtroDropDown[0].id);
                     }, 200);
                 }
             };

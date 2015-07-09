@@ -66,7 +66,10 @@ angular.module('univerApp.root.tareas', ['ui.router'])
             tareasRest.getTareas(function(data){$scope.listaTareas  =  data;$scope.updateUiComponents();},$scope.currentUser.id,$scope.paginaActual)
             $('#idListaTareas').transition('pulse');
         };
-
-
+       
+                
+         $scope.prueba2 = function(){
+         };           
+           
 
     }]);

@@ -5,8 +5,8 @@
     <div class="menu">
         <div class="ui action small input" >
             <input type="number" placeholder="Valor" min="0" max="100" ng-model = "nuevoPlazo">
-            <div class="ui mini icon button accion" ng-click="agregarNuevoPlazo()">
-                <i class="add icon"></i>
+            <div class="ui mini icon button" ng-click="agregarNuevoPlazo()">
+                <i class="add icon" style="margin-top: -5px"></i>
             </div>
         </div>
         <div class="item" data-value="{{plazo.id}}"  ng-repeat="plazo in plazos | orderBy:'name':false " ng-click="selectPlazo(plazo,$index)" ng-class="{active: $index === selectedDDPlazo}">

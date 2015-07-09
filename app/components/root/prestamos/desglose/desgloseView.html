@@ -1,7 +1,7 @@
 <div class="ui basic  segment"  style="margin-top:0px; margin-bottom: 0px">
     <div class="ui page grid" >
         <div class="column" >
-            <div class="ui form" name="formularioDesglosePrestamo"  novalidate>
+            <form class="ui form" name="formularioDesglosePrestamo"  novalidate>
                 <div class="ui stacked segment">
                     <div class="ui top right  attached label"  ui-sref="root.tareas"  style="padding:6px 12px 6px">
                         <i class="remove icon" style="padding-left: 7px"></i>
@@ -31,7 +31,7 @@
                                 <div class="field ">
 
                                     <div class = "ui small left icon input" >
-                                        <input type="number" ng-model = "montoPrestamo" placeholder="Monto en Dólares" min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" required>
+                                        <input type="number" ng-model = "montoPrestamo" placeholder="Monto en Dólares" min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': montoPrestamo != null}" required>
                                         <i class="dollar icon"></i>
                                         <div class="ui mini  corner label">
                                             <i class="icon red asterisk"></i>
@@ -104,7 +104,7 @@
 
                             </div>
                             <div class="column">
-                                <h4 class="ui center aligned header SubTitulo">Meses de Interés por Adelantado</h4>
+                                <h4 class="ui center aligned header SubTitulo" style="padding-bottom:  4%">Meses de Interés por Adelantado</h4>
 
                                 <div class="two fields">
                                     <div class="field">
@@ -126,7 +126,7 @@
                                 <div class="field ">
                                     <label>Honorarios y Timbres (Cancelación de Hipoteca ó Fideicomiso)</label>
                                     <div class = "ui small left icon input">
-                                        <input type="number" ng-model = "honorariosTimbres" placeholder="Monto en Dólares"  min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" required>
+                                        <input type="number" ng-model = "honorariosTimbres" placeholder="Monto en Dólares"  min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': honorariosTimbres != null}" required>
                                         <i class="dollar icon"></i>
                                         <div class="ui mini corner label">
                                             <i class="icon red asterisk"></i>
@@ -136,7 +136,7 @@
 
 
                                 <div class="ui field accordion Desglose CobrosAdicionalesLegales">
-                                    <div class="title">
+                                    <div class="title" ng-click="addPrimerElementoCobroLegalAdicional()">
                                         <i class="dropdown icon red"></i>
                                         <label>Adicionales</label>
                                     </div>
@@ -147,15 +147,15 @@
                                                     <div class="ten wide column">
                                                         <div class="field  ">
                                                             <div class = "ui small input">
-                                                                <input type="text" placeholder="Descripción" ng-model="input.Descripcion" >
+                                                                <input type="text" placeholder="Descripción" ng-model="input.Descripcion" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': input.Descripcion != ''}" required>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="six wide column">
                                                         <div class="field">
                                                             <div class="ui action small  input" >
-                                                                <input type="number" placeholder="Monto" ng-model="input.Monto" min="0" >
-                                                                <div class="ui red right mini icon button " ng-click="removeInputCobroLegalAdicional($index)">
+                                                                <input type="number" placeholder="Monto" ng-model="input.Monto" min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': input.Monto != null}" required >
+                                                                <div class="ui cancelar right mini icon button " ng-click="removeInputCobroLegalAdicional($index)" >
                                                                     <i class="trash large icon"></i>
                                                                 </div>
                                                             </div>
@@ -183,7 +183,7 @@
                                 <div class="field  ">
                                     <label>Traslado de Abogado</label>
                                     <div class = "ui small left icon input">
-                                        <input type="number" ng-model = "traslado" placeholder="Monto en Dólares"  min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" required>
+                                        <input type="number" ng-model = "traslado" placeholder="Monto en Dólares"  min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': traslado != null}" required>
                                         <i class="dollar icon"></i>
                                         <div class="ui  mini  corner label">
                                             <i class="icon red asterisk"></i>
@@ -191,7 +191,7 @@
                                     </div>
                                 </div>
                                 <div class="ui field accordion Desglose CobrosAdicionales">
-                                    <div class="title">
+                                    <div class="title" ng-click="addPrimerElementoCobroAdicional()">
                                         <i class="dropdown icon red"></i>
                                         <label>Adicionales</label>
                                     </div>
@@ -201,15 +201,15 @@
                                                     <div class="ten wide column">
                                                         <div class="field  ">
                                                             <div class = "ui small input">
-                                                                <input type="text" placeholder="Descripción" ng-model="input.Descripcion"  >
+                                                                <input type="text" placeholder="Descripción" ng-model="input.Descripcion" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': input.Descripcion != ''}"  required>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="six wide column">
                                                         <div class="field">
                                                             <div class="ui action small  input" >
-                                                                <input type="number" placeholder="Monto" ng-model="input.Monto" min="0" >
-                                                                <div class="ui red right mini icon button " ng-click="removeInputCobroAdicional($index)">
+                                                                <input type="number" placeholder="Monto" ng-model="input.Monto" min="0" ng-change="comprobarInput(formularioDesglosePrestamo.$valid)" ng-class="{'valid': input.Monto != null}"  required>
+                                                                <div class="ui cancelar right mini icon button " ng-click="removeInputCobroAdicional($index)">
                                                                     <i class="trash large icon"></i>
                                                                 </div>
                                                             </div>
@@ -218,7 +218,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="ui  labeled  small icon accion button" ng-click="addInputCobroAdicional()" style="margin-top: 15px !important;">
+                                        <div class="ui  labeled  small icon accion button" ng-click="addInputCobroAdicional()" style="margin-top: 15px !important;" >
                                             <i class="add icon"></i>
                                             Nuevo
                                         </div>
@@ -237,7 +237,7 @@
                                             </div>
                                         </div>
                                         <div class=" content">
-                                            <textarea ng-model ="comentarioDesglose">
+                                            <textarea ng-model ="comentarioDesglose" ng-class="{'valid': comentarioDesglose != null}" >
                                             </textarea>
                                         </div>
                                     </div>
@@ -256,7 +256,7 @@
                             <div class="column">   
                                 <div class="field error">
                                     <div class = "ui  input" >
-                                        <input type="text" style="font-size:18px;" readonly >
+                                        <input type="text" value = "{{saldo() | currency}}" style="font-size:18px;" readonly >
                                     </div>
                                 </div>
                             </div>
@@ -264,10 +264,10 @@
                         <div class="row">
                             <div class="column"> 
                                 <div class="actions BTN_Finalizar">
-                                    <div class=" ui icon button accion" ng-click ="crearDesgloseFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario}">
+                                    <div class=" ui icon button accion" ng-click ="crearDesgloseFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
                                         <i class="icon large save"></i>
                                     </div>
-                                    <div class=" ui icon button accion" ng-click ="imprimirDesglose()" ng-if="tipoOperacionTramite === 2" ng-class="{disabled: !cumpleFormulario}">
+                                    <div class=" ui icon button accion" ng-click ="imprimirDesglose()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
                                         <i class="icon large print"></i>
                                     </div>
                                 </div>
@@ -279,7 +279,7 @@
                     
 
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

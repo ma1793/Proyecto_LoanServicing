@@ -37,6 +37,10 @@ univerApp.config(['$stateProvider','$urlRouterProvider','$locationProvider','USE
                     templateUrl: 'app/components/root/tareas/tareasView.html',
                     controller: 'tareasCtrl'
                 })
+                .state("root.clear", {
+                    url: 'clear',
+                    template: '<div></div>'
+                })
                 //Prestamos *******************************************************
 
                 //Desglose

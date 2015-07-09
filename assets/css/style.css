@@ -359,7 +359,7 @@ h3{
 
 /*********** Form *************/
 .ui.modal .small.form.segment{
-    margin-top: -40px;
+    margin-top: -2%;
 }
 
 .ui.modal .small.form.segment{
@@ -438,11 +438,12 @@ h3{
 
 /******** Aceptar ************/
 .ui.button.accion{
-    background-color: #437357;
-    color: #ffffff;
+    background-color: #437357 !important;
+    color: #ffffff !important;
 }
 .ui.button.accion:hover{
-    opacity: 0.90;
+    background-color: #437357 !important;
+    opacity: 0.90 !important;
 }
 /****** Cancelar ***********/
 .ui.button.cancelar{
@@ -455,7 +456,7 @@ h3{
 
 /*****Finalizar Formulario ****/
 .actions.BTN_Finalizar{
-    float:right;padding : 35px 22px 0px;
+    float:right;padding : 25px 0px 0px;
 }
 
 

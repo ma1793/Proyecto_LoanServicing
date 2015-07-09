@@ -10,6 +10,7 @@ angular.module('univerApp.root.prestamos.consulta', ['ui.router'])
                 /*GET*/
                 pagosRest.getEstadoCuenta(function(data) {
                     $rootScope.informeSeleccionado = data;
+                    console.log($rootScope.informeSeleccionado);
                 }, $rootScope.caratulaSeleccionada.idCaratulaPrestamo);
 
 

@@ -11,19 +11,25 @@ angular.module('univerApp.root', ['ui.router'])
                 $rootScope.desgloseSeleccionado = [];
                 $rootScope.caratulaSeleccionada = [];
                 $rootScope.informeSeleccionado = [];
-
+                
+                $rootScope.listaGarantiasCaratula = [];
+                
+                
+                
+                
                 /*Tipo Operacion*/
                 $rootScope.tipoOperacionTramite = 1; //1=Crear, 2 = Ver/Actualizar
 
 
                 //Dialog
-                $rootScope.abrirDialog = function(pTitulo, pMensaje) {
+                $rootScope.abrirDialog = function(pTitulo, pMensaje,pIcono) {
                     ModalService.showModal({
                         templateUrl: "app/components/root/estructuraModal/dialogModal/dialogModalView.html",
                         controller: "dialogModalCtrl",
                         inputs: {
                             titulo: pTitulo,
-                            mensaje: pMensaje}
+                            mensaje: pMensaje,
+                            icon:pIcono}
                     });
                     esperaTiempoFuncion(modalOpen, 300);
                 };

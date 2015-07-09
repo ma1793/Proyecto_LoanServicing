@@ -38,41 +38,49 @@ univerApp.directive("dropdown.meses", function() {
             $scope.agregarNuevoMes = function() {
                 if ($.isNumeric($scope.nuevoMes) && ($scope.nuevoMes > 0)) {
                     if (!isInJson(mesesJSON, $scope.nuevoMes)) {
-                        $scope.setNuevoElemento();
+                        contadorMes++;
+                        mesesJSON.push({
+                            id: contadorMes,
+                            name: $scope.nuevoMes
+                        });
+                        console.log(mesesJSON);
+                        console.log( $scope.nuevoMes);
+                        $scope.meses = mesesJSON;
+                        $rootScope.mesSeleccionado = {id: contadorMes, name: $scope.nuevoMes};
+                        $scope.nuevoMes = "";
+                        $scope.comprobarDropDowns();
                         setTimeout(function() {
-                            $("#ID_DropdownMes").data().moduleDropdown.action.activate(undefined, contadorMes.toString());
+                            $("#ID_DropdownMes").dropdown('set selected', contadorMes.toString());
                         }, 200);
                     }
                 }
             };
-            //Agregar el elemento al json del dropdown y cambia el elemento seleccionado
-            $scope.setNuevoElemento = function() {
-                contadorMes++;
-                mesesJSON.push({
-                    id: contadorMes,
-                    name: $scope.nuevoMes
-                });
-                $scope.meses = mesesJSON;
-                $rootScope.mesSeleccionado = {id: contadorMes, name: $scope.nuevoMes};
-                $scope.nuevoMes = "";
-                $scope.comprobarDropDowns();
-            };
+          
             
             //Verifica si el elemento existe, si lo esta, solo se activa y de no estarlo se agrega y luego se activa
-            $rootScope.setValorDropDown = function(pValue) {
+            $rootScope.setValorDropDownMeses = function(pValue) {
                 var filtroDropDown = mesesJSON.filter(function(mesesJSON) {
                     return mesesJSON.name === pValue;
                 });
                 if ((filtroDropDown).length !== 0) {
-                    $rootScope.mesSeleccionado = pValue;
+                    $rootScope.mesSeleccionado = {id: filtroDropDown[0].id, name: pValue};
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownMes").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_DropdownMes").dropdown('set selected', filtroDropDown[0].id);
                     }, 200);
                 }
                 else{
-                    $scope.setNuevoElemento();
+                    contadorMes++;
+                    mesesJSON.push({
+                        id: contadorMes,
+                        name: pValue
+                    });
+                    $scope.meses = mesesJSON;
+                    $rootScope.mesSeleccionado = {id: contadorMes, name: pValue};
+                    $scope.nuevoMes = "";
+                    $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownMes").data().moduleDropdown.action.activate(undefined, filtroDropDown[0].id);
+                            $("#ID_DropdownMes").dropdown('set selected',contadorMes.toString());
                     }, 200);
                 }
             };

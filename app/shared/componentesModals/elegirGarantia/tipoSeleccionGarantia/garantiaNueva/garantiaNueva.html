@@ -1,16 +1,16 @@
-<div class="ui basic small form segment"  >
+<form class="ui basic small form segment"  name="formularioNuevaGarantia" novalidate >
     <h4 class="ui center aligned  header">
         Información Terreno
     </h4>
     <div class="three fields">
         <div class="field">
-            <input placeholder="Número Plano" type="text" ng-model = "numeroPlanoGarantia">
+            <input placeholder="Número Plano" type="text" ng-model = "numeroPlanoGarantia" ng-change="comprobarInput(formularioNuevaGarantia.$valid)" required>
         </div>
         <div class="field">
-            <input placeholder="Finca" type="text" ng-model = "fincaGarantia">
+            <input placeholder="Finca" type="text" ng-model = "fincaGarantia" ng-change="comprobarInput(formularioNuevaGarantia.$valid)"  required>
         </div>
         <div class="field">
-            <input placeholder="Medida" type="number" ng-model = "medidaGarantia">
+            <input placeholder="Medida" type="number" ng-model = "medidaGarantia" ng-change="comprobarInput(formularioNuevaGarantia.$valid)"  required>
         </div>
 
     </div>
@@ -20,7 +20,7 @@
     </h4>
     <div class="three fields">
         <div class="field">
-            <div class="ui selection dropdown">
+            <div class="ui selection dropdown"  ng-class="{'valid': provinciaSeleccionada != null}">
                 <i class="dropdown icon"></i>
                 <div class="text">Provincia</div>
                 <div class="menu">
@@ -29,10 +29,10 @@
             </div>
         </div>
         <div class="field">
-            <input placeholder="Cantón" type="text" ng-model = "cantonGarantia">
+            <input placeholder="Cantón" type="text" ng-model = "cantonGarantia" ng-change="comprobarInput(formularioNuevaGarantia.$valid)"  required>
         </div>
         <div class="field">
-            <input placeholder="Distrito" type="text" ng-model = "distritoGarantia">
+            <input placeholder="Distrito" type="text" ng-model = "distritoGarantia" ng-change="comprobarInput(formularioNuevaGarantia.$valid)"  required>
         </div>
     </div>
-</div>
+</form>

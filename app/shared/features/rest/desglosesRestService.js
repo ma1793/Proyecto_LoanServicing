@@ -27,7 +27,6 @@ univerApp.factory('desglosesRest', ['$http', function($http){
                 }
                 $http(req)
                     .success(function(data) {
-                        // prepare data here
                         callback(data);
                     });
             },

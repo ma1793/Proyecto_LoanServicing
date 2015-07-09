@@ -2,10 +2,10 @@
             <h4 class="ui center aligned  header">
                 Garantías de: {{nombreCompletoClienteSeleccionado}}
             </h4>
-            <div class="ui  segment listaModal" >
+            <div class="ui  segment listaModal">
                 <span us-spinner="{radius:30, width:8, length: 16}"></span>
                 <div class="ui  small selection divided  list" >
-                    <div class="item" ng-repeat="garantia in listaGarantiasCliente| filter:searchGarantia | orderBy:'-medidas'" ng-click="selectValueGarantias(garantia, $index)" ng-class="{active: $index === selectedGarantiaIndex}" >
+                    <div class="item" ng-repeat="garantia in listaGarantiasCliente| filter:searchGarantia | orderBy:'-medidas'" ng-click="selectValueGarantia(garantia, $index)" ng-class="{active: $index === selectedGarantiaIndex}" >
                         <div class="right floated date">Provincia: {{garantia.provincia.descripcion}}</div>
                         <img class="ui avatar image" src="assets/img/verif.png">
                         <div class="content">
