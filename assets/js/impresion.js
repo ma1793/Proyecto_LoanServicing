@@ -18,7 +18,7 @@ function agregarEspaciosNumeroImprimir(pNumero,pDescripcion,pTipo){
 
 function verificarNull(pValor){
     var retorno = "";
-    if(pValor === null){
+    if(pValor === null || typeof pValor ===  "undefined"){
         return retorno;
     }
     else
@@ -94,7 +94,7 @@ function imprimeDesglose(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,pC
 
             },
             {
-                text: pComentario,
+                text: verificarNull(pComentario),
                 style: 'cuerpo2'
 
             }
@@ -168,7 +168,6 @@ function imprimeDesglose(pClienteNombre,pMonto,pTasaAnual,pTasaAnualMoratoria,pC
             documentoImprimirDesglose.content[1].table.body.splice(14 - existenCobrosLegales + cantidadLegales + contador, 0, [{text: pArrayCobrosAdicionales[contador].Descripcion, margin: [51, 0, 0, 0]}, {text: currencyFormat(pArrayCobrosAdicionales[contador].Monto), colSpan: 2}, {}]);
         }
 
-    alert(documentoImprimirDesglose);    
     pdfMake.createPdf(documentoImprimirDesglose).open();
 }
 

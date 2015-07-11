@@ -3,7 +3,7 @@ univerApp.directive("cliente.juridico.nuevo", function() {
         restrict: "E",
         replace: true,
         templateUrl: "app/shared/componentesModals/elegirCliente/tiposSeleccionCliente/clienteJuridicoNuevo/clienteJuridicoNuevo.html",
-        controller: function($scope,$rootScope){
+        controller: function($scope,$rootScope,clientesRest){
 
 
             //Init condicion de paso en el modal
@@ -13,7 +13,7 @@ univerApp.directive("cliente.juridico.nuevo", function() {
                 $rootScope.cumplePasoModal = pEstadoFormulario;
             };
 
-            $scope.ContruirClienteJuridicoJSON = function() {
+            $rootScope.ContruirClienteJuridicoJSON = function() {
                 var clienteJuridicoJSON = {
                     "@type": "persona",
                     "telOficina": $scope.telOficinaClienteJuridicoCrearDesglose,
@@ -25,8 +25,19 @@ univerApp.directive("cliente.juridico.nuevo", function() {
                         "cedulaJuridica": $scope.cedulaClienteJuridicoCrearDesglose
                     }
                 };
+                
+                
                 console.log(JSON.stringify(clienteJuridicoJSON));
-                $rootScope.clienteSeleccionado = clienteJuridicoJSON;
+                
+                clientesRest.postCrearClienteJuridico(function(data) {
+                    $rootScope.clienteSeleccionado = data;
+                    $rootScope.nombreCompletoClienteSeleccionado = data.nombre;
+                    setTimeout(function(){ $scope.$apply();});
+
+
+                }, clienteJuridicoJSON);
+            
+                
                 
 
             };

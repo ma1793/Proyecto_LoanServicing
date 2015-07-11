@@ -23,7 +23,7 @@ function uiInitDropdown(){
 
 function uiInitInicio(){
     $('.ui.checkbox').checkbox();
-    $('.ui.rating').rating({clearable: true});
+    $('.ui.star.rating').rating();
 }
 function uiInitSegmentoBasico(){
     $('.ui.checkbox').checkbox();

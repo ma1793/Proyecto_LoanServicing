@@ -18,6 +18,8 @@ angular.module('univerApp.root.tareas', ['ui.router'])
             setTimeout(function() {
                 uiInitInicio();
             },100);
+            setTimeout(function(){ $scope.$apply();});
+
         };
 
         tareasRest.getCantidadPaginas(function(data){
@@ -46,6 +48,12 @@ angular.module('univerApp.root.tareas', ['ui.router'])
             tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);
             $scope.paginaActual = 0;
         };
+        $scope.actualizarEstadoEstrella = function(pEstado){
+            if(pEstado)
+                return "yellow";
+            else
+                return "";
+        };
 
 
         $scope.eliminarTarea = function(pIndice) {
@@ -68,8 +76,6 @@ angular.module('univerApp.root.tareas', ['ui.router'])
         };
        
                 
-         $scope.prueba2 = function(){
-         };           
-           
+        
 
     }]);

@@ -3,7 +3,7 @@ univerApp.directive("cliente.fisico.nuevo", function() {
         restrict: "E",
         replace: true,
         templateUrl: "app/shared/componentesModals/elegirCliente/tiposSeleccionCliente/clienteFisicoNuevo/clienteFisicoNuevo.html",
-        controller: function($scope,$rootScope){
+        controller: function($scope,$rootScope,clientesRest){
 
 
             //Init condicion de paso en el modal
@@ -28,7 +28,12 @@ univerApp.directive("cliente.fisico.nuevo", function() {
                 };
 
                 console.log(JSON.stringify(clienteFisicoJSON));
-                $rootScope.clienteSeleccionado = clienteFisicoJSON;
+                clientesRest.postCrearClienteFisico(function(data) {
+                    $rootScope.clienteSeleccionado = data;
+                    $rootScope.nombreCompletoClienteSeleccionado = data.nombre + " "+ data.personafisica.primerApellido +" "+ data.personafisica.segundoApellido;
+                    console.log($rootScope.clienteSeleccionado);
+                    setTimeout(function(){ $scope.$apply();});
+                }, clienteFisicoJSON);
 
             };
 

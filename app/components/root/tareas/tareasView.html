@@ -6,19 +6,19 @@
                     <input type="text" placeholder="Añadir un elemento en 'Bandeja de Entrada'... "  ng-model="nuevaTarea" >
                     <i class="alarm icon"></i>
                 </div>
-                <div class="ui tall stacked  segment" ng-show="listaTareas.length > 0" style="padding-top: 2px; padding-bottom: 6px;">
+                <div class="ui stacked  segment " ng-show="listaTareas.length > 0" style="padding-top: 2px; padding-bottom: 6px;">
                     <span us-spinner="{radius:5, width:2, length: 4}"></span>
     
-                    <div class="ui divided very relaxed animated inbox list active tab" data-tab="unread" id="idListaTareas">
-                        <a class="item" ng-animate="'animate'"  ng-repeat="tarea in listaTareas"  >
+                    <div class="ui divided very relaxed animated list " id="idListaTareas">
+                        <a class="item"  ng-repeat="tarea in listaTareas"  >
                                 <div class="left floated ui">
                                     <div class="ui checkbox" ng-click="eliminarTarea($index)">
                                         <input type="checkbox" id="unique-id">
                                     </div>
                                 </div>
-                            <div class="right floated ui star rating"  ng-click="actualizarTarea($index)">
-                                    <i class="icon" ng-class="{active:tarea.estrella}"></i>
-                            </div>
+                            <span class="right floated star"   ng-click="actualizarTarea($index)">
+                                <i class="star icon {{actualizarEstadoEstrella(tarea.estrella)}}" ></i>
+                            </span>
                             <div class="right floated date">{{tarea.fecha}}</div>
 
                             <div class="description">{{tarea.texto}}</div>
@@ -35,6 +35,11 @@
                         <i class="chevron right icon"></i>
                     </div>
                 </div>
+
+               
+
+
+   
             </form>
            
         </div>

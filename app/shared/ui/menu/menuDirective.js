@@ -24,21 +24,23 @@ univerApp.directive("menu", function() {
 
             };
             $scope.Alquileres = function(){
+
+                esperaTiempoFuncion(sidebarOpen,500);
                 $scope.prestamosSelected = false;
                 $scope.alquileresSelected = true;
-                esperaTiempoFuncion(sidebarOpen,300);
             };
 
             $scope.Prestamos = function(){
+                
+                esperaTiempoFuncion(sidebarOpen,500);
                 $scope.prestamosSelected = true;
                 $scope.alquileresSelected = false;
-                esperaTiempoFuncion(sidebarOpen,300);
             }
 
             $scope.LogOut = function(){
                 Auth.logout();
                 $window.location.reload(true);
-            }
+            };
 
         },
         controllerAs: "menu"

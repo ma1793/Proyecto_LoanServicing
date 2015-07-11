@@ -43,7 +43,7 @@ univerApp.directive("dropdown.honorarios.gastos", function() {
                             name: $scope.nuevoHonorarioGasto 
                         });
                         $scope.honorariosGastos = honorariosGastosJSON;
-                        $rootScope.honorarioGastoSeleccionado = {id: contadorHonorarioGasto, name: $scope.nuevoHonorariosGastos };
+                        $rootScope.honorarioGastoSeleccionado = {id: contadorHonorarioGasto, name: $scope.nuevoHonorarioGasto };
                         $scope.nuevoHonorarioGasto = "";
                         $scope.comprobarDropDowns();
                         setTimeout(function() {

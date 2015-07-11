@@ -58,7 +58,7 @@
                                                 <i class="dropdown icon"></i>
                                             </div>
                                         </div>
-                                        <div class=" content">
+                                        <div class=" content" style="padding: 0px">
                                             <div class="ui segment scrollTabla">
                                                 <table class="ui small compact table Morosidad" >
                                                     <thead>
@@ -95,7 +95,50 @@
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="row" >
+                            <div class="column" >
+                                 <div class="ui fluid styled accordion tabla ultimoPago">
+                                        <div class=" title">
+                                            <div class="ui center aligned red header SubTitulo Acordeon" style="padding-left: 20px" >
+                                                Último Pago
+                                                <i class="dropdown icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class=" content" style="padding: 0px">
+
+                                <table  class="ui small compact table Informe" >
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Banco</th>
+                                            <th>Fecha de Pago</th>
+                                            <th>Monto</th>
+                                            <th>Faltante</th>
+                                            <th>Sobrante</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr class="error" >
+                                            <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.detalle}}</td>
+                                            <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.banco}}</td>
+                                            <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.fechaPago}}</td>
+                                            <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.montoPago|currency}}</td>
+                                            <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.faltante|currency}}</td>
+                                            <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.sobrante|currency}}</td>
+                                            <td><button class="ui  cancelar icon button">
+                                                    <i class="remove icon"></i>
+                                                </button>
+                                            </td>    
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                                 </div>
+                            </div>
+                        </div>
+                         <div class="row" >
                             <div class="column" style="padding-left: 24%;padding-right: 24%;">
                                 <table class="ui table">
                                     <thead>
@@ -106,7 +149,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr class="error" >
                                         <td>{{informeSeleccionado.faltanteActual | currency}}</td>
                                         <td>{{informeSeleccionado.sobranteActual | currency}}</td>
                                         <td>{{informeSeleccionado.fechaProxPago}}</td>

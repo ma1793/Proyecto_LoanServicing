@@ -114,6 +114,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         switch($scope.steps[$scope.steps.length-1][3]){
             //Prestamos
             case "<elegir.crear.cliente/>":
+                $rootScope.finalizarModalCrearCliente();
                 $rootScope.tipoOperacionTramite = 1;
                 $state.go('root.clear');
                 setTimeout(function(){$state.go('root.prestamosDesglose');},200);   
@@ -173,7 +174,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
 
             //Alquileres
             case "<elegir.crear.cliente/>":
-                $rootScope.finalizarModalAlquileresCrearContrato();
+                //$rootScope.finalizarModalAlquileresCrearContrato();
                 $state.go('root.alquileresContrato');
                 break;
             case "<elegir.contrato/>":

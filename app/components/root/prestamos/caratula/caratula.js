@@ -15,6 +15,8 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 // Verificacion Formulario
                 $scope.comprobarInput = function(pEstadoFormulario) {
                     $scope.cumpleInputs = pEstadoFormulario;
+                    console.log("input");
+                    console.log(pEstadoFormulario);
                     $scope.comprobarCumpleFormulario();
                 };
 
@@ -22,6 +24,8 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     if ($scope.acreedorSeleccionado != null && $rootScope.plazoSeleccionado != null ) {
                         $scope.cumpleDropdowns = true;
                     }
+                    console.log("input");
+                    console.log($scope.cumpleDropdowns);
                     $scope.comprobarCumpleFormulario();
                 };
 
@@ -270,11 +274,9 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                         $('.ui.accordion.Caratula.Garantias').accordion('open', 0);
                     }
                     
-                    setTimeout(function(){ $scope.$apply();});
                     setTimeout(function() {
                         $rootScope.setValorDropDownPlazo($rootScope.caratulaSeleccionada.plazo);
-                    }, 500);  
-                    setTimeout(function () {$scope.comprobarInput($scope.formularioCaratulaPrestamo.$valid);},300);
+                    }, 300);  
 
                 };
 
@@ -296,9 +298,10 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 };
 
                 angular.element(document).ready(function() {
-                    
                     $scope.initFormularioCaratula();
                     setTimeout(function() {$scope.$apply();});
+                    setTimeout(function () {$scope.comprobarInput($scope.formularioCaratulaPrestamo.$valid);},1000);
+
                 });
 
 

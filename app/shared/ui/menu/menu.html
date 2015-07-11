@@ -5,11 +5,15 @@
     </a>
     <div class="ui  inverted labeled icon menu " > 
         <a class="item" ng-class="{active: prestamosSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="Prestamos()">
-            <i class="payment  icon"></i>
+            <div class="ui icon">
+                <svg-image  src="assets/img/Prestamos_icon.svg" class="menu_Icon Prestamos"></svg-image>
+            </div>
             PRÉSTAMOS
         </a>
         <a class="item" ng-class="{active: alquileresSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="Alquileres()">
-            <i class="huge building icon"></i>
+            <div class="ui icon">
+                <svg-image  src="assets/img/Alquileres_icon.svg" class="menu_Icon Alquileres"></svg-image>
+            </div>
             ALQUILERES
         </a>
     </div>

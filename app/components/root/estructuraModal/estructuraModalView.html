@@ -1,4 +1,4 @@
-<div class="ui modal fullscreen">
+<div class="ui modal">
     <div class="ui left floated header">
         <div class="content">
             <i class="chevron left icon back" ng-class="{disabled: !hasPreviousStep()}" ng-click="decrementStep()"></i>
@@ -17,13 +17,13 @@
             <i class="remove icon" style="padding-left: 10px"></i>
         </div>
     
-    <div class="ui contenedor large"></div>
+    <div class="ui contenedor"></div>
     <div class="content" id="ID_ModalComponent" style="min-height: 355px">
     </div>
     <div class="acciones">
         <div class="ui grid">
             <div class="fifteen wide column">
-                <div class="ui small  steps fluid" >
+                <div class="ui small ordered steps  fluid" >
                     <div ng-repeat ="step in steps" class="{{step[2]}} step" >
                         <div class="content">
                             <div class="title">   {{step[0]}}</div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="one wide column" id="ID_Btn_actions" >
+            <div class="one wide column" id="ID_Btn_actions"  style="padding-left: 0px">
                 
                 
                 <div class="ui icon  button accion"   ng-if="hasNextStep()"  ng-click="incrementStep()" ng-class="{disabled: !cumplePasoModal}">

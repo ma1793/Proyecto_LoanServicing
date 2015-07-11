@@ -20,7 +20,7 @@ univerApp.directive("dropdown.banco", function() {
                 name: "BCR"
             }, {
                 id: 2,
-                name: "BNCR"
+                name: "BN"
             }, {
                 id: 3,
                 name: "BAC"
