@@ -14,6 +14,21 @@ univerApp.factory('pagosRest', ['$http', function($http){
                         callback(data);
                     });
             },
+            postPagoEliminar: function(callback,pPagoJSON){
+                var req = {
+                    method: 'POST',
+                    url: rootURL + "/pagos/eliminarPago",
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                    data: JSON.stringify(pPagoJSON)
+                }
+                $http(req)
+                    .success(function(data) {
+                        // prepare data here
+                        callback(data);
+                    });
+            },
 
             postPagoMorosidad: function(callback,pPagoJSON){
                 var req = {

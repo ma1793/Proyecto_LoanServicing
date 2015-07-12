@@ -54,5 +54,23 @@
     <a class="item" ng-click="abrirModalConsulta()">
         <i class="search  icon"></i> Consulta Préstamo
     </a>
+    
+    <div class="item" ng-if="currentUser.userRole == userRoles.admin">
+        <i class="settings icon"></i>
+        <a class="title">
+            <i class="dropdown icon"></i>
+            Operaciones
+        </a>
+        <div class="content">
+            <div class="menu">
+                <a class="item" ng-click = "abrirModalOperacionesAcreedor()">Acreedores</a>
+                <a class="item" ng-click = "" >Clientes</a>
+                <a class="item" ng-click = "" >Garantías</a>
+
+            </div>
+        </div>
+    </div>
+    
+    
 </div>
 

@@ -17,8 +17,8 @@ angular.module('univerApp.root.tareas', ['ui.router'])
         $scope.updateUiComponents= function(){
             setTimeout(function() {
                 uiInitInicio();
-            },100);
-            setTimeout(function(){ $scope.$apply();});
+            },200);
+            setTimeout(function(){ $scope.$apply();},100);
 
         };
 
@@ -28,7 +28,9 @@ angular.module('univerApp.root.tareas', ['ui.router'])
 
         tareasRest.getTareas(function(data){
             $scope.listaTareas  =  data;
+            
             $scope.updateUiComponents();
+            
         },$scope.currentUser.id,$scope.paginaActual);
 
         $scope.agregarNuevaTarea= function(){

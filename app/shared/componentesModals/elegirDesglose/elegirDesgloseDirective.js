@@ -24,13 +24,16 @@ univerApp.directive("elegir.desglose", function() {
                 $scope.selectedDesgloseIndex = pIndice;
                 $rootScope.cumplePasoModal = true;
             };
+            
 
-
-            $rootScope.eliminarDesglose = function() {
+            $rootScope.eliminarElemento= function() {
                 desglosesRest.getVerificarEliminarDesglose(function(data) {
                     if (data) {
                         desglosesRest.eliminarDesglose(function(data) {
-                          alert("El Desglose Seleccionado Ha Sido Eliminado");
+                            desglosesRest.getDesgloses(function(data) {
+                                $scope.desglosesCliente = data;
+                            }, $rootScope.clienteSeleccionado.idPersona);
+                            alert("El Desglose Seleccionado Ha Sido Eliminado");
                         }, $rootScope.desgloseSeleccionado.idDesgloceGasto);
                     }
                     else

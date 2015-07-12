@@ -3,6 +3,7 @@
     <div class="ui page grid" >
         <div class="column" >
             <div class="ui form">
+                
                 <div class="ui  stacked segment">
                     <div class="ui top right  attached label"  ui-sref="root.tareas"  style="padding:6px 12px 6px">
                         <i class="remove icon" style="padding-left: 7px"></i>
@@ -21,6 +22,7 @@
                         <div class="row">
                             <div class="column">
                                 <div class="ui segment scrollTabla ">
+
                                     <table  class="ui small compact table Informe" >
                                         <thead>
                                             <tr>
@@ -60,6 +62,7 @@
                                         </div>
                                         <div class=" content" style="padding: 0px">
                                             <div class="ui segment scrollTabla">
+
                                                 <table class="ui small compact table Morosidad" >
                                                     <thead>
                                                     <tr>
@@ -108,6 +111,7 @@
                                         <div class=" content" style="padding: 0px">
 
                                 <table  class="ui small compact table Informe" >
+
                                     <thead>
                                         <tr>
                                             <th>Detalle</th>
@@ -127,7 +131,8 @@
                                             <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.montoPago|currency}}</td>
                                             <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.faltante|currency}}</td>
                                             <td>{{informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago.sobrante|currency}}</td>
-                                            <td><button class="ui  cancelar icon button">
+                                            <td>
+                                                <button class="ui cancelar icon {{loadingState(spinnerActive)}} button" ng-disabled="spinnerActive || informeSeleccionado.pagosprestamos.length === 1" ng-click="eliminarUltimoPago(informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].pago,informeSeleccionado.pagosprestamos[informeSeleccionado.pagosprestamos.length-1].id)">    
                                                     <i class="remove icon"></i>
                                                 </button>
                                             </td>    
@@ -137,7 +142,7 @@
                             </div>
                                  </div>
                             </div>
-                        </div>
+                        </div> 
                          <div class="row" >
                             <div class="column" style="padding-left: 24%;padding-right: 24%;">
                                 <table class="ui table">
@@ -167,18 +172,14 @@
                     <div class="row" >
                         <div class="column"> 
                             <div class="actions BTN_Finalizar">
-                                <div class=" ui icon button accion" ng-click ="" >
+                                <div class=" ui icon button accion" ng-click ="imprimirCaratula()" >
                                     <i class="icon large print"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    
                 </div>
+                    <span us-spinner="{radius:0, width:0, length: 0}"></span>
             </div>
         </div>
     </div>

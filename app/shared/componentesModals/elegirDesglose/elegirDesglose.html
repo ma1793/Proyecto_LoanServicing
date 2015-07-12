@@ -7,6 +7,7 @@
         <div class="ui  small selection divided  list" >
             <div class="item" ng-repeat="desglose in desglosesCliente | filter:searchDesglose |orderBy: '-saldo'"  ng-click="seleccionDesglose(desglose,$index)" ng-class="{active: $index === selectedDesgloseIndex}">
                 <div class="right floated date">Fecha: {{desglose.fecha}}</div>
+              
                 <img class="ui avatar image" src="assets/img/verif.png">
                 <div class="content">
                     <a class="header">Monto: {{desglose.monto  | currency}}</a>

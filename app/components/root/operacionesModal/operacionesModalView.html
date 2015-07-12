@@ -1,0 +1,36 @@
+<div class="ui modal large">
+    <div class="ui left floated header">
+        <div class="content">
+            {{tituloModal}}
+        </div>
+    </div>
+    <div class="ui right floated header">
+
+        <div class="content" ng-show="getCurrentStepIndex() > 0" style="margin-top: 15px">
+            <!-- <div class="sub header" ng-show="getCurrentStateText() == '<elegir.desglose/>'"><h5>Saldo Desglose: {{"100000"| currency}}</h5></div>-->
+        </div>
+    </div>
+    <div class="ui top right  attached label"  ng-click="close()"  style="padding:6px 8px 6px;">
+        <i class="remove icon" style="padding-left: 10px"></i>
+    </div>
+
+    <div class="ui contenedor large"></div>
+    <div class="content" id="ID_ModalComponent" style="min-height: 355px">
+        
+
+    </div>
+    <div class="acciones">
+        <div class="ui grid">
+            <div class="fifteen wide column">
+               
+            </div>
+            <div class="one wide column" id="ID_Btn_actions"  style="padding-left: 0px">
+
+                <div class="ui icon button accion"    ng-click="" ng-class="{disabled: !cumpleModal}" >
+                    <i class="checkmark   icon"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

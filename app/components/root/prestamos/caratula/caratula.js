@@ -15,8 +15,7 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 // Verificacion Formulario
                 $scope.comprobarInput = function(pEstadoFormulario) {
                     $scope.cumpleInputs = pEstadoFormulario;
-                    console.log("input");
-                    console.log(pEstadoFormulario);
+                    c
                     $scope.comprobarCumpleFormulario();
                 };
 
@@ -24,8 +23,7 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     if ($scope.acreedorSeleccionado != null && $rootScope.plazoSeleccionado != null ) {
                         $scope.cumpleDropdowns = true;
                     }
-                    console.log("input");
-                    console.log($scope.cumpleDropdowns);
+                   
                     $scope.comprobarCumpleFormulario();
                 };
 

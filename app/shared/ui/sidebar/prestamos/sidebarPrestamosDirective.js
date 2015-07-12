@@ -97,10 +97,6 @@ univerApp.directive("sidebar.prestamos", function() {
             };
             
             
-           
-            
-
-
 
             //Pagos*/
             $scope.abrirModalPagosRegulares = function () {
@@ -141,6 +137,25 @@ univerApp.directive("sidebar.prestamos", function() {
             
             
             
+            
+            
+            /*CRUD ELEMENTOS*/
+            
+            /*Acreedor*/
+            $scope.abrirModalOperacionesAcreedor = function () {
+                ModalService.showModal({
+                    templateUrl: "app/components/root/operacionesModal/operacionesModalView.html",
+                    controller: "operacionesModalCtrl",
+                    inputs: {
+                        directive: "<operacion.acreedor/>",
+                        titulo: "Manejo de Acreedores"
+                    }
+                });
+                esperaTiempoFuncion(modalOpen,300);
+            };
+            
+            
+
 
         },
         controllerAs: "sidebar"

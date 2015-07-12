@@ -6,6 +6,9 @@ univerApp.controller('dialogModalCtrl', function($scope,$rootScope,close,$compil
     
     $scope.tipoDialogAccion = function(){
       switch($scope.tituloDialog){
+          case "Eliminar Elemento":
+              $rootScope.eliminarElemento();
+              break;  
           case "Sustituir Elemento":
               $rootScope.selectorAccionDialog(1);
               break;  

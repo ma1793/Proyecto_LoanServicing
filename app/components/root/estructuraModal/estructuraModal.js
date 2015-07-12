@@ -1,6 +1,6 @@
 
 
-univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$compile,steps,titulo,$state) {
+univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$compile,steps,titulo,$state,ModalService) {
 
     //Se utiliza para verificar si cumple el paso actual seleccionado para asi verificar si puede pasar al siguiente
     $rootScope.cumplePasoModal = false;
@@ -132,7 +132,8 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                          setTimeout(function(){$state.go('root.prestamosDesglose');},200);                            
                          break;
                     case 'Elimar Deslose de Préstamo':
-                        $rootScope.eliminarDesglose();
+                        $rootScope.abrirDialog("Eliminar Elemento","¿Desea Eliminar el Elemento Seleccionado?","remove");
+                        cerrarModal = true;
                         break;
                 }
                 break;
@@ -144,8 +145,9 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                          setTimeout(function(){$state.go('root.prestamosCaratula');},200); 
                          break;
                     case 'Consulta Préstamos':
+                        $rootScope.tipoConsultaSeleccionada = 1;
                         $state.go('root.clear');
-                         setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
+                        setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                         break;
                 }  
                 break;
@@ -155,6 +157,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                 $scope.close();
                 break;
             case "<elegir.pago.prestamo/>":
+                $rootScope.tipoConsultaSeleccionada = 2;
                 if ($rootScope.caratulaSeleccionada.estadoMorosidad){
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
                     $state.go('root.clear');
@@ -166,6 +169,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                 }
                 break;
             case "<elegir.pago.morosidad/>":
+                    $rootScope.tipoConsultaSeleccionada = 2;
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
                     $state.go('root.clear');
                     setTimeout(function(){$state.go('root.prestamosConsulta');},200); 

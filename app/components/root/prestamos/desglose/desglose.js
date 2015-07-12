@@ -249,7 +249,6 @@ angular.module('univerApp.root.prestamos.desglose', ['ui.router'])
 
                 $rootScope.imprimirDesglose = function() {
                     imprimeDesglose($rootScope.nombreCompletoClienteSeleccionado, currencyFormat($scope.montoPrestamo), $rootScope.tasaAnualSeleccionada.name, $rootScope.moratoriaSeleccionada.name, $rootScope.comisionSeleccionada.name, currencyFormat($scope.comision()), $rootScope.honorarioGastoSeleccionado.name, currencyFormat($scope.honorarioGasto()), currencyFormat($scope.honorariosTimbres), $rootScope.aperturaSeleccionada.name, currencyFormat($scope.apertura()), $rootScope.mesSeleccionado.name, currencyFormat($scope.mesInteres()), currencyFormat($scope.traslado), currencyFormat(parseFloat($scope.saldoTotal)), $scope.cobrosAdicionales, $scope.cobrosLegalesAdicionales, $scope.comentarioDesglose);
-                    console.log("casa");    
                 };
 
 
