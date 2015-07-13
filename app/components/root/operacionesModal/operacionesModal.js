@@ -20,7 +20,10 @@ univerApp.controller('operacionesModalCtrl', function($scope,$rootScope,close,$c
     
      setTimeout(function(){ $scope.setComponenteModal(); },50);
 
-
+     
+     $scope.finalizarModal = function(){
+        $rootScope.operacionModal();  
+     };
 
 
 

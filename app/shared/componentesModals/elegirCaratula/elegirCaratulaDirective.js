@@ -25,6 +25,17 @@ univerApp.directive("elegir.caratula", function() {
                 $scope.selectedCaratulaIndex   = pIndice;
                 $rootScope.cumplePasoModal =  true;
             };
+            
+            $rootScope.eliminarElemento = function() {
+                caratulasRest.eliminarCaratula(function(data) {
+                    $rootScope.cumplePasoModal =  false;
+                    caratulasRest.getCaratulas(function(data) {
+                        $scope.caratulasDesglose = data;
+                    }, $rootScope.desgloseSeleccionado.idDesgloceGasto);
+                    alert("La Carátula Seleccionada Ha Sido Eliminado");
+                }, $rootScope.caratulaSeleccionada.idCaratulaPrestamo);
+
+            };
         }
     };
 });

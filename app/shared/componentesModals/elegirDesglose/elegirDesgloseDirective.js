@@ -30,6 +30,7 @@ univerApp.directive("elegir.desglose", function() {
                 desglosesRest.getVerificarEliminarDesglose(function(data) {
                     if (data) {
                         desglosesRest.eliminarDesglose(function(data) {
+                            $rootScope.cumplePasoModal =  false;
                             desglosesRest.getDesgloses(function(data) {
                                 $scope.desglosesCliente = data;
                             }, $rootScope.clienteSeleccionado.idPersona);

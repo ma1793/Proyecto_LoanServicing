@@ -1,5 +1,5 @@
 // The root URL for the RESTful services
-var rootURL = "http://190.171.60.53:8080/LoanServicing/webresources";
+var rootURL = "http://190.171.60.53:8080/webresources";
 //var rootURL = "http://186.176.108.114:8080/LoanServicing/webresources";
 //var rootURL = "http://localhost:8080/LoanServicing/webresources";
 var rootFileDirectory = "C:\\\\Users\\\\Oscar Montes\\\\Files\\\\";

@@ -38,7 +38,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>']],
-                        titulo: "Elimar Deslose de Préstamo"
+                        titulo: "Eliminar Deslose de Préstamo"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);

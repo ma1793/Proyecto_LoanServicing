@@ -111,6 +111,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
 
     $scope.finalizarModal = function(){
         var cerrarModal = false;
+        console.log($scope.steps[$scope.steps.length-1][3]);
         switch($scope.steps[$scope.steps.length-1][3]){
             //Prestamos
             case "<elegir.crear.cliente/>":
@@ -131,7 +132,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                          $state.go('root.clear');
                          setTimeout(function(){$state.go('root.prestamosDesglose');},200);                            
                          break;
-                    case 'Elimar Deslose de Préstamo':
+                    case 'Eliminar Deslose de Préstamo':
                         $rootScope.abrirDialog("Eliminar Elemento","¿Desea Eliminar el Elemento Seleccionado?","remove");
                         cerrarModal = true;
                         break;
@@ -148,6 +149,10 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                         $rootScope.tipoConsultaSeleccionada = 1;
                         $state.go('root.clear');
                         setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
+                        break;
+                    case 'Eliminar Carátula de Préstamo':
+                        $rootScope.abrirDialog("Eliminar Elemento","¿Desea Eliminar el Elemento Seleccionado?","remove");
+                        cerrarModal = true;
                         break;
                 }  
                 break;

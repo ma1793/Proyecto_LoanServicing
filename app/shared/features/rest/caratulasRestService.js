@@ -15,6 +15,18 @@ univerApp.factory('caratulasRest', ['$http', function($http){
                         callback(data);
                     });
             },
+             eliminarCaratula:function(callback,pIdCaratula){
+                var req = {
+                    method: 'DELETE',
+                    url: rootURL  + "/caratula/delete/"+pIdCaratula,
+                    headers: {
+                        'Content-Type': 'json'
+                    }}
+                $http(req)
+                    .success(function(data) {
+                        callback(data);
+                    });
+            },
             
             getAcreedores: function(callback){
                 var req = {

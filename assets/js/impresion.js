@@ -706,8 +706,6 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
     
      var contador;
 
-     console.log(JSON.stringify(pPagos));
-     console.log(JSON.stringify(pMoratoria));
     var detalle = "";
     var banco = "";
     var fechaPago = "";
@@ -734,6 +732,7 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
     var faltante = "";
     var sobrante = "";
     var pagoCliente = "";
+    
     for (contador = 0; contador < pMoratoria.length; contador++) {
         detalle += pMoratoria[contador].interes.detalle + "\n";
         banco += pMoratoria[contador].interes.banco+"\n";
@@ -745,16 +744,14 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
         sobrante += currencyFormat(pMoratoria[contador].interes.sobrante) + "\n";
         pagoCliente += currencyFormat(pMoratoria[contador].interes.pagoCliente) + "\n";
     }
-    var listaMoratoria = [detalle,banco,fechaPago,cantidadDias,interesMora,montoenmora,faltante,sobrante,pagoCliente];
+    var listaMoratoria = [detalle,banco,fechaCobro,cantidadDias,interesMora,montoenmora,faltante,sobrante,pagoCliente];
     
     
    
     documentoImprimirConsulta.content[3].table.body.push(listaPagos);
     documentoImprimirConsulta.content[5].table.body.push(listaMoratoria);
    
-   console.log(pCliente);
     documentoImprimirConsulta.content[6].table.body.push([currencyFormat(pFaltante),currencyFormat(pSobrante),getFechaFormatoVista(pProximoPago)]);
-    console.log(JSON.stringify(documentoImprimirConsulta));
 
 
     pdfMake.createPdf(documentoImprimirConsulta).open();
