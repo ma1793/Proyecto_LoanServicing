@@ -91,11 +91,11 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                         "@type": "caratulaprestamo",
                         "contacto": {
                             "persona": {
-                                "telOficina": parseInt($scope.telOficinaContacto),
+                                "telOficina": $scope.telOficinaContacto,
                                 "nombre": $scope.nombreContacto,
-                                "telCelular": parseInt($scope.telCelularContacto),
-                                "telFax": parseInt($scope.telFaxContacto),
-                                "telCasa": parseInt($scope.telCasaContacto)
+                                "telCelular":$scope.telCelularContacto,
+                                "telFax": $scope.telFaxContacto,
+                                "telCasa": $scope.telCasaContacto
                             },
                             "primerApellido": $scope.primerApellidoContacto,
                             "segundoApellido": $scope.segundoApellidoContacto,
@@ -151,7 +151,7 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                                     });
                         }
                     }
-                    if ($rootScope.tipoOperacionTramite == 2) {
+                    if ($rootScope.tipoOperacionTramite === 2) {
                         caratulaJSON.NewFile = 'idCaratulaPrestamo';
                         console.log($rootScope.caratulaSeleccionada.contacto.idContacto);
                         caratulaJSON.idCaratulaPrestamo = $rootScope.caratulaSeleccionada.idCaratulaPrestamo;
@@ -194,12 +194,9 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     var idCaratula;
                     
                     caratulasRest.postCrearCaratula(function(data) {
-                        console.log("id caratula");
                         idCaratula = data.idCaratulaPrestamo;
-                        console.log(idCaratula);
                         if ($rootScope.tipoOperacionTramite == 1) {
                             $scope.construirPrimerPagoJSON(idCaratula);
-                            
                         }
                         else {
                             $rootScope.abrirDialog("Imprimir Elemento","¿Desea Imprimir el Formulario?","print");
