@@ -230,7 +230,7 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     $scope.telFaxContacto = $rootScope.caratulaSeleccionada.contacto.persona.telFax;
 
                     
-                    $scope.fechaConstitucion = new Date($rootScope.caratulaSeleccionada.fechaConstitucion.substring(0,10));
+                    $scope.fechaConstitucion = new Date($rootScope.caratulaSeleccionada.fechaConstitucion);
                     $scope.fechaVencimiento = new Date($rootScope.caratulaSeleccionada.fechaVencimiento);
 
                     caratulasRest.getAcreedores(function(data) {
