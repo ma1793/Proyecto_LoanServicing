@@ -293,12 +293,15 @@ angular.module('univerApp.root.prestamos.desglose', ['ui.router'])
                         $rootScope.setValorDropDownHonorariosGastos($rootScope.desgloseSeleccionado.honorarios);
                         $rootScope.setValorDropDownMeses($rootScope.desgloseSeleccionado.cantidadMeses);
                     }, 1000);  
-                    setTimeout(function () {$scope.comprobarInput($scope.formularioDesglosePrestamo.$valid);},300);
+                    
                 };
 
                 $scope.initFormularioDesglose = function() {
                     if($rootScope.tipoOperacionTramite === 2){
                         $scope.setValoresDesglose();
+                        $scope.cumpleDropdowns = true;
+                        $scope.cumpleInputs = true;
+                        $scope.cumpleFormulario = true;
                     }  
                 };
                 

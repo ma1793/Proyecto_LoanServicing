@@ -264,7 +264,7 @@
                         <div class="row">
                             <div class="column"> 
                                 <div class="actions BTN_Finalizar">
-                                    <div class=" ui icon button accion" ng-click ="crearDesgloseFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
+                                    <div class=" ui icon button {{loadingState(spinnerActive)}}  accion" ng-click ="crearDesgloseFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0 || spinnerActive}">
                                         <i class="icon large save"></i>
                                     </div>
                                     <div class=" ui icon button accion" ng-click ="imprimirDesglose()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
@@ -276,7 +276,8 @@
                         </div>
                     </div>
 
-                    
+
+                    <span us-spinner="{radius:0, width:0, length: 0}"></span>
 
                 </div>
             </form>

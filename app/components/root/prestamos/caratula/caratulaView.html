@@ -344,16 +344,17 @@
                         <div class="row" >
                             <div class="column"> 
                                 <div class="actions BTN_Finalizar">
-                                    <div class=" ui icon button accion" ng-click ="crearCaratulaFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
+                                    <div class=" ui icon button {{loadingState(spinnerActive)}}  accion" ng-click ="crearCaratulaFormularioCompleto()"  ng-class="{disabled: !cumpleFormulario  || spinnerActive  || listaGarantiasCaratula.length === 0}">
                                         <i class="icon large save"></i>
                                     </div>
-                                    <div class=" ui icon button accion" ng-click ="imprimirElemento()"  ng-class="{disabled: !cumpleFormulario || saldoTotal < 0}">
+                                    <div class=" ui icon button accion" ng-click ="imprimirElemento()"  ng-class="{disabled: !cumpleFormulario || listaGarantiasCaratula.length === 0}">
                                         <i class="icon large print"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                      <span us-spinner="{radius:0, width:0, length: 0}"></span>
                 </div>
             </form>
         </div>

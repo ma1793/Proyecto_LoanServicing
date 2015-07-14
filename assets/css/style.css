@@ -103,7 +103,7 @@ body {
 .ui.stacked.segment{
      border: 0px solid rgba(0, 0, 0, 0.15) !important; 
      background-color:rgba(224, 224, 224, 0.9);
-     min-width:900px; /* suppose you want minimun width of 1000px */
+     min-width:950px; /* suppose you want minimun width of 1000px */
 }
 .ui.segment.tarea{
      border: 0px solid rgba(0, 0, 0, 0.15) !important; 

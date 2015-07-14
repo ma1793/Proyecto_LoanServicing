@@ -216,6 +216,11 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 };
 
 
+                $scope.pruebafecha = function(){
+                    alert($scope.fechaConstitucion.toJSON());
+                    
+                };
+
                 $scope.setValoresCaratula = function() {
 
                     $scope.nombreContacto = $rootScope.caratulaSeleccionada.contacto.persona.nombre;
@@ -230,8 +235,16 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     $scope.telFaxContacto = $rootScope.caratulaSeleccionada.contacto.persona.telFax;
 
                     
-                    $scope.fechaConstitucion = new Date($rootScope.caratulaSeleccionada.fechaConstitucion);
-                    $scope.fechaVencimiento = new Date($rootScope.caratulaSeleccionada.fechaVencimiento);
+                    var year = $rootScope.caratulaSeleccionada.fechaConstitucion.substring(0, 4);
+                    var month = $rootScope.caratulaSeleccionada.fechaConstitucion.substring(5, 7);
+                    var day = $rootScope.caratulaSeleccionada.fechaConstitucion.substring(8, 10);
+                    $scope.fechaConstitucion = new Date(year,parseInt(month)-1,day);
+                    
+                    year = $rootScope.caratulaSeleccionada.fechaVencimiento.substring(0, 4);
+                    month = $rootScope.caratulaSeleccionada.fechaVencimiento.substring(5, 7);
+                    day = $rootScope.caratulaSeleccionada.fechaVencimiento.substring(8, 10);
+                    $scope.fechaVencimiento = new Date(year,parseInt(month)-1,day);
+                    
 
                     caratulasRest.getAcreedores(function(data) {
                         $scope.listaAcreedores = data;
@@ -287,7 +300,10 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 $scope.initFormularioCaratula = function() {
                     if ($rootScope.tipoOperacionTramite === 2) {
                         $scope.setValoresCaratula();
-                    }else{
+                        $scope.cumpleDropdowns = true;
+                        $scope.cumpleInputs = true;
+                        $scope.cumpleFormulario = true;
+                    } else {
                         $rootScope.listaGarantiasCaratula = [];
                         $scope.faltanteActualCaratula = 0;
                         $scope.sobranteActualCaratula = 0;
@@ -304,7 +320,8 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 angular.element(document).ready(function() {
                     $scope.initFormularioCaratula();
                     setTimeout(function() {$scope.$apply();});
-                    setTimeout(function () {$scope.comprobarInput($scope.formularioCaratulaPrestamo.$valid);},1000);
+                    
+                    
 
                 });
 
