@@ -153,9 +153,14 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     }
                     if ($rootScope.tipoOperacionTramite == 2) {
                         caratulaJSON.NewFile = 'idCaratulaPrestamo';
+                        console.log($rootScope.caratulaSeleccionada.contacto.idContacto);
                         caratulaJSON.idCaratulaPrestamo = $rootScope.caratulaSeleccionada.idCaratulaPrestamo;
                         caratulaJSON.contacto.idContacto = $rootScope.caratulaSeleccionada.contacto.idContacto; 
+                        caratulaJSON.contacto.persona.idPersona = $rootScope.caratulaSeleccionada.contacto.idContacto; 
+
+                        
                     }
+                    console.log(JSON.stringify(caratulaJSON));
                     return caratulaJSON;
 
                 };
@@ -223,7 +228,9 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     $scope.telCelularContacto = $rootScope.caratulaSeleccionada.contacto.persona.telCelular;
                     $scope.telOficinaContacto = $rootScope.caratulaSeleccionada.contacto.persona.telOficina;
                     $scope.telFaxContacto = $rootScope.caratulaSeleccionada.contacto.persona.telFax;
-                    $scope.fechaConstitucion = new Date($rootScope.caratulaSeleccionada.fechaConstitucion);
+
+                    
+                    $scope.fechaConstitucion = new Date($rootScope.caratulaSeleccionada.fechaConstitucion.substring(0,10));
                     $scope.fechaVencimiento = new Date($rootScope.caratulaSeleccionada.fechaVencimiento);
 
                     caratulasRest.getAcreedores(function(data) {

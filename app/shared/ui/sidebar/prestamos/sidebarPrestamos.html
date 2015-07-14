@@ -14,7 +14,7 @@
         <div class="content">
             <div class="menu">
                 <a class="item " ng-click = "abrirModalCrearDesglose()">Crear Desglose</a>
-                <a class="item " ng-click = "abrirModalVerDesglose()">Ver Desglose</a>
+                <a class="item " ng-click = "abrirModalVerDesglose()" >Ver Desglose</a>
                 <a class="item " ng-click = "abrirModalEliminarDesglose()" ng-if="currentUser.userRole == userRoles.admin">Eliminar Desglose</a>
             </div>
         </div>
@@ -63,9 +63,8 @@
         </a>
         <div class="content">
             <div class="menu">
-                <a class="item" ng-click = "abrirModalOperacionesAcreedor()">Acreedores</a>
-                <a class="item" ng-click = "" >Clientes</a>
-                <a class="item" ng-click = "" >Garantías</a>
+                <a class="item" ng-click = "abrirModalOperacionesAcreedor()" >Acreedores</a>
+                <a class="item" ng-click = "abrirModalOperacionesCliente()" >Clientes</a>
 
             </div>
         </div>
