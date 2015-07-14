@@ -15,7 +15,6 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                 // Verificacion Formulario
                 $scope.comprobarInput = function(pEstadoFormulario) {
                     $scope.cumpleInputs = pEstadoFormulario;
-                    c
                     $scope.comprobarCumpleFormulario();
                 };
 

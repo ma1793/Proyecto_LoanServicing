@@ -41,7 +41,7 @@
                 <div class="ui icon  button accion"   ng-if="!hasNextStep() && isPrintStep()"  ng-click="printStepModal()" ng-class="{disabled: !cumplePasoModal}" >
                     <i class=" print icon"></i>
                 </div>
-                <div class="ui icon {{loadingState(spinnerActive)}}  button accion"   ng-if="!hasNextStep() && !isPrintStep()"  ng-click="finalizarModal()" ng-class="{disabled: !cumplePasoModal || spinnerActive}" >
+                <div class="ui icon {{loadingState(spinnerActive)}}  button accion"   ng-if="!hasNextStep() && !isPrintStep()"  ng-click="finalizarModal()" ng-class="{disabled: !cumplePasoModal}" >
                     <i class="checkmark   icon"></i>
                 </div>
                 

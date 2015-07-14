@@ -15,7 +15,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección/Creación de Cliente','active','<elegir.crear.cliente/>']],
-                        titulo: "Crear Deslose de Préstamo"
+                        titulo: "Crear Desglose de Préstamo"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);
@@ -26,7 +26,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>']],
-                        titulo: "Ver/Actualizar Deslose de Préstamo"
+                        titulo: "Ver/Actualizar Desglose de Préstamo"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);
@@ -38,7 +38,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>']],
-                        titulo: "Eliminar Deslose de Préstamo"
+                        titulo: "Eliminar Desglose de Préstamo"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);

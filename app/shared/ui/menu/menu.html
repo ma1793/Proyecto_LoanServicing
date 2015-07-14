@@ -4,13 +4,13 @@
         <svg-image  src="assets/img/logo.svg" </svg-image>
     </a>
     <div class="ui  inverted labeled icon menu " > 
-        <a class="item" ng-class="{active: prestamosSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="Prestamos()">
+        <a class="item" ng-class="{active: prestamosSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="prestamos()" >
             <div class="ui icon">
                 <svg-image  src="assets/img/Prestamos_icon.svg" class="menu_Icon Prestamos"></svg-image>
             </div>
             PRÉSTAMOS
         </a>
-        <a class="item" ng-class="{active: alquileresSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="Alquileres()">
+        <a class="item" ng-class="{active: alquileresSelected}" style="padding-bottom: 5px;padding-top: 20px"  ng-click="alquileres()">
             <div class="ui icon">
                 <svg-image  src="assets/img/Alquileres_icon.svg" class="menu_Icon Alquileres"></svg-image>
             </div>
@@ -21,7 +21,7 @@
         <div class="ui dropdown item" >
             <i class="large user icon"></i>{{currentUser.username}}<i class="dropdown icon"></i>
             <div class="ui menu">
-                <a class="item" ng-click="LogOut()">Cerrar Sesión</a>
+                <a class="item" ng-click="logOut()">Cerrar Sesión</a>
             </div>
         </div>
     </div>

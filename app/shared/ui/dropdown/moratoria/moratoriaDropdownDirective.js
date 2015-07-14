@@ -72,7 +72,7 @@ univerApp.directive("dropdown.moratoria", function() {
                     $rootScope.moratoriaSeleccionada = {id: filtroDropDown[0].id, name: pValue};
                     $scope.comprobarDropDowns();
                     setTimeout(function() {
-                            $("#ID_DropdownMoratoria").dropdown('set selected',contadorMoratoria.toString());
+                        $("#ID_DropdownMoratoria").dropdown('set selected', filtroDropDown[0].id);
                     }, 200);
                 }
                 else {
@@ -81,12 +81,13 @@ univerApp.directive("dropdown.moratoria", function() {
                         id: contadorMoratoria,
                         name: pValue
                     });
+                    
                     $scope.moratorias = moratoriasJSON;
                     $rootScope.moratoriaSeleccionada = {id: contadorMoratoria, name: pValue};
                     $scope.nuevaMoratoria = "";
                     $scope.comprobarDropDowns();
                     setTimeout(function() {
-                        $("#ID_DropdownMoratoria").dropdown('set selected', filtroDropDown[0].id);
+                        $("#ID_DropdownMoratoria").dropdown('set selected',contadorMoratoria.toString());
                     }, 200);
                 }
             };

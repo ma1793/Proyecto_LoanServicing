@@ -23,21 +23,40 @@ univerApp.directive("menu", function() {
                 setTimeout(function(){ $scope.$apply();},10);
 
             };
-            $scope.Alquileres = function(){
-
-                esperaTiempoFuncion(sidebarOpen,500);
-                $scope.prestamosSelected = false;
-                $scope.alquileresSelected = true;
-            };
-
-            $scope.Prestamos = function(){
-                
-                esperaTiempoFuncion(sidebarOpen,500);
+             $scope.prestamos = function(){
+                if (!$scope.prestamosSelected) {
+                    if ($scope.alquileresSelected) {
+                        esperaTiempoFuncion(sidebarClose, 200);
+                        esperaTiempoFuncion(sidebarOpen, 500);
+                    } else {
+                        esperaTiempoFuncion(sidebarOpen, 500);
+                    }
+                }
                 $scope.prestamosSelected = true;
                 $scope.alquileresSelected = false;
-            }
+            
+                
+            };
+            $scope.alquileres = function(){
+                
+                if (!$scope.alquileresSelected) {
 
-            $scope.LogOut = function(){
+                   if ($scope.prestamosSelected) {
+                        esperaTiempoFuncion(sidebarClose, 200);
+                        esperaTiempoFuncion(sidebarOpen, 500);
+                    } else {
+                        esperaTiempoFuncion(sidebarOpen, 500);
+                    }
+                }
+                 $scope.prestamosSelected = false;
+                 $scope.alquileresSelected = true;
+                
+              
+            };
+
+           
+
+            $scope.logOut = function(){
                 Auth.logout();
                 $window.location.reload(true);
             };

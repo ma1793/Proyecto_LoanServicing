@@ -127,12 +127,12 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                          $state.go('root.clear');
                          setTimeout(function(){$state.go('root.prestamosCaratula');},200);   
                          break;
-                    case 'Ver/Actualizar Deslose de Préstamo':
+                    case 'Ver/Actualizar Desglose de Préstamo':
                          $rootScope.tipoOperacionTramite = 2;
                          $state.go('root.clear');
                          setTimeout(function(){$state.go('root.prestamosDesglose');},200);                            
                          break;
-                    case 'Eliminar Deslose de Préstamo':
+                    case 'Eliminar Desglose de Préstamo':
                         $rootScope.abrirDialog("Eliminar Elemento","¿Desea Eliminar el Elemento Seleccionado?","remove");
                         cerrarModal = true;
                         break;

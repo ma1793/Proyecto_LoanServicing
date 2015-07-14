@@ -39,15 +39,23 @@ angular.module('univerApp.root.tareas', ['ui.router'])
             $scope.nuevaTarea = "";
             $scope.formularioTareas.$setPristine();
 
-            tareasRest.postNuevaTarea(function(data){$scope.listaTareas  =  data;$('#idListaTareas').transition('pulse');$scope.updateUiComponents();},nuevaTareaJSON);
-            tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);
+            tareasRest.postNuevaTarea(function(data){
+                $scope.listaTareas  =  data;
+                tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data; },$scope.currentUser.id);
+                $('#idListaTareas').transition('pulse');
+                $scope.updateUiComponents();
+            },nuevaTareaJSON);
             $scope.paginaActual = 0;
         };
 
         $scope.actualizarTarea= function(pIndice){
             var nuevaTareaJSON = {"@type": "usuario", "idUser":$scope.currentUser.id, "wunders": [ {"idMessage":$scope.listaTareas[pIndice].idMessage,"texto":$scope.listaTareas[pIndice].texto,"fecha":$scope.listaTareas[pIndice].fecha,"estado":false,"estrella":!$scope.listaTareas[pIndice].estrella} ]};
-            tareasRest.postActualizarTarea(function(data){$scope.listaTareas  =  data;console.log(JSON.stringify($scope.listaTareas));$scope.updateUiComponents();},nuevaTareaJSON);
-            tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);
+            tareasRest.postActualizarTarea(function(data){
+                $scope.listaTareas  =  data;
+                tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);
+                $scope.updateUiComponents();
+            },nuevaTareaJSON);
+            
             $scope.paginaActual = 0;
         };
         $scope.actualizarEstadoEstrella = function(pEstado){
@@ -59,8 +67,11 @@ angular.module('univerApp.root.tareas', ['ui.router'])
 
 
         $scope.eliminarTarea = function(pIndice) {
-            tareasRest.deleteTarea(function(data){$scope.listaTareas =  data;$scope.updateUiComponents();},$scope.currentUser.id,$scope.listaTareas[pIndice].idMessage);
-            tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);
+            tareasRest.deleteTarea(function(data){
+                $scope.listaTareas =  data;
+                tareasRest.getCantidadPaginas(function(data){$scope.cantidadPaginas  =  data;},$scope.currentUser.id);
+                $scope.updateUiComponents();
+            },$scope.currentUser.id,$scope.listaTareas[pIndice].idMessage);
             $scope.paginaActual = 0;
         };
 
