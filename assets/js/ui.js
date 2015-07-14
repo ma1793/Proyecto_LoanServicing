@@ -63,10 +63,12 @@ function sidebarOpen() {
     }, 300);
 }
 function sidebarClose() {
-    sidebarActivado = 0;
-    $('.ui.sidebar').sidebar('hide');
-    $('#BTN_ID_MenuSidebar').transition('fade');
-    $('.ui.accordion.menu').accordion('close others');
+    if (sidebarActivado === 1) {
+        sidebarActivado = 0;
+        $('.ui.sidebar').sidebar('hide');
+        $('#BTN_ID_MenuSidebar').transition('fade');
+        $('.ui.accordion.menu').accordion('close others');
+    }
 }
 
 

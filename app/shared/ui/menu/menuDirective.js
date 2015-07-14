@@ -27,31 +27,35 @@ univerApp.directive("menu", function() {
                 if (!$scope.prestamosSelected) {
                     if ($scope.alquileresSelected) {
                         esperaTiempoFuncion(sidebarClose, 200);
+                        $scope.alquileresSelected = false;
+                        $scope.prestamosSelected = true;
+                        setTimeout(function() {$scope.$apply();});
                         esperaTiempoFuncion(sidebarOpen, 500);
                     } else {
+                        $scope.prestamosSelected = true;
+                        $scope.alquileresSelected = false;
                         esperaTiempoFuncion(sidebarOpen, 500);
                     }
                 }
-                $scope.prestamosSelected = true;
-                $scope.alquileresSelected = false;
+                
             
                 
             };
             $scope.alquileres = function(){
                 
                 if (!$scope.alquileresSelected) {
-
-                   if ($scope.prestamosSelected) {
+                    if ($scope.prestamosSelected) {
                         esperaTiempoFuncion(sidebarClose, 200);
+                        $scope.prestamosSelected = false;
+                        $scope.alquileresSelected = true;
+                        setTimeout(function() {$scope.$apply();});
                         esperaTiempoFuncion(sidebarOpen, 500);
                     } else {
+                        $scope.alquileresSelected = true;
+                        $scope.prestamosSelected = false;
                         esperaTiempoFuncion(sidebarOpen, 500);
                     }
-                }
-                 $scope.prestamosSelected = false;
-                 $scope.alquileresSelected = true;
-                
-              
+                } 
             };
 
            
