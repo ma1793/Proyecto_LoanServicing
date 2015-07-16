@@ -53,7 +53,9 @@ univerApp.directive("pago.morosidad", function() {
 
             $scope.numeroCuotas = function(pFechaActual){
                 var mesFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(5,7);
-                return parseInt(pFechaActual.substring(5,7))-parseInt(mesFechaProxPago) + 1;
+                var yearFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(0,4);
+                
+                return   (parseInt(pFechaActual.substring(0,4))-parseInt(yearFechaProxPago))*12+(parseInt(pFechaActual.substring(5,7))-parseInt(mesFechaProxPago)) + 1;
             };
 
 

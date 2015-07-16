@@ -714,7 +714,7 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
     var sobrante = "";
     for (contador = 0; contador < pPagos.length; contador++) {
         detalle += pPagos[contador].pago.detalle + "\n";
-        banco += pPagos[contador].pago.banco+"\n";
+        banco += verificarNull(pPagos[contador].pago.banco)+"\n";
         fechaPago +=getFechaFormatoVista(pPagos[contador].pago.fechaPago) + "\n";
         montoPago += currencyFormat(pPagos[contador].pago.montoPago) + "\n";
         faltante += currencyFormat(pPagos[contador].pago.faltante) + "\n";
@@ -735,7 +735,7 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
     
     for (contador = 0; contador < pMoratoria.length; contador++) {
         detalle += pMoratoria[contador].interes.detalle + "\n";
-        banco += pMoratoria[contador].interes.banco+"\n";
+        banco += verificarNull(pMoratoria[contador].interes.banco)+"\n";
         fechaCobro += getFechaFormatoVista(pMoratoria[contador].interes.fechaCobro) + "\n";
         cantidadDias +=pMoratoria[contador].interes.cantidadDias + "\n";
         interesMora += currencyFormat(pMoratoria[contador].interes.interesMora) + "\n";        

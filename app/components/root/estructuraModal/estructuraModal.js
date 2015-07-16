@@ -20,7 +20,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                 $rootScope.pagoMorosidadActivado = false;
             } 
             //Verificar si se debe hacer un pago normal, o uno con morosidad
-            if($scope.tituloModal === "Pagos Prestamo" && pIndice === 3){
+            if($scope.tituloModal === "Pagos Préstamo" && pIndice === 3){
                if($rootScope.caratulaSeleccionada.estadoMorosidad){
                    $rootScope.pagoMorosidadActivado = true;
                     directive = $compile($scope.steps[pIndice][4])($scope);
@@ -169,8 +169,10 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                     setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                 }else{
                     $rootScope.finalizarModalPrestamosPago();
-                    $state.go('root.clear');
-                    setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
+                    cerrarModal = true;
+                    alert("pago realizado");
+                    //$state.go('root.clear');
+                    //setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                 }
                 break;
             case "<elegir.pago.morosidad/>":

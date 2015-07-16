@@ -88,6 +88,8 @@ angular.module('univerApp.root.tareas', ['ui.router'])
             $('#idListaTareas').transition('pulse');
         };
        
+    
+        
                 
        
     }]);
