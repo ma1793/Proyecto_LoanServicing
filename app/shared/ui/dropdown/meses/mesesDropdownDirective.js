@@ -36,7 +36,7 @@ univerApp.directive("dropdown.meses", function() {
 
             };
             $scope.agregarNuevoMes = function() {
-                if ($.isNumeric($scope.nuevoMes) && ($scope.nuevoMes > 0)) {
+                if ($.isNumeric($scope.nuevoMes) && ($scope.nuevoMes >= 0)) {
                     if (!isInJson(mesesJSON, $scope.nuevoMes)) {
                         contadorMes++;
                         mesesJSON.push({

@@ -43,7 +43,7 @@ univerApp.directive("dropdown.moratoria", function() {
 
             };
             $scope.agregarNuevaMoratoria = function() {
-                if ($.isNumeric($scope.nuevaMoratoria) && ($scope.nuevaMoratoria > 0)) {
+                if ($.isNumeric($scope.nuevaMoratoria) && ($scope.nuevaMoratoria >= 0)) {
                     if (!isInJson(moratoriasJSON, $scope.nuevaMoratoria)) {
                         contadorMoratoria++;
                         moratoriasJSON.push({

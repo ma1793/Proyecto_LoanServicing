@@ -37,7 +37,7 @@ univerApp.directive("dropdown.tasa.anual", function() {
 
             };
             $scope.agregarNuevaTasaAnual = function() {
-                if ($.isNumeric($scope.nuevaTasaAnual) && ($scope.nuevaTasaAnual > 0)) {
+                if ($.isNumeric($scope.nuevaTasaAnual) && ($scope.nuevaTasaAnual >= 0)) {
                     if (!isInJson(tasasAnualesJSON, $scope.nuevaTasaAnual)) {
                         contadorTasaAnual++;
                         tasasAnualesJSON.push({

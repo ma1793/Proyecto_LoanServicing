@@ -37,7 +37,7 @@ univerApp.directive("dropdown.plazos", function() {
 
             };
             $scope.agregarNuevoPlazo = function() {
-                if ($.isNumeric($scope.nuevoPlazo) && ($scope.nuevoPlazo > 0)) {
+                if ($.isNumeric($scope.nuevoPlazo) && ($scope.nuevoPlazo >= 0)) {
                     if (!isInJson(plazosJSON, $scope.nuevoPlazo)) {
                         contadorPlazo++;
                         plazosJSON.push({

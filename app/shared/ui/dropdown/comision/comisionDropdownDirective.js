@@ -37,7 +37,7 @@ univerApp.directive("dropdown.comision", function() {
             };
           
             $scope.agregarNuevaComision = function() {
-                if ($.isNumeric($scope.nuevaComision) && ($scope.nuevaComision > 0)) {
+                if ($.isNumeric($scope.nuevaComision) && ($scope.nuevaComision >= 0)) {
                     if (!isInJson(comisionesJSON, $scope.nuevaComision)) {
                         contadorComision++;
                         comisionesJSON.push({

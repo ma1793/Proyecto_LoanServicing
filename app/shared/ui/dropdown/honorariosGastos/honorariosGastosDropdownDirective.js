@@ -35,7 +35,7 @@ univerApp.directive("dropdown.honorarios.gastos", function() {
             };
             
             $scope.agregarNuevoHonorarioGasto = function() {
-                if ($.isNumeric($scope.nuevoHonorarioGasto) && ($scope.nuevoHonorarioGasto > 0)) {
+                if ($.isNumeric($scope.nuevoHonorarioGasto) && ($scope.nuevoHonorarioGasto >= 0)) {
                     if (!isInJson(honorariosGastosJSON, $scope.nuevoHonorarioGasto)) {
                         contadorHonorarioGasto++;
                         honorariosGastosJSON.push({

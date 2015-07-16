@@ -34,7 +34,7 @@ univerApp.directive("dropdown.apertura", function() {
 
             };
             $scope.agregarNuevaApertura = function() {
-                if ($.isNumeric($scope.nuevaApertura) && ($scope.nuevaApertura > 0)) {
+                if ($.isNumeric($scope.nuevaApertura) && ($scope.nuevaApertura >= 0)) {
                     if (!isInJson(aperturasJSON, $scope.nuevaApertura)) {
                         contadorApertura++;
                         aperturasJSON.push({
