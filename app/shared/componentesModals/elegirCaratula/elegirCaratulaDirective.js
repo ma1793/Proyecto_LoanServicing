@@ -26,6 +26,11 @@ univerApp.directive("elegir.caratula", function() {
                 $rootScope.cumplePasoModal =  true;
             };
             
+            $scope.fechaFormatoVista = function(pFecha){
+               return getFechaFormatoVista(pFecha);
+                
+            };
+            
             $rootScope.eliminarElemento = function() {
                 caratulasRest.eliminarCaratula(function(data) {
                     $rootScope.cumplePasoModal =  false;

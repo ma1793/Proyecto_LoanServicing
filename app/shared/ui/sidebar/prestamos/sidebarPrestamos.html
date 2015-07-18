@@ -37,22 +37,15 @@
         <i class="check square icon"></i> Requisitos Préstamo
     </a>
 
-    <div class="item" ng-if="currentUser.userRole == userRoles.admin">
+    <a class="item" ng-click = "abrirModalPagosRegulares()" ng-if="currentUser.userRole == userRoles.admin">
         <i class="visa icon"></i>
-        <a class="title">
-            <i class="dropdown icon"></i>
-            Pagos Préstamo
-        </a>
-        <div class="content">
-            <div class="menu">
-                <a class="item" ng-click = "abrirModalPagosRegulares()" >Pago Regular</a>
-                <a class="item" ng-click = "abrirModalPagosAntiguos()" >Pago Antiguo</a>
-            </div>
-        </div>
-    </div>
-
+        Pago Préstamo
+    </a>
+    <a class="item" ng-click="abrirModalEstadoCuenta()">
+        <i class="search  icon"></i> Estado Cuenta
+    </a>
     <a class="item" ng-click="abrirModalConsulta()">
-        <i class="search  icon"></i> Consulta Préstamo
+        <i class="calendar  icon"></i> Histórico Pagos
     </a>
     
     <div class="item" ng-if="currentUser.userRole == userRoles.admin">

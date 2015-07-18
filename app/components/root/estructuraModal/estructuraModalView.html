@@ -1,4 +1,4 @@
-<div class="ui modal">
+ <div class="ui modal {{sizeModal()}}">
     <div class="ui left floated header">
         <div class="content">
             <i class="chevron left icon back" ng-class="{disabled: !hasPreviousStep()}" ng-click="decrementStep()"></i>
@@ -10,14 +10,14 @@
         
         <div class="content" ng-show="getCurrentStepIndex() > 0" style="margin-top: 15px">
            {{nombreCompletoClienteSeleccionado}}
-         <!-- <div class="sub header" ng-show="getCurrentStateText() == '<elegir.desglose/>'"><h5>Saldo Desglose: {{"100000"| currency}}</h5></div>-->
+         <div class="sub header" ng-show="getCurrentStepIndex() > 1"  ><h5>Monto Préstamo: {{desgloseSeleccionado.monto | currency}}</h5></div>
         </div>
     </div>
     <div class="ui top right  attached label"  ng-click="close()"  style="padding:6px 8px 6px;">
             <i class="remove icon" style="padding-left: 10px"></i>
         </div>
     
-    <div class="ui contenedor"></div>
+    <div class="ui contenedor {{sizeModal()}}"></div>
     <div class="content" id="ID_ModalComponent" style="min-height: 355px">
     </div>
     <div class="acciones">

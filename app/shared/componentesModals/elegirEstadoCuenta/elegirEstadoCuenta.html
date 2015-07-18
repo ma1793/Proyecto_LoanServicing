@@ -1,8 +1,9 @@
-<form class="ui basic small form segment" name="formularioPagoMorosidad" novalidate >
-    <div class="ui two column grid">
+<form class="ui basic small form segment">
+    <div class="ui two column centered grid">
         <div class="column">
+
             <h3 class="ui center red aligned  header" style="margin-top: 5px">
-                Informacíon de Morosidad
+                Informacíon
             </h3>
             <div class="fields">
                 <div class="eleven wide field">
@@ -67,23 +68,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="column">
-
-            <div class="field" style="padding-top: 10px">
-                    <label>Banco</label>
-                    <dropdown.banco></dropdown.banco>
-            </div>
-            <div class="field">
-                <label style="display: block;text-align: center;">Monto del Pago:</label>
-                <div class = "ui left icon input"  >
-                    <input type="number" min="{{saldoCancelar.toFixed(2)}}" ng-model ="montoPagoMorosidad" ng-class="{'valid': montoPagoMorosidad !== 0}"  ng-change="comprobarMontoPago(formularioPagoMorosidad.$valid)"  required>
-                    <i class="dollar icon"></i>
-                </div>
-            </div>
-
-
-
-        </div>
     </div>
+
+
+
 </form>
+

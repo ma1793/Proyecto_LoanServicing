@@ -32,7 +32,7 @@ univerApp.directive("pago.completo", function() {
             //Funciones Pago Completo    
             $scope.montoPagoCompleto = function() {
                 if ($rootScope.mesSeleccionado != null) {
-                    var retorno = $scope.pagoMensualValor * $rootScope.mesSeleccionado.name - ($scope.sobrante - $scope.faltante);
+                    var retorno = $scope.pagoMensualValor * $rootScope.mesSeleccionado.name - ($scope.sobrante);
                     $scope.montoPagoCompletoValor = retorno;
                     return retorno;
                 }
@@ -49,8 +49,6 @@ univerApp.directive("pago.completo", function() {
             $scope.InitPagoCompleto = function() {
                 
                
-               // $scope.fechaPago = new Date(getFechaActual());
-                $scope.faltante = $rootScope.caratulaSeleccionada.faltanteActual;
                 $scope.sobrante = $rootScope.caratulaSeleccionada.sobranteActual;
                 $scope.pagoMensualValor = $scope.pagoMensual();
 
@@ -58,7 +56,6 @@ univerApp.directive("pago.completo", function() {
 
              
             $rootScope.construirPagoCompletoJSON = function() {
-                console.log("fecha");
 
                 var pagoCompleto = {
                     "id": {
@@ -67,7 +64,7 @@ univerApp.directive("pago.completo", function() {
                     "pago": {
                         "fechaPago": $scope.fechaPago.toJSON(),
                         "montoPago": $scope.montoPagoCompletoValor,
-                        "faltante": $scope.faltante,
+                        "observaciones": $scope.observaciones,
                         "sobrante": $scope.sobrante,
                         "banco": $rootScope.bancoSeleccionado.name,
                         "detalle": listaMeses[$scope.fechaPago.getMonth()]

@@ -519,7 +519,7 @@ function imprimeRequisitos(pTipoPersona, pArrayRequisitosTipoCliente, pArrayRequ
 
 
 
-function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximoPago) {
+function imprimeConsulta(pCliente,pMontoDesglose,pPagos,pMoratoria,pSobrante,pProximoPago) {
     var documentoImprimirConsulta = {
         content: [
             {
@@ -530,7 +530,7 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
                     // keepWithHeaderRows: 1,
                     body: [
                         [{
-                                text: 'CONSULTA DE PRÉSTAMO',
+                                text: 'HISTÓRICO DE PAGOS',
                                 style: 'TituloHeader',
                                 colSpan: 1,
                                 alignment: 'center'
@@ -542,7 +542,12 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
 			text: pCliente, 
 			style: 'header', 
 			alignment: 'center' 
-		},
+            },
+            { 
+			text: "Monto Préstamo: "+currencyFormat(pMontoDesglose), 
+			style: 'subHeader', 
+			alignment: 'center' 
+            },
             
             {
                 style: 'contacto',
@@ -563,9 +568,9 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
             {
                 style: 'tabla',
                 table: {
-                    widths: ['*', '*', '*', '*', '*', '*'],
+                    widths: ['*', '*', '*', '*', '*', 125],
                     body: [
-                        ['Detalle', 'Banco', 'Fecha de Pago', 'Monto', 'Faltante', 'Sobrante']
+                        ['Detalle', 'Banco', 'Fecha de Pago', 'Monto','Sobrante','Observaciones']
 
 
                     ]
@@ -604,9 +609,9 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
             {
                 style: 'tabla2',
                 table: {
-                    widths: ['*', '*', '*', '*', '*', '*','*','*','*'],
+                    widths: ['*', '*', '*', '*', '*', '*','*','*'],
                     body: [
-                        ['Detalle', 'Banco', 'Fecha de Cobro', 'Días de Atraso', 'Intereses', 'Monto en Mora','Faltante','Sobrante','Pago Cliente']
+                        ['Detalle', 'Banco', 'Fecha de Cobro', 'Días de Atraso', 'Intereses', 'Monto en Mora','Sobrante','Pago Cliente']
 
 
                     ]
@@ -630,9 +635,9 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
             {
                 style: 'tablaFinal',
                 table: {
-                    widths: ['*', '*', '*'],
+                    widths: ['*', '*'],
                     body: [
-                        ['Faltante', 'Sobrante', 'Fecha Próximo Pago']
+                        ['Sobrante', 'Fecha Próximo Pago']
                     ]
                 },
                 layout: {
@@ -657,6 +662,10 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
             header: {
                 fontSize: 12,
                 bold: true,
+                margin: [0, 10, 0, 0]
+            },
+            subHeader: {
+                fontSize: 10,
                 margin: [0, 10, 0, 0]
             },
             tableExample: {
@@ -689,7 +698,7 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
                 margin: [0, 30, 0, 0]
             },
             tabla: {
-                fontSize: 11,
+                fontSize: 10,
                 margin: [0, 10, 0, 0]
             },
             tabla2: {
@@ -710,17 +719,17 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
     var banco = "";
     var fechaPago = "";
     var montoPago = "";
-    var faltante = "";
     var sobrante = "";
+    var observaciones = "";
     for (contador = 0; contador < pPagos.length; contador++) {
         detalle += pPagos[contador].pago.detalle + "\n";
         banco += verificarNull(pPagos[contador].pago.banco)+"\n";
         fechaPago +=getFechaFormatoVista(pPagos[contador].pago.fechaPago) + "\n";
         montoPago += currencyFormat(pPagos[contador].pago.montoPago) + "\n";
-        faltante += currencyFormat(pPagos[contador].pago.faltante) + "\n";
         sobrante += currencyFormat(pPagos[contador].pago.sobrante) + "\n";
+        observaciones += verificarNull(pPagos[contador].pago.observaciones) + "\n";
     }
-    var listaPagos = [detalle,banco,fechaPago,montoPago,faltante,sobrante];
+    var listaPagos = [detalle,banco,fechaPago,montoPago,sobrante,observaciones];
     
     
     var detalle = "";
@@ -729,7 +738,6 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
     var cantidadDias = "";
     var interesMora = "";
     var montoenmora = "";
-    var faltante = "";
     var sobrante = "";
     var pagoCliente = "";
     
@@ -740,18 +748,17 @@ function imprimeConsulta(pCliente,pPagos,pMoratoria,pFaltante,pSobrante,pProximo
         cantidadDias +=pMoratoria[contador].interes.cantidadDias + "\n";
         interesMora += currencyFormat(pMoratoria[contador].interes.interesMora) + "\n";        
         montoenmora += currencyFormat(pMoratoria[contador].interes.montoenmora) + "\n";
-        faltante += currencyFormat(pMoratoria[contador].interes.faltante) + "\n";
         sobrante += currencyFormat(pMoratoria[contador].interes.sobrante) + "\n";
         pagoCliente += currencyFormat(pMoratoria[contador].interes.pagoCliente) + "\n";
     }
-    var listaMoratoria = [detalle,banco,fechaCobro,cantidadDias,interesMora,montoenmora,faltante,sobrante,pagoCliente];
+    var listaMoratoria = [detalle,banco,fechaCobro,cantidadDias,interesMora,montoenmora,sobrante,pagoCliente];
     
     
    
-    documentoImprimirConsulta.content[3].table.body.push(listaPagos);
-    documentoImprimirConsulta.content[5].table.body.push(listaMoratoria);
+    documentoImprimirConsulta.content[4].table.body.push(listaPagos);
+    documentoImprimirConsulta.content[6].table.body.push(listaMoratoria);
    
-    documentoImprimirConsulta.content[6].table.body.push([currencyFormat(pFaltante),currencyFormat(pSobrante),getFechaFormatoVista(pProximoPago)]);
+    documentoImprimirConsulta.content[7].table.body.push([currencyFormat(pSobrante),getFechaFormatoVista(pProximoPago)]);
 
 
     pdfMake.createPdf(documentoImprimirConsulta).open();

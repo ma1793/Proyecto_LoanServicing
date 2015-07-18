@@ -11,14 +11,21 @@ univerApp.directive("elegir.fecha", function() {
             $scope.comprobarInput = function(pEstadoFormulario) {
  
                 var fechaProxPago = new Date($rootScope.caratulaSeleccionada.fechaProxPago);
+             
    
                 if(fechaProxPago < $scope.fechaPago ){
                     $rootScope.cumplePasoModal = true;
-                    $rootScope.fechaPagoAntiguo = $scope.fechaPago.toJSON();
+                    $rootScope.fechaEstadoCuenta = $scope.fechaPago.toJSON();
                 }
                 else
                     $rootScope.cumplePasoModal = false;
             };
+            
+            $scope.fechaFormatoVista = function(pFecha){
+               return getFechaFormatoVista(pFecha);
+                
+            };
+            
             $scope.initSeleccionFecha = function(){
                 $scope.fechaPago = null;
             };

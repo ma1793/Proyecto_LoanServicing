@@ -11,7 +11,7 @@ univerApp.directive("dropdown.banco", function() {
             uiInitDropdown();
 
             //Variables Dropdown
-            var contadorBanco = 3;
+            var contadorBanco = 5;
             $rootScope.bancoSeleccionado = null;
 
             //Valores Default Dropdown
@@ -24,7 +24,16 @@ univerApp.directive("dropdown.banco", function() {
             }, {
                 id: 3,
                 name: "BAC"
-            }];
+            }, 
+            {
+                id: 4,
+                name: "NA"
+            },
+            {
+                id: 5,
+                name: "Efectivo"
+            }
+            ];
             //Dropdown Bancos
             $scope.bancos = bancosJSON;
             $scope.selectedDDBanco= -1;

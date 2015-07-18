@@ -30,9 +30,10 @@
 
     <div class="two fields">
         <div class="field ">
-            <label>Faltante</label>
-            <div class="ui small transparent input">
-                <input type="text" value="{{faltante | currency}}" readonly>
+            <label>Observaciones</label>
+            <div class="ui small left icon  input">
+                <input type="text"  ng-model="observaciones" maxlength="20">
+                <i class="unhide icon"></i>
             </div>
 
         </div>
@@ -43,6 +44,8 @@
             </div>
         </div>
     </div>
+   
+    
     <div class="field error ">
         <label style="display: block;text-align: center;">Monto del Pago:</label>
         <div class = "ui input">

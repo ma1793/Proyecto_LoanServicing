@@ -7,7 +7,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
     
     /*Pago Antiguo*/
     $rootScope.pagoMorosidadActivado = false;
-    $rootScope.fechaPagoAntiguo=null;
+    $rootScope.fechaEstadoCuenta = null;
     
 
     $scope.steps =  steps;
@@ -91,12 +91,23 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
             $scope.setComponenteModal(previousStep);
         }
     };
+    $scope.sizeModal = function(){
+        var size = "";
+        if($scope.tituloModal === "Estado de Cuenta" )
+            size = "large";
+        return size;    
+    };
+    
     
     $scope.isPrintStep = function(){
         var isPrint =false;
         switch($scope.steps[$scope.steps.length-1][3]){
             case "<elegir.requisitos/>":
                 isPrint = true;
+                break;
+            case "<elegir.estado.cuenta/>":
+                isPrint = true;
+                break;    
         }
         return isPrint;
     };
@@ -145,8 +156,8 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                          $state.go('root.clear');
                          setTimeout(function(){$state.go('root.prestamosCaratula');},200); 
                          break;
-                    case 'Consulta Préstamos':
-                        $rootScope.tipoConsultaSeleccionada = 1;
+                    case 'Histórico de Pagos':
+                        $rootScope.tipoConsultaSeleccionada = 1; //implica que al abrir el formulario de historico hace el get
                         $state.go('root.clear');
                         setTimeout(function(){$state.go('root.prestamosConsulta');},200); 
                         break;
@@ -162,7 +173,7 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
                 $scope.close();
                 break;
             case "<elegir.pago.prestamo/>":
-                $rootScope.tipoConsultaSeleccionada = 2;
+                $rootScope.tipoConsultaSeleccionada = 2;  // hace que cuando hace el post del pago hace el get de la informacion del historico
                 if ($rootScope.caratulaSeleccionada.estadoMorosidad){
                     $rootScope.finalizarModalPrestamosPagoMorosidad();
                     $state.go('root.clear');

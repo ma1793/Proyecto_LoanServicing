@@ -33,17 +33,11 @@ function getFechaActualFormatoVista(){
     return dd+"-"+mm+"-"+yyyy;
 }
 
-function getFechaFormatoVista(pFecha){
-    
-    var today = new Date(pFecha);
-    var dd = today.getDate()+1;
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-    if(dd < 10 )
-        dd = "0"+dd;
-    if(mm < 10)
-        mm = "0"+mm;
-    return dd+"-"+mm+"-"+yyyy;
+function getFechaFormatoVista(pFecha) {
+    var year = pFecha.substring(0, 4);
+    var month = pFecha.substring(5, 7);
+    var day = pFecha.substring(8, 10);
+    return day + "-" + month + "-" + year;
 }
 
 

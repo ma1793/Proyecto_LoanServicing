@@ -20,9 +20,7 @@ univerApp.directive("elegir.pago.prestamo", function() {
                     else if($scope.tipoPago == 2){
                          $rootScope.construirPagoSobranteJSON();
                     }
-                    else {
-                        $rootScope.construirPagoFaltanteJSON();
-                    }
+                    
             };
 
         }

@@ -110,14 +110,14 @@ univerApp.directive("sidebar.prestamos", function() {
                 });
                 esperaTiempoFuncion(modalOpen,300);
             };
-
-            $scope.abrirModalPagosAntiguos = function () {
+            //Estado de Cuenta
+            $scope.abrirModalEstadoCuenta= function () {
                 ModalService.showModal({
                     templateUrl: "app/components/root/estructuraModal/estructuraModalView.html",
                     controller: "estructuraModalCtrl",
                     inputs: {
-                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'], ['Fecha','Selección Fecha Pago','disabled','<elegir.fecha/>'],['Pagos','Realizar Pago Antiguo','disabled','<elegir.pago.morosidad/>']],
-                        titulo: "Pagos Préstamo Antiguos"
+                        steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>'], ['Fecha','Selección Fecha Pago','disabled','<elegir.fecha/>'],['Estado Cuenta','Observación Estado Cuenta','disabled','<elegir.estado.cuenta/>']],
+                        titulo: "Estado de Cuenta"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);
@@ -129,7 +129,7 @@ univerApp.directive("sidebar.prestamos", function() {
                     controller: "estructuraModalCtrl",
                     inputs: {
                         steps: [['Cliente','Selección de Cliente','active','<elegir.cliente/>'],['Desglose','Selección Desglose de Gastos','disabled','<elegir.desglose/>'],['Carátula','Selección Carátula de Préstamo','disabled','<elegir.caratula/>']],
-                        titulo: "Consulta Préstamos"
+                        titulo: "Histórico de Pagos"
                     }
                 });
                 esperaTiempoFuncion(modalOpen,300);

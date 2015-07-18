@@ -37,7 +37,7 @@ angular.module('univerApp.root.prestamos.consulta', ['ui.router','ngLoadingSpinn
                             "idPago": pUltimoPago.idPago,
                             "fechaPago": pUltimoPago.fechaPago,
                             "montoPago": pUltimoPago.montoPago,
-                            "faltante": pUltimoPago.faltante,
+                            "observaciones": pUltimoPago.observaciones,
                             "sobrante": pUltimoPago.sobrante,
                             "banco": pUltimoPago.banco,
                             "detalle": pUltimoPago.detalle,
@@ -54,8 +54,13 @@ angular.module('univerApp.root.prestamos.consulta', ['ui.router','ngLoadingSpinn
                     },ultimoPago);
                 };     
                 
+                $scope.fechaFormatoVista = function(pFecha) {
+                    return getFechaFormatoVista(pFecha);
+
+                };
+                
                 $scope.imprimirCaratula = function(){
-                  imprimeConsulta($rootScope.nombreCompletoClienteSeleccionado,$rootScope.informeSeleccionado.pagosprestamos,$rootScope.informeSeleccionado.interesesprestamos,$rootScope.informeSeleccionado.faltanteActual,$rootScope.informeSeleccionado.sobranteActual,$rootScope.informeSeleccionado.fechaProxPago);  
+                  imprimeConsulta($rootScope.nombreCompletoClienteSeleccionado,$rootScope.desgloseSeleccionado.monto, $rootScope.informeSeleccionado.pagosprestamos,$rootScope.informeSeleccionado.interesesprestamos,$rootScope.informeSeleccionado.sobranteActual,$rootScope.informeSeleccionado.fechaProxPago);  
                 };
                 
 

@@ -153,7 +153,6 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     }
                     if ($rootScope.tipoOperacionTramite === 2) {
                         caratulaJSON.NewFile = 'idCaratulaPrestamo';
-                        console.log($rootScope.caratulaSeleccionada.contacto.idContacto);
                         caratulaJSON.idCaratulaPrestamo = $rootScope.caratulaSeleccionada.idCaratulaPrestamo;
                         caratulaJSON.contacto.idContacto = $rootScope.caratulaSeleccionada.contacto.idContacto; 
                         caratulaJSON.contacto.persona.idPersona = $rootScope.caratulaSeleccionada.contacto.idContacto; 
@@ -209,7 +208,7 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
 
 
                 $rootScope.imprimirElemento = function() {
-                    imprimeCaratula($scope.acreedorSeleccionado.cedula, $rootScope.nombreCompletoClienteSeleccionado, getFechaFormatoVista($scope.fechaConstitucion.toJSON().substring(0,10)), getFechaFormatoVista($scope.fechaVencimiento.toJSON().substring(0,10)), currencyFormat($rootScope.desgloseSeleccionado.monto), $rootScope.desgloseSeleccionado.tasaAnual + "", $rootScope.desgloseSeleccionado.tasaAnualMoratoria + "", currencyFormat($scope.pagoMensual()), $scope.nombreContacto + " " + $scope.primerApellidoContacto + " " + $scope.segundoApellidoContacto, $scope.emailContacto, $scope.empresaContacto, $scope.telCasaContacto, $scope.telCelularContacto, $scope.telCelularContacto, $scope.telFaxContacto, $scope.direccionContacto, $scope.comentarioCaratula, $rootScope.listaGarantiasCaratula);
+                    imprimeCaratula($scope.acreedorSeleccionado.cedula, $rootScope.nombreCompletoClienteSeleccionado, getFechaFormatoVista($scope.fechaConstitucion.toJSON().substring(0,10)), getFechaFormatoVista($scope.fechaVencimiento.toJSON().substring(0,10)), currencyFormat($rootScope.desgloseSeleccionado.monto), $rootScope.desgloseSeleccionado.tasaAnual + "", $rootScope.desgloseSeleccionado.tasaAnualMoratoria + "", currencyFormat($scope.pagoMensual()), $scope.nombreContacto + " " + $scope.primerApellidoContacto + " " + $scope.segundoApellidoContacto, $scope.emailContacto, $scope.empresaContacto, $scope.telCasaContacto, $scope.telCelularContacto, $scope.telOficinaContacto, $scope.telFaxContacto, $scope.direccionContacto, $scope.comentarioCaratula, $rootScope.listaGarantiasCaratula);
                 };
 
 
@@ -286,7 +285,7 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     
                     setTimeout(function() {
                         $rootScope.setValorDropDownPlazo($rootScope.caratulaSeleccionada.plazo);
-                    }, 300);  
+                    }, 600);  
 
                 };
 

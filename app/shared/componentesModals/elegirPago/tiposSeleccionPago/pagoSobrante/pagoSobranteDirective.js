@@ -36,7 +36,7 @@ univerApp.directive("pago.sobrante", function() {
                     "pago": {
                         "fechaPago": $scope.fechaPago.toJSON(),
                         "montoPago": $scope.montoPagoSobrante,
-                        "faltante": 0.00,
+                        "observaciones": $scope.observaciones,
                         "sobrante": 0.00,
                         "banco": $rootScope.bancoSeleccionado.name,
                         "detalle": listaMeses[$scope.fechaPago.getMonth()]
