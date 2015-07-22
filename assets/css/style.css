@@ -458,12 +458,12 @@ h3{
 
 /******** Aceptar ************/
 .ui.button.accion{
-    background-color: #437357 !important;
-    color: #ffffff !important;
+    background-color: #437357 ;
+    color: #ffffff ;
 }
 .ui.button.accion:hover{
-    background-color: #437357 !important;
-    opacity: 0.90 !important;
+    background-color: #437357 ;
+    opacity: 0.90;
 }
 /****** Cancelar ***********/
 .ui.button.cancelar{

@@ -1,6 +1,6 @@
 <div class="ui inverted menu top fixed " style="padding-left: 8%; ">
         <a class="item title" style="padding-bottom: 20px;">
-            <svg-image  src="assets/img/logo.svg" </svg-image>
+            <svg-image  src="assets/img/logo.svg" ></svg-image>
         </a>
 </div>
 
@@ -9,21 +9,22 @@
         <div class="ui page grid">
             <div class="column" id = "log_Container">
                 <div class="ui transition information visible">
-                    <form class="ui form segment"  id = "idLogSegmento" style="  border: 0px solid rgba(34, 36, 38, 0.15);" >
+                    <form class="ui form segment"  id = "idLogSegmento" style="  border: 0px solid rgba(34, 36, 38, 0.15);" name="formularioLogin" novalidate>
                         <img class="profile-img" src="assets/img/avatar.png">
                         <div class="field">
                             <div class="ui icon input">
-                                <input type="text" placeholder="Empleado" name="username"  ng-model="credentials.username">
+                                <input type="text" placeholder="Empleado" name="username"  ng-model="credentials.username" ng-change="comprobarInput(formularioLogin.$valid)" required>
                                 <i class="user icon"></i>
                             </div>
                         </div>
                         <div class="field">
                             <div class="ui icon input">
-                                <input type="password" placeholder="Contraseña" name="password" ng-model="credentials.password" >
+                                <input type="password" placeholder="Contraseña" name="password" ng-model="credentials.password" ng-change="comprobarInput(formularioLogin.$valid)" required >
                                 <i class="lock icon"></i>
                             </div>
                         </div>
-                        <div class=" ui fluid submit accion button" ng-click="submit()" >Login</div>
+                        <div class=" ui fluid  {{loadingState(spinnerActive)}} accion button" ng-click="submit()"   ng-class="{disabled: !cumpleFormulario  || spinnerActive}" >Login</div>
+                        <span us-spinner="{radius:0, width:0, length: 0}"></span>
 
 
 
