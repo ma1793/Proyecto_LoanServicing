@@ -36,7 +36,7 @@ univerApp.directive("elegir.estado.cuenta", function() {
                 var montoCuotas = 0;
                 var pagoMensualMoratoria = ($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnualMoratoria)/(100*12);
 
-                for(var contador = 1;contador <pNumeroCuotas;contador++ ){
+                for(var contador = 1;contador <=pNumeroCuotas;contador++ ){
                     montoCuotas +=pagoMensualMoratoria;
                 }
                 return montoCuotas;
