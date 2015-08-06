@@ -49,14 +49,13 @@ univerApp.directive("pago.morosidad", function() {
             };
 
 
-            $scope.numeroCuotasMora = function(pFechaActual){
+             $scope.numeroCuotasMora = function(pFechaActual){
                 var numeroCuotas = 0;
                 var diaFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(8,10);
                 var mesFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(5,7);
                 var yearFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(0,4);
                 
                 var mesesDiferencia = (parseInt(pFechaActual.substring(0,4))-parseInt(yearFechaProxPago))*12+(parseInt(pFechaActual.substring(5,7))-parseInt(mesFechaProxPago));
-                
                 if(mesesDiferencia === 1){
                     if((parseInt(pFechaActual.substring(8,10)) - parseInt(diaFechaProxPago) ) < 0){
                         $scope.cantidadDiasAtraso= showDiffDays($scope.fechaActual.substring(0,10),$rootScope.caratulaSeleccionada.fechaProxPago.substring(0,10)); 
@@ -66,6 +65,10 @@ univerApp.directive("pago.morosidad", function() {
                         $scope.cantidadDiasAtraso= Math.abs(parseInt($scope.fechaActual.substring(8,10)) - parseInt($rootScope.caratulaSeleccionada.fechaProxPago.substring(8,10)));
                         numeroCuotas = 1;
                     }
+                }
+                else{
+                    numeroCuotas = mesesDiferencia;
+                    $scope.cantidadDiasAtraso= Math.abs(parseInt($scope.fechaActual.substring(8,10)) - parseInt($rootScope.caratulaSeleccionada.fechaProxPago.substring(8,10)));
                 }
                 return numeroCuotas;
             };
