@@ -52,6 +52,20 @@ function getHoraActual(){
     return horas+":"+minutos;
 }
 
+function showDiffDays(pFechaOrigen,pFechaResta){
+    var date1 = new Date(pFechaOrigen);    
+    var date2 = new Date(pFechaResta);
+    
+    var diff = (date2 - date1)/1000;
+    var diff = Math.abs(Math.floor(diff));
+    
+    var days = Math.floor(diff/(24*60*60));
+    
+   return days;
+}
+
+
+
 function reverse(array) {
     var copy = [].concat(array);
     return copy.reverse();

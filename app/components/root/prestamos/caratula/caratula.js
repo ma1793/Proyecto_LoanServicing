@@ -113,7 +113,9 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                         },
                         "fechaConstitucion": $scope.fechaConstitucion.toJSON(),
                         "fechaVencimiento": $scope.fechaVencimiento.toJSON() ,
+                        
                         "fechaProxPago": $scope.agregarMesesFecha($scope.fechaConstitucion.toJSON(), $rootScope.desgloseSeleccionado.cantidadMeses) + "T00:00:00",
+                        
                         "plazo": $rootScope.plazoSeleccionado.name,
                         "faltanteActual": $scope.faltanteActualCaratula,
                         "sobranteActual": $scope.sobranteActualCaratula,
@@ -153,11 +155,10 @@ angular.module('univerApp.root.prestamos.caratula', ['ui.router'])
                     }
                     if ($rootScope.tipoOperacionTramite === 2) {
                         caratulaJSON.NewFile = 'idCaratulaPrestamo';
+                        caratulaJSON.fechaProxPago =  $rootScope.caratulaSeleccionada.fechaProxPago;
                         caratulaJSON.idCaratulaPrestamo = $rootScope.caratulaSeleccionada.idCaratulaPrestamo;
                         caratulaJSON.contacto.idContacto = $rootScope.caratulaSeleccionada.contacto.idContacto; 
-                        caratulaJSON.contacto.persona.idPersona = $rootScope.caratulaSeleccionada.contacto.idContacto; 
-
-                        
+                        caratulaJSON.contacto.persona.idPersona = $rootScope.caratulaSeleccionada.contacto.idContacto;       
                     }
                     console.log(JSON.stringify(caratulaJSON));
                     return caratulaJSON;

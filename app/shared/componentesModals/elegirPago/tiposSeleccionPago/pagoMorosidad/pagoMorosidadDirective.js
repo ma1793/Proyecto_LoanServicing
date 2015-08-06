@@ -35,15 +35,12 @@ univerApp.directive("pago.morosidad", function() {
                 $scope.fechaActual = getFechaActual();
                 $scope.fechaActual = $scope.fechaActual + "T00:00:00";
                 
-                
-               
-                $scope.cantidadDiasAtraso= parseInt($scope.fechaActual.substring(8,10)) - parseInt($rootScope.caratulaSeleccionada.fechaProxPago.substring(8,10));
+                $scope.cantidadDiasAtraso= 0;
                 $scope.numeroCuotasMora = $scope.numeroCuotasMora($scope.fechaActual);
                 $scope.montoCuotasMora = $scope.montoCuotasMora($scope.numeroCuotasMora);
-                $scope.montoCuotas = $scope.montoCuotas();                
                 $scope.cobroInteres=$scope.cobroInteres($scope.cantidadDiasAtraso);
                 $scope.sobranteMorosidad = $rootScope.caratulaSeleccionada.sobranteActual;
-                $scope.saldoCancelar = $scope.saldoCancelar($scope.montoCuotas,$scope.montoCuotasMora, $scope.cobroInteres,$scope.sobranteMorosidad);
+                $scope.saldoCancelar = $scope.saldoCancelar($scope.montoCuotasMora, $scope.cobroInteres,$scope.sobranteMorosidad);
                
                 $scope.montoPagoMorosidad = parseFloat($scope.saldoCancelar.toFixed(2));
                 $scope.cumpleInputs = true; 
@@ -53,10 +50,24 @@ univerApp.directive("pago.morosidad", function() {
 
 
             $scope.numeroCuotasMora = function(pFechaActual){
+                var numeroCuotas = 0;
+                var diaFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(8,10);
                 var mesFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(5,7);
                 var yearFechaProxPago = $rootScope.caratulaSeleccionada.fechaProxPago.substring(0,4);
                 
-                return   (parseInt(pFechaActual.substring(0,4))-parseInt(yearFechaProxPago))*12+(parseInt(pFechaActual.substring(5,7))-parseInt(mesFechaProxPago));
+                var mesesDiferencia = (parseInt(pFechaActual.substring(0,4))-parseInt(yearFechaProxPago))*12+(parseInt(pFechaActual.substring(5,7))-parseInt(mesFechaProxPago));
+                
+                if(mesesDiferencia === 1){
+                    if((parseInt(pFechaActual.substring(8,10)) - parseInt(diaFechaProxPago) ) < 0){
+                        $scope.cantidadDiasAtraso= showDiffDays($scope.fechaActual.substring(0,10),$rootScope.caratulaSeleccionada.fechaProxPago.substring(0,10)); 
+                        numeroCuotas = 0;
+                        
+                    }else{
+                        $scope.cantidadDiasAtraso= Math.abs(parseInt($scope.fechaActual.substring(8,10)) - parseInt($rootScope.caratulaSeleccionada.fechaProxPago.substring(8,10)));
+                        numeroCuotas = 1;
+                    }
+                }
+                return numeroCuotas;
             };
 
 
@@ -71,10 +82,7 @@ univerApp.directive("pago.morosidad", function() {
             };
             
             
-            $scope.montoCuotas = function(){
-                var pagoMensual=($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnual)/(100*12);
-                return pagoMensual;
-            };
+     
 
             $scope.cobroInteres = function(pDiasAtraso){
                 var pagoMensualMoratoria = ($rootScope.desgloseSeleccionado.monto*$rootScope.desgloseSeleccionado.tasaAnualMoratoria)/(100*12);
@@ -82,8 +90,8 @@ univerApp.directive("pago.morosidad", function() {
             };
 
 
-            $scope.saldoCancelar = function(pMontoCuotas,pMontoCuotasMora,pInteres,pSobrante){
-                return (pMontoCuotas+pMontoCuotasMora+pInteres)-pSobrante;
+            $scope.saldoCancelar = function(pMontoCuotasMora,pInteres,pSobrante){
+                return (pMontoCuotasMora+pInteres)-pSobrante;
             };
 
 
@@ -96,7 +104,7 @@ univerApp.directive("pago.morosidad", function() {
                     "interes": {
                         "fechaCobro": $scope.fechaActual,
                         "interesMora": $scope.cobroInteres,
-                        "montoenmora": $scope.montoCuotas+$scope.montoCuotasMora,
+                        "montoenmora": $scope.montoCuotasMora,
                         "sobrante": $scope.sobranteMorosidad,
                         "detalle": listaMeses[parseInt($scope.fechaActual.substring(5,7))-1],
                         "cantidadDias": $scope.cantidadDiasAtraso,
