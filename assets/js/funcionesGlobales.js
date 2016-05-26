@@ -108,5 +108,13 @@ function xor(x,y){
 }
 
 
+function verificarNull(pValor) {
+    var retorno = "";
+    if (pValor === null || typeof pValor === "undefined") {
+        return retorno;
+    }
+    else
+        return pValor + "";
 
+}
 
