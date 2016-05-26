@@ -8,7 +8,6 @@
             <div class="ui small  left icon input">
                 <i class="calendar icon"></i>
                 <input type="date" ng-model ="fechaPago" ng-change="comprobarInput(formularioPagoSobrante.$valid)" required>
-             
             </div>
         </div>
         <div class="field">
@@ -25,11 +24,17 @@
             </div>   
     </div>
     <div class="field ">
+        <label >Detalle</label>
+        <div class = "ui input" >
+            <input type="text" ng-model ="descripcionDetalle" ng-change="comprobarInput(formularioPagoSobrante.$valid)" maxlength="30" required>
+        </div>
+    </div>
+    </div>
+     <div class="field ">
         <label style="display: block;text-align: center;">Monto del Pago:</label>
         <div class = "ui left icon input" >
             <input type="number" ng-model ="montoPagoSobrante" ng-change="comprobarInput(formularioPagoSobrante.$valid)" required>
             <i class="dollar icon"></i>
         </div>
-    </div>
     </div>
 </form>

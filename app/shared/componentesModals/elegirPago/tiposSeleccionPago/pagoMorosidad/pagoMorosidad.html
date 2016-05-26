@@ -65,10 +65,16 @@
                     <label>Banco</label>
                     <dropdown.banco></dropdown.banco>
             </div>
+            <div class="field ">
+                <label >Detalle</label>
+                <div class = "ui input" >
+                    <input type="text" ng-model ="descripcionDetalle"   ng-change="comprobarInput(formularioPagoMorosidad.$valid)" maxlength="30" required>
+                </div>
+            </div>
             <div class="field">
                 <label style="display: block;text-align: center;">Monto del Pago:</label>
                 <div class = "ui left icon input"  >
-                    <input type="number" min="{{saldoCancelar.toFixed(2)}}" ng-model ="montoPagoMorosidad" ng-class="{'valid': montoPagoMorosidad !== 0}"  ng-change="comprobarMontoPago(formularioPagoMorosidad.$valid)"  required>
+                    <input type="number" min="{{saldoCancelar.toFixed(2)}}" ng-model ="montoPagoMorosidad" ng-class="{'valid': montoPagoMorosidad !== 0}"  ng-change="comprobarInput(formularioPagoMorosidad.$valid)"  required>
                     <i class="dollar icon"></i>
                 </div>
             </div>

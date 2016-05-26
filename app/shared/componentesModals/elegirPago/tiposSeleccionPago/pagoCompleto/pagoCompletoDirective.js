@@ -67,7 +67,7 @@ univerApp.directive("pago.completo", function() {
                         "observaciones": $scope.observaciones,
                         "sobrante": $scope.sobrante,
                         "banco": $rootScope.bancoSeleccionado.name,
-                        "detalle": listaMeses[$scope.fechaPago.getMonth()]
+                        "detalle": $scope.descripcionDetalle
                     }
                 };
                  pagosRest.postPagoCompleto(function(data) {

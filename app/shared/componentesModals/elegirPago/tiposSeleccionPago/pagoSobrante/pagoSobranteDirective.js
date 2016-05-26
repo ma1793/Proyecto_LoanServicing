@@ -39,7 +39,7 @@ univerApp.directive("pago.sobrante", function() {
                         "observaciones": $scope.observaciones,
                         "sobrante": 0.00,
                         "banco": $rootScope.bancoSeleccionado.name,
-                        "detalle": listaMeses[$scope.fechaPago.getMonth()]
+                        "detalle": $scope.descripcionDetalle
                     }
                 };
                  pagosRest.postPagoSobrante(function(data) {

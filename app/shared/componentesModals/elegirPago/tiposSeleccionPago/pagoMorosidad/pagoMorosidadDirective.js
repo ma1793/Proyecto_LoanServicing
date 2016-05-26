@@ -8,7 +8,8 @@ univerApp.directive("pago.morosidad", function() {
 
             //Init condicion de paso en el modal
             $scope.cumpleDropdowns =  false;
-            $scope.cumpleInputs =  false;
+            $scope.cumpleInput =  false;
+            $scope.cumpleMonto =  false;
             $rootScope.cumplePasoModal = false;
 
 
@@ -24,7 +25,8 @@ univerApp.directive("pago.morosidad", function() {
                 $rootScope.cumplePasoModal = $scope.cumpleInputs && $scope.cumpleDropdowns;
             };
 
-            $scope.comprobarMontoPago = function(pEstadoFormulario){
+            // Verificacion Formulario
+            $scope.comprobarInput = function(pEstadoFormulario) {
                 $scope.cumpleInputs = pEstadoFormulario;
                 $scope.comprobarCumpleFormulario();
             };
@@ -43,7 +45,6 @@ univerApp.directive("pago.morosidad", function() {
                 $scope.saldoCancelar = $scope.saldoCancelar($scope.montoCuotasMora, $scope.cobroInteres,$scope.sobranteMorosidad);
                
                 $scope.montoPagoMorosidad = parseFloat($scope.saldoCancelar.toFixed(2));
-                $scope.cumpleInputs = true; 
 
 
             };
@@ -109,7 +110,7 @@ univerApp.directive("pago.morosidad", function() {
                         "interesMora": $scope.cobroInteres,
                         "montoenmora": $scope.montoCuotasMora,
                         "sobrante": $scope.sobranteMorosidad,
-                        "detalle": listaMeses[parseInt($scope.fechaActual.substring(5,7))-1],
+                        "detalle": $scope.descripcionDetalle,
                         "cantidadDias": $scope.cantidadDiasAtraso,
                         "pagoCliente": $scope.montoPagoMorosidad,
                         "banco":$rootScope.bancoSeleccionado.name

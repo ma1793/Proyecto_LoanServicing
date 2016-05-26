@@ -45,11 +45,18 @@
         </div>
     </div>
    
-    
-    <div class="field error ">
-        <label style="display: block;text-align: center;">Monto del Pago:</label>
-        <div class = "ui input">
-            <input type="text" value="{{montoPagoCompleto() | currency }}" readonly>
+    <div class="two fields">
+        <div class="field ">
+            <label >Detalle</label>
+            <div class = "ui input" >
+                <input type="text" ng-model ="descripcionDetalle" ng-change="comprobarInput(formularioPagoCompleto.$valid)" maxlength="30" required>
+            </div>
+        </div>
+        <div class="field error ">
+            <label style="display: block;text-align: center;">Monto del Pago:</label>
+            <div class = "ui input">
+                <input type="text" value="{{montoPagoCompleto() | currency }}" readonly>
+            </div>
         </div>
     </div>
 </form>
