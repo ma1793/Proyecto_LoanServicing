@@ -5,7 +5,7 @@
     <div class="ui  segment  listaModal" >
         <span us-spinner="{radius:30, width:8, length: 16}"></span>
         <div class="ui  small  selection divided  list" >
-            <div class="item" ng-repeat="caratula in caratulasDesglose | filter:searchCaratula |orderBy: '-plazo' "  ng-click="seleccionCaratula(caratula,$index)" ng-class="{active: $index === selectedCaratulaIndex}">
+            <div class="item" ng-repeat="caratula in caratulasDesglose | filter:searchCaratula |orderBy: '-plazo' " ng-dblclick="doubleClickNextStep()" ng-click="seleccionCaratula(caratula,$index)" ng-class="{active: $index === selectedCaratulaIndex}">
 
                 <div class="right floated content"><p>Constitución: {{fechaFormatoVista(caratula.fechaConstitucion)}}</p>Vencimiento: {{fechaFormatoVista(caratula.fechaVencimiento)}}</div>
                 <img class="ui avatar image" src="assets/img/verif.png">

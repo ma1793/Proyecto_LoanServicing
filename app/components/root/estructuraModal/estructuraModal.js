@@ -67,6 +67,21 @@ univerApp.controller('estructuraModalCtrl', function($scope,$rootScope,close,$co
         else
             return false;
     };
+    
+    $scope.doubleClickNextStep = function(){
+       if ( $scope.hasNextStep() )
+        {
+            var stepIndex = $scope.getCurrentStepIndex();
+            var nextStep = stepIndex + 1;
+            $scope.selection = $scope.steps[nextStep][0];
+            $scope.steps[nextStep][2] = 'active';
+            $scope.steps[stepIndex ][2] = 'completed';
+            $scope.setComponenteModal(nextStep);
+        }
+        else{
+            $scope.finalizarModal();
+        }
+    };
 
     $scope.incrementStep = function() {
         if ( $scope.hasNextStep() )

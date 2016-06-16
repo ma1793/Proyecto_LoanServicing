@@ -4,7 +4,7 @@
     </h4>
     <div class="ui segment listaModal" >
         <div class="ui  small selection divided  list" >
-            <div class="item" ng-repeat="contrato in contratosCliente | filter:searchContrato |orderBy: '-mensualidad'"  ng-click="SeleccionContrato(contrato,$index)" ng-class="{active: $index === selectedContratoIndex}">
+            <div class="item" ng-repeat="contrato in contratosCliente | filter:searchContrato |orderBy: '-mensualidad'" ng-dblclick="doubleClickNextStep()" ng-click="SeleccionContrato(contrato,$index)" ng-class="{active: $index === selectedContratoIndex}">
                 <div class="right floated date">Fecha Inicio de Contrato: {{contrato.fecha}}</div>
                 <img class="ui avatar image" src="assets/img/verif.png">
                 <div class="content">
