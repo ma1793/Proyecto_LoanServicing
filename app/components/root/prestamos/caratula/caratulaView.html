@@ -28,7 +28,7 @@
                                             <i class="dropdown icon"></i>
                                             <div class="menu">
                                                 <div class="item" data-value="{{acreedor.idAcreedor}}"  ng-repeat="acreedor in listaAcreedores| orderBy:'cedula':false " ng-click="selectAcreedor(acreedor, $index)" ng-class="{active: $index === selectedDDAcreedor}">
-                                                    {{acreedor.cedula}}
+                                                    {{acreedor.persona.nombre}}
                                                 </div>
                                             </div>
                                         </div>

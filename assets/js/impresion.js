@@ -568,9 +568,9 @@ function imprimeConsulta(pCliente,pMontoDesglose,pPagos,pMoratoria,pSobrante,pPr
             {
                 style: 'tabla',
                 table: {
-                    widths: ['*', '*', '*', '*', '*', 125],
+                    widths: ['*', '*', '*', '*','*'],
                     body: [
-                        ['Detalle', 'Banco', 'Fecha de Pago', 'Monto','Sobrante','Observaciones']
+                        ['Detalle', 'Banco', 'Fecha de Pago', 'Monto','Saldo a Favor']
 
 
                     ]
@@ -611,7 +611,7 @@ function imprimeConsulta(pCliente,pMontoDesglose,pPagos,pMoratoria,pSobrante,pPr
                 table: {
                     widths: ['*', '*', '*', '*', '*', '*','*','*'],
                     body: [
-                        ['Detalle', 'Banco', 'Fecha de Cobro', 'Días de Atraso', 'Intereses', 'Monto en Mora','Sobrante','Pago Cliente']
+                        ['Detalle', 'Banco', 'Fecha de Cobro', 'Días de Atraso', 'Intereses', 'Monto en Mora','Saldo a Favor','Pago Cliente']
 
 
                     ]
@@ -637,7 +637,7 @@ function imprimeConsulta(pCliente,pMontoDesglose,pPagos,pMoratoria,pSobrante,pPr
                 table: {
                     widths: ['*', '*'],
                     body: [
-                        ['Sobrante', 'Fecha Próximo Pago']
+                        ['Saldo a Favor', 'Fecha Próximo Pago']
                     ]
                 },
                 layout: {
@@ -698,7 +698,7 @@ function imprimeConsulta(pCliente,pMontoDesglose,pPagos,pMoratoria,pSobrante,pPr
                 margin: [0, 30, 0, 0]
             },
             tabla: {
-                fontSize: 10,
+                fontSize: 9,
                 margin: [0, 10, 0, 0]
             },
             tabla2: {
@@ -727,9 +727,9 @@ function imprimeConsulta(pCliente,pMontoDesglose,pPagos,pMoratoria,pSobrante,pPr
         fechaPago +=getFechaFormatoVista(pPagos[contador].pago.fechaPago) + "\n";
         montoPago += currencyFormat(pPagos[contador].pago.montoPago) + "\n";
         sobrante += currencyFormat(pPagos[contador].pago.sobrante) + "\n";
-        observaciones += verificarNull(pPagos[contador].pago.observaciones) + "\n";
+        //observaciones += verificarNull(pPagos[contador].pago.observaciones) + "\n";
     }
-    var listaPagos = [detalle,banco,fechaPago,montoPago,sobrante,observaciones];
+    var listaPagos = [detalle,banco,fechaPago,montoPago,sobrante];
     
     
     var detalle = "";
